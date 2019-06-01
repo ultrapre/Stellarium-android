@@ -9,6 +9,7 @@ INCLUDEPATH += \
 	src/core/external/glues_stel/source src/core/external/qtcompress \
         src/core/planetsephems src/scripting src/core/external/GeographicLib/include
 
+
 TEMPLATE = app
 QT += network gui sensors qml quick positioning
 android {
@@ -175,6 +176,8 @@ HEADERS += \
 	src/core/modules/Comet.hpp \
 	src/core/modules/Constellation.hpp \
 	src/core/modules/ConstellationMgr.hpp \
+        src/core/modules/Exoplanet.hpp \
+        src/core/modules/Exoplanets.hpp \
 	src/core/modules/GPSMgr.hpp \
 	src/core/modules/GridLinesMgr.hpp \
 	src/core/modules/LabelMgr.hpp \
@@ -188,6 +191,8 @@ HEADERS += \
 	src/core/modules/NebulaMgr.hpp \
 	src/core/modules/Orbit.hpp \
 	src/core/modules/Planet.hpp \
+        src/core/modules/Quasar.hpp \
+        src/core/modules/Quasars.hpp \
 	src/core/modules/Satellites.hpp \
 	src/core/modules/Satellite.hpp \
 	src/core/modules/Skybright.hpp \
@@ -330,6 +335,8 @@ SOURCES += \
 	src/core/modules/Comet.cpp \
 	src/core/modules/Constellation.cpp \
 	src/core/modules/ConstellationMgr.cpp \
+        src/core/modules/Exoplanet.cpp \
+        src/core/modules/Exoplanets.cpp \
 	src/core/modules/GPSMgr.cpp \
 	src/core/modules/GridLinesMgr.cpp \
 	src/core/modules/LabelMgr.cpp \
@@ -343,6 +350,8 @@ SOURCES += \
 	src/core/modules/NebulaMgr.cpp \
 	src/core/modules/Orbit.cpp \
 	src/core/modules/Planet.cpp \
+        src/core/modules/Quasar.cpp \
+        src/core/modules/Quasars.cpp \
 	src/core/modules/SensorsMgr.cpp \
 	src/core/modules/Satellite.cpp \
 	src/core/modules/Satellites.cpp \

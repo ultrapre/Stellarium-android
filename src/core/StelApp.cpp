@@ -30,7 +30,9 @@
 #include "GridLinesMgr.hpp"
 #include "MilkyWay.hpp"
 #include "MeteorMgr.hpp"
+#include "Exoplanets.hpp"
 #include "LabelMgr.hpp"
+#include "Quasars.hpp"
 #include "StarMgr.hpp"
 #include "Satellites.hpp"
 #include "SolarSystem.hpp"
@@ -436,6 +438,16 @@ void StelApp::init(QSettings* conf)
 	satellites->init();
 	getModuleMgr().registerModule(satellites);
 
+    //Quasars
+    Quasars* quasars = new Quasars();
+    quasars->init();
+    getModuleMgr().registerModule(quasars);
+
+    //Exoplanets
+    Exoplanets* exoplanets = new Exoplanets();
+    exoplanets->init();
+    getModuleMgr().registerModule(exoplanets);
+
 	// Sensors
 	SensorsMgr* sensors = new SensorsMgr();
 	sensors->init();
@@ -448,7 +460,7 @@ void StelApp::init(QSettings* conf)
 
 	skyCultureMgr->init();
 
-	initScriptMgr(conf);
+    initScriptMgr(conf);
 
 	// Initialisation of the color scheme
 	emit colorSchemeChanged("color");
@@ -473,8 +485,11 @@ void StelApp::initPlugIns()
 {
 	// Load dynamically all the modules found in the modules/ directories
 	// which are configured to be loaded at startup
+    qDebug() << "Number of plugins :" << moduleMgr->getPluginsList().length();
+
 	foreach (StelModuleMgr::PluginDescriptor i, moduleMgr->getPluginsList())
 	{
+        qDebug() << "Plugin: " << i.info.displayedName << " should be loaded: " << i.loadAtStartup;
 		if (i.loadAtStartup==false)
 			continue;
 		StelModule* m = moduleMgr->loadPlugin(i.info.id);

@@ -222,7 +222,7 @@ void Meteor::draw(const StelCore* core, StelPainter& sPainter)
 	spos/=1216;
 	epos/=1216;
 
-	//qDebug("[%f %f %f]\n", position[0], position[1], position[2]);
+	qDebug("[%f %f %f]\n", position[0], position[1], position[2]);
 
 	if (train)
 	{

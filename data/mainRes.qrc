@@ -24,6 +24,7 @@
         <file>qml/images/constellationLabels.png</file>
         <file>qml/images/constellationLines.png</file>
         <file>qml/images/equatorialGrid.png</file>
+        <file>qml/images/exoplanets.png</file>
         <file>qml/images/hoverHalo.png</file>
         <file>qml/images/landscape.png</file>
         <file>qml/images/location.png</file>
@@ -32,6 +33,7 @@
         <file>qml/images/nightView.png</file>
         <file>qml/images/openQuickBar.png</file>
         <file>qml/images/planets.png</file>
+        <file>qml/images/quasars.png</file>
         <file>qml/images/quit.png</file>
         <file>qml/images/search.png</file>
         <file>qml/images/sensors.png</file>
