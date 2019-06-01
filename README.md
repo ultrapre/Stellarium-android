@@ -33,7 +33,29 @@ If the building process runs into problems while compiling ```dummy.cpp```, simp
 ## Localization guide
 TODO
 
+## Planed features
+- Satellite
+    - [X] Support for Starlink.
+    - [X] Reduced hint sizes, show when visible and magnitude low.
+    - [X] Special yellow color for ISS.
+    - [ ] Draw orbit when selected.
+
+- Quasars
+    - [X] Add support for quasars
+    - [X] Online updated
+
+- Exoplanets
+    - [X] Add support for exoplanets
+    - [X] Online updated
+
+- Meteor Showers
+    - [ ] Add support for meteors
+    - [ ] Online updated
+
 ## Change Log
+### June 1, 2019
+Editing Satellite module for better visualization
+Adding support for Quasars and Exoplanets
 ### April 3, 2019
 Update to mobile source code to 1.29.6
 Clean up unused files
