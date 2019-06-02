@@ -1,3 +1,7 @@
+<p style="text-align: center;">
+    <img src="android/res/mipmap-xxxhdpi/ic_launcher.png">
+</p>
+
 # Stellarium-android
 A modded version of Stellarium-Mobile
 
@@ -61,6 +65,11 @@ TODO
     - [ ] 30fps stable
 
 ## Change Log
+
+### June 2, 2019
+
+Upgrading Main app and texture manager to implement QtConcurrent and Thread for increases speed.
+Not enough rapid.
 
 ### June 1, 2019
 
