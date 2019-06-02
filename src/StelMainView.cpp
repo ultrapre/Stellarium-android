@@ -226,7 +226,7 @@ StelMainView::StelMainView(QWidget* parent)
 	  flagInvertScreenShotColors(false),
 	  screenShotPrefix("stellarium-"),
 	  screenShotDir(""),
-	  cursorTimeout(-1.f), flagCursorTimeout(false), minFpsTimer(NULL), maxfps(10000.f)
+      cursorTimeout(-1.f), flagCursorTimeout(false), minFpsTimer(NULL), maxfps(10000.f)
 {
 	StelApp::initStatic();
 	
@@ -339,7 +339,7 @@ void StelMainView::init(QSettings* conf)
 	// plugins, because the gui create the QActions needed by some plugins.
 	StelApp::getInstance().initPlugIns();
 
-	QThread::currentThread()->setPriority(QThread::HighestPriority);
+    QThread::currentThread()->setPriority(QThread::HighestPriority);
 	startMainLoop();
 }
 

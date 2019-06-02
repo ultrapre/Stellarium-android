@@ -352,7 +352,6 @@ void StelApp::init(QSettings* conf)
 
 	// Initialize AFTER creation of openGL context
 	textureMgr = new StelTextureMgr();
-	textureMgr->init();
 
 	networkAccessManager = new QNetworkAccessManager(this);
 	// Activate http cache if Qt version >= 4.5
@@ -434,9 +433,9 @@ void StelApp::init(QSettings* conf)
 	getModuleMgr().registerModule(skyLabels);
 
 	// Satellites
-	Satellites* satellites = new Satellites();
-	satellites->init();
-	getModuleMgr().registerModule(satellites);
+    Satellites* satellites = new Satellites();
+    satellites->init();
+    getModuleMgr().registerModule(satellites);
 
     //Quasars
     Quasars* quasars = new Quasars();

@@ -140,7 +140,8 @@ void Quasars::init()
         Quasar::markerTexture = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/quasar.png");
 
 		// key bindings and other actions
-		addAction("actionShow_Quasars", N_("Quasars"), N_("Show quasars"), "quasarsVisible", "Ctrl+Alt+Q");
+        addAction("actionShow_Quasars", N_("Quasars"), N_("Show quasars"), "quasarsVisible", "Ctrl+Alt+Q");
+        // addAction("actionDistribution_Quasars", N_("Quasars"), N_("Distribution"), "quasarsVisible", "");
 
 
 		setFlagShowQuasars(getEnableAtStartup());
@@ -692,7 +693,7 @@ void Quasars::startDownload(QString urlString)
 	connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 	QNetworkRequest request;
 	request.setUrl(QUrl(updateUrl));
-    //request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
+    request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
 	#if QT_VERSION >= 0x050600
 	request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 	#endif
@@ -761,6 +762,8 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 
 		reply->deleteLater();
 		downloadReply = Q_NULLPTR;
+        updateState = Quasars::DownloadError;
+        emit(updateStateChanged(updateState));
 		return;
 	}
 

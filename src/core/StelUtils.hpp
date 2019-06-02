@@ -584,6 +584,12 @@ namespace StelUtils
 	}
 	//! Uncompress gzip or zlib compressed data.
 	QByteArray uncompress(const QByteArray& data);
+
+    //! Return the user agent name, i.e. "Stellarium/0.15.0 (Linux)"
+    QString getUserAgentString();
+
+    //! Return the name and the version of operating system, i.e. "Mac OS X 10.7"
+    QString getOperatingSystemInfo();
 }
 
 #endif // _STELUTILS_HPP_

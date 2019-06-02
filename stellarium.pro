@@ -11,7 +11,7 @@ INCLUDEPATH += \
 
 
 TEMPLATE = app
-QT += network gui sensors qml quick positioning
+QT += network gui sensors qml quick positioning concurrent
 android {
 	QT += androidextras
 }
@@ -146,6 +146,7 @@ HEADERS += \
 	src/core/StelObjectModule.hpp \
 	src/core/StelObjectType.hpp \
 	src/core/StelObserver.hpp \
+        src/core/StelOpenGL.hpp \
 	src/core/StelPainter.hpp \
 	src/core/StelPluginInterface.hpp \
 	src/core/StelProjectorClasses.hpp \
@@ -310,6 +311,7 @@ SOURCES += \
 	src/core/StelObjectMgr.cpp \
 	src/core/StelObjectModule.cpp \
 	src/core/StelObserver.cpp \
+        src/core/StelOpenGL.cpp \
 	src/core/StelPainter.cpp \
 	src/core/StelProjectorClasses.cpp \
 	src/core/StelProjector.cpp \
@@ -472,4 +474,5 @@ DISTFILES += \
     android/res/values/libs.xml \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat
+    android/gradlew.bat \
+    data/qml/Plugins.qml

@@ -916,12 +916,13 @@ void Exoplanets::startDownload(QString urlString)
 	if (progressBar == Q_NULLPTR)
 		progressBar = StelApp::getInstance().addProgressBar();
 	progressBar->setValue(0);
-	progressBar->setRange(0, 0);
+    progressBar->setRange(0, 0);
+
 
 	connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 	QNetworkRequest request;
 	request.setUrl(QUrl(updateUrl));
-    //request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
+    request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
 	#if QT_VERSION >= 0x050600
 	request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 	#endif
@@ -963,7 +964,7 @@ void Exoplanets::downloadComplete(QNetworkReply *reply)
 
 	disconnect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 
-	#if QT_VERSION < 0x050600
+    #if QT_VERSION < 0x050600
 	int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 	if (statusCode == 301 || statusCode == 302 || statusCode == 307)
 	{
@@ -990,6 +991,8 @@ void Exoplanets::downloadComplete(QNetworkReply *reply)
 
 		reply->deleteLater();
 		downloadReply = Q_NULLPTR;
+        updateState = Exoplanets::DownloadError;
+        emit(updateStateChanged(updateState));
 		return;
 	}
 

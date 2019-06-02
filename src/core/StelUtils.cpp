@@ -1764,5 +1764,40 @@ QByteArray uncompress(const QByteArray& data)
 	return out;
 }
 
+QString getOperatingSystemInfo()
+{
+    QString OS = "Unknown operating system";
+
+    #ifdef Q_OS_BSD4
+    // Check FreeBSD, NetBSD, OpenBSD and DragonFly BSD
+    QProcess uname;
+    uname.start("/usr/bin/uname -srm");
+    uname.waitForStarted();
+    uname.waitForFinished();
+    const QString BSDsystem = uname.readAllStandardOutput();
+    OS = BSDsystem.trimmed();
+    #else
+    OS = QSysInfo::prettyProductName();
+    #endif
+
+    return OS;
+}
+
+
+QString getUserAgentString()
+{
+    // Get info about operating system
+    QString os = StelUtils::getOperatingSystemInfo();
+    if (os.contains("FreeBSD"))
+        os = "FreeBSD";
+    else if (os.contains("NetBSD"))
+        os = "NetBSD";
+    else if (os.contains("OpenBSD"))
+        os = "OpenBSD";
+
+    // Set user agent as "Stellarium/$version$ ($operating system$; $CPU architecture$)"
+    return QString("Stellarium/%1 (%2; %3)").arg(StelUtils::getApplicationVersion(), os, QSysInfo::currentCpuArchitecture());
+}
+
 } // end of the StelUtils namespace
 

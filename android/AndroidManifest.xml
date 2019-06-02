@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <manifest package="com.noctuasoftware.stellarium" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.29.6_m" android:versionCode="24" android:installLocation="auto">
-    <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:icon="@drawable/icon">
-        <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="@string/app_name" android:launchMode="singleTop">
+    <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round">
+        <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="@string/app_name" android:launchMode="singleTop" android:keepScreenOn="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

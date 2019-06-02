@@ -298,7 +298,7 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 	
     if (flags&Type)
 	{
-		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << "<br />";
+		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << "<br>";
 	}
 
 	if (flags&Magnitude && Vmag<99 && !distributionMode)
@@ -318,32 +318,32 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
     // oss << getCommonInfoString(core, flags);
 
 	if (flags&Extra && !stype.isEmpty())
-		oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << "<br />";
+		oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << "<br>";
 
 	if (flags&Distance && distance>0)
 	{
 		//TRANSLATORS: Unit of measure for distance - Light Years
 		QString ly = qc_("ly", "distance");
-		oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << "<br />";
+		oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << "<br>";
 	}
 
 	if (flags&Extra)
 	{
 		if (smetal!=0)
 		{
-			oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << "<br />";
+			oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << "<br>";
 		}
 		if (smass>0)
 		{
-			oss << QString("%1: %2 M<sub>%3</sub>").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << "<br />";
+			oss << QString("%1: %2 M<sub>%3</sub>").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << "<br>";
 		}
 		if (sradius>0)
 		{
-			oss << QString("%1: %2 R<sub>%3</sub>").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << "<br />";
+			oss << QString("%1: %2 R<sub>%3</sub>").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << "<br>";
 		}
 		if (effectiveTemp>0)
 		{
-			oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << "<br />";
+			oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << "<br>";
 		}
 		if (exoplanets.size() > 0)
 		{
@@ -488,7 +488,7 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 			}
 			oss << "</table>";
 			if (hasHabitableExoplanets)
-				oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << "<br />";
+				oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << "<br>";
 		}
 	}
 
