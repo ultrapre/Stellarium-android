@@ -185,7 +185,10 @@ HEADERS += \
 	src/core/modules/Landscape.hpp \
 	src/core/modules/LandscapeMgr.hpp \
 	src/core/modules/Meteor.hpp \
-	src/core/modules/MeteorMgr.hpp \
+	src/core/modules/MeteorObj.hpp \
+	src/core/modules/MeteorShower.hpp \
+	src/core/modules/MeteorShowers.hpp \
+	src/core/modules/MeteorShowersMgr.hpp \
 	src/core/modules/MilkyWay.hpp \
 	src/core/modules/MinorPlanet.hpp \
 	src/core/modules/Nebula.hpp \
@@ -201,6 +204,8 @@ HEADERS += \
 	src/core/modules/SensorsMgr.hpp \
 	src/core/modules/SolarSystem.hpp \
 	src/core/modules/Solve.hpp \
+	src/core/modules/SporadicMeteor.hpp \
+	src/core/modules/SporadicMeteorMgr.hpp \
 	src/core/modules/Star.hpp \
 	src/core/modules/StarMgr.hpp \
 	src/core/modules/StarWrapper.hpp \
@@ -345,7 +350,10 @@ SOURCES += \
 	src/core/modules/Landscape.cpp \
 	src/core/modules/LandscapeMgr.cpp \
 	src/core/modules/Meteor.cpp \
-	src/core/modules/MeteorMgr.cpp \
+	src/core/modules/MeteorObj.cpp \
+	src/core/modules/MeteorShower.cpp \
+	src/core/modules/MeteorShowers.cpp \
+	src/core/modules/MeteorShowersMgr.cpp \	
 	src/core/modules/MilkyWay.cpp \
 	src/core/modules/MinorPlanet.cpp \
 	src/core/modules/Nebula.cpp \
@@ -360,6 +368,8 @@ SOURCES += \
 	src/core/modules/Skybright.cpp \
 	src/core/modules/Skylight.cpp \
 	src/core/modules/SolarSystem.cpp \
+	src/core/modules/SporadicMeteor.cpp \
+	src/core/modules/SporadicMeteorMgr.cpp \
 	src/core/modules/Star.cpp \
 	src/core/modules/StarMgr.cpp \
 	src/core/modules/StarWrapper.cpp \
@@ -463,8 +473,8 @@ OTHER_FILES += \
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_EXTRA_LIBS = \
-        $$PWD/../openssl-1.1.0h/libcrypto.so \
-        $$PWD/../openssl-1.1.0h/libssl.so
+        $$PWD/openssl/armeabi-v7a/libcrypto.so \
+        $$PWD/openssl/armeabi-v7a/libssl.so
 }
 
 DISTFILES += \

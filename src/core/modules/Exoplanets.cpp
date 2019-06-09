@@ -75,7 +75,6 @@ Exoplanets::Exoplanets()
 {
 	setObjectName("Exoplanets");
 	conf = StelApp::getInstance().getSettings();
-	connect(&StelApp::getInstance(), SIGNAL(screenFontSizeChanged(int)), this, SLOT(setFontSize(int)));
 }
 
 /*
@@ -136,8 +135,8 @@ void Exoplanets::init()
 		if (jsonCatalogPath.isEmpty())
 			return;
 
-		texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
-        Exoplanet::markerTexture = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/exoplanet.png");
+		texPointer = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
+        Exoplanet::markerTexture = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/exoplanet.png");
 
 		// key bindings and other actions
 		addAction("actionShow_Exoplanets", N_("Exoplanets"), N_("Show exoplanets"), "showExoplanets", "Ctrl+Alt+E");
@@ -174,7 +173,7 @@ void Exoplanets::init()
 	updateState = CompleteNoUpdates;
 	updateTimer = new QTimer(this);
 	updateTimer->setSingleShot(false);   // recurring check for update
-	updateTimer->setInterval(13000);     // check once every 13 seconds to see if it is time for an update
+    updateTimer->setInterval(30000);     // check once every 13 seconds to see if it is time for an update
 	connect(updateTimer, SIGNAL(timeout()), this, SLOT(checkForUpdate()));
 	updateTimer->start();
 
@@ -215,11 +214,11 @@ void Exoplanets::drawPointer(StelCore* core, StelPainter& painter)
 		if (!painter.getProjector()->project(pos, screenpos))
 			return;
 
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_BLEND);
 		const Vec3f& c(obj->getInfoColor());
 		painter.setColor(c[0],c[1],c[2]);
 		texPointer->bind();
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_BLEND);
 		painter.drawSprite2dMode(screenpos[0], screenpos[1], 13.f, StelApp::getInstance().getTotalRunTime()*40.);
 	}
 }

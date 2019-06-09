@@ -5,7 +5,7 @@
 # Stellarium-android
 A modded version of Stellarium-Mobile
 
-Stellarium kernel version 0.12.3
+Fork of [chengxinlun's Stellarium-Mobile](https://github.com/chengxinlun/Stellarium-android)
 
 Mobile platform specific source code http://stelladata.noctua-software.com/stellarium-mobile/stellarium-mobile-1.29.tar.gz 
 Assets from https://code.launchpad.net/stellarium/
@@ -20,6 +20,39 @@ Copyright: Original Stellarium dev team
 * Tweak UI size for better handling on mobile
 * Correct for magnetic declination angle (Magnetic North is not real North)
 * Higher quality texture compared to official Stellarium-Mobile
+
+## Planned features
+
+- Planets
+    - [X] Draw orbit when selected
+
+- Satellite
+    - [X] Support for Starlink.
+    - [X] Reduced hint sizes, show when visible and magnitude low.
+    - [X] Special yellow color for ISS.
+    - [X] Draw orbit when selected.
+
+- Quasars
+    - [X] Add support for quasars
+    - [X] Online updated
+
+- Exoplanets
+    - [X] Add support for exoplanets
+    - [X] Online updated
+
+- Meteor Showers
+    - [X] Add support for meteors
+    - [X] Online updated
+
+- Telescope Control
+    - [ ] Add support for telescope control
+    - [ ] Edit UI to support it
+
+- UI
+    - [ ] Improve search dialog
+
+- Performance
+    - [ ] 30fps stable
 
 ## Prerequisites
 
@@ -40,29 +73,6 @@ If the building process runs into problems while compiling ```dummy.cpp```, simp
 ## Localization guide
 
 TODO
-
-## Planned features
-
-- Satellite
-    - [X] Support for Starlink.
-    - [X] Reduced hint sizes, show when visible and magnitude low.
-    - [X] Special yellow color for ISS.
-    - [ ] Draw orbit when selected.
-
-- Quasars
-    - [X] Add support for quasars
-    - [X] Online updated
-
-- Exoplanets
-    - [X] Add support for exoplanets
-    - [X] Online updated
-
-- Meteor Showers
-    - [ ] Add support for meteors
-    - [ ] Online updated
-
-- Performance
-    - [ ] 30fps stable
 
 ## Change Log
 

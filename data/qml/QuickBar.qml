@@ -29,14 +29,14 @@ Grid {
 	// Compute the optimal number of columns so that the buttons are evently distributed.
 	onParentWidthChanged: {
 		function sizeForColumns(n) { return 48 * rootStyle.scale * n + buttonGrid.spacing * ( n - 1); }
-        var choices = [14, 7];
+        var choices = [16, 8];
 		for (var i = 0; i < choices.length; i++)
 		if (parentWidth >= sizeForColumns(choices[i])) {
 			columns = choices[i];
 			return;
 		}
 		// default
-        columns = 7;
+        columns = 8;
 	}
 
 	ImageButton {
@@ -109,6 +109,12 @@ Grid {
         source: "images/exoplanets.png"
         action: "actionShow_Exoplanets"
         setting: "Exoplanets/flag_show_exoplanets"
+    }
+
+    ImageButton {
+        source: "images/meteors.png"
+        action: "actionShow_MeteorShowers"
+        setting: "MeteorShowers/flag_show_meteor_shower"
     }
 
 	ImageButton {

@@ -17,20 +17,111 @@
  * Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA  02110-1335, USA.
  */
 
+// https://doc.qt.io/qt-5/qtquickcontrols2-customize.html#customizing-busyindicator
+
 import QtQuick 2.2
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
+import QtQuick.Layouts 1.2
 
 Rectangle {
-	color: "black"
-	Image {
+    color: "black"
+    anchors.fill: parent
+    Image {
         anchors.centerIn: parent
-		fillMode: Image.PreserveAspectFit
-		source: "images/about-logo.png"
-	}
-	focus: true
-	Keys.onReleased: {
-		if (event.key === Qt.Key_Back) {
-			event.accepted = true
-			Qt.quit()
-		}
-	}
+        fillMode: Image.PreserveAspectFit
+        source: "images/about-logo.png"
+    }
+    BusyIndicator {
+        id: busyIndication
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 100
+        width: 200
+        height: 200
+        // 'running' defaults to 'true'
+        RotationAnimator {
+            target: busyIndication
+            running: true
+            from: 0
+            to: 360
+            loops: Animation.Infinite
+            duration: 1250
+        }
+        /*
+        ColorAnimation {
+            target: busyIndication
+            from: "white"
+            to: "black"
+            duration: 200
+        }*/
+    }
+    focus: true
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Back) {
+            event.accepted = true
+            Qt.quit()
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

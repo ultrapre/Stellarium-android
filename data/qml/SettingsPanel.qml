@@ -54,6 +54,10 @@ StelDialog {
 			title: QT_TR_NOOP("Starlore")
 			page: "StarloreDialog.qml"
 		}
+        ListElement {
+            title: QT_TR_NOOP("Plugins")
+            page: "Plugins.qml"
+        }
 		ListElement {
 			title: QT_TR_NOOP("Advanced")
 			page: "AdvancedDialog.qml"

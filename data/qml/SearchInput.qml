@@ -95,7 +95,7 @@ Item {
 			Keys.onReturnPressed: {accept();}
 
 			onTextChanged: {
-				resultsList.model = (text === qsTr("Search")) ? [] : stellarium.search(text)
+                resultsList.model = (text === qsTr("Search")) ? [] : stellarium.search(text)
 			}
 			
 			onActiveFocusChanged: {

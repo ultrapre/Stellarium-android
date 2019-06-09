@@ -159,7 +159,7 @@ void LandscapeOldStyle::load(const QSettings& landscapeIni, const QString& lands
 		QString textureKey = QString("landscape/tex%1").arg(i);
 		QString textureName = landscapeIni.value(textureKey).toString();
 		const QString texturePath = getTexturePath(textureName, landscapeId);
-		sideTexs[i] = StelApp::getInstance().getTextureManager().createTexture(texturePath);
+		sideTexs[i] = StelApp::getInstance().getTextureManager().createTextureThread(texturePath);
 	}
 
 	QMap<int, int> texToSide;
@@ -195,7 +195,7 @@ void LandscapeOldStyle::load(const QSettings& landscapeIni, const QString& lands
 
 	QString groundTexName = landscapeIni.value("landscape/groundtex").toString();
 	QString groundTexPath = getTexturePath(groundTexName, landscapeId);
-	groundTex = StelApp::getInstance().getTextureManager().createTexture(groundTexPath, StelTexture::StelTextureParams(true));
+	groundTex = StelApp::getInstance().getTextureManager().createTextureThread(groundTexPath, StelTexture::StelTextureParams(true));
 	QString description = landscapeIni.value("landscape/ground").toString();
 	//sscanf(description.toLocal8Bit(),"groundtex:%f:%f:%f:%f",&a,&b,&c,&d);
 	QStringList parameters = description.split(':');
@@ -207,7 +207,7 @@ void LandscapeOldStyle::load(const QSettings& landscapeIni, const QString& lands
 
 	QString fogTexName = landscapeIni.value("landscape/fogtex").toString();
 	QString fogTexPath = getTexturePath(fogTexName, landscapeId);
-	fogTex = StelApp::getInstance().getTextureManager().createTexture(fogTexPath, StelTexture::StelTextureParams(true, GL_LINEAR, GL_REPEAT));
+	fogTex = StelApp::getInstance().getTextureManager().createTextureThread(fogTexPath, StelTexture::StelTextureParams(true, GL_LINEAR, GL_REPEAT));
 	description = landscapeIni.value("landscape/fog").toString();
 	//sscanf(description.toLocal8Bit(),"fogtex:%f:%f:%f:%f",&a,&b,&c,&d);
 	parameters = description.split(':');
@@ -437,7 +437,7 @@ void LandscapeFisheye::create(const QString _name, const QString& _maptex, float
 	// qDebug() << _name << " " << _fullpath << " " << _maptex << " " << _texturefov;
 	validLandscape = 1;  // assume ok...
 	name = _name;
-	mapTex = StelApp::getInstance().getTextureManager().createTexture(_maptex, StelTexture::StelTextureParams(true));
+	mapTex = StelApp::getInstance().getTextureManager().createTextureThread(_maptex, StelTexture::StelTextureParams(true));
 	texFov = atexturefov*M_PI/180.f;
 	angleRotateZ = aangleRotateZ*M_PI/180.f;
 }
@@ -503,7 +503,7 @@ void LandscapeSpherical::create(const QString _name, const QString& _maptex, flo
 	// qDebug() << _name << " " << _fullpath << " " << _maptex << " " << _texturefov;
 	validLandscape = 1;  // assume ok...
 	name = _name;
-	mapTex = StelApp::getInstance().getTextureManager().createTexture(_maptex, StelTexture::StelTextureParams(true));
+	mapTex = StelApp::getInstance().getTextureManager().createTextureThread(_maptex, StelTexture::StelTextureParams(true));
 	angleRotateZ = _angleRotateZ*M_PI/180.f;
 }
 

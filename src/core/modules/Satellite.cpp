@@ -606,7 +606,7 @@ bool Satellite::draw(StelCore* core, StelPainter& painter, float)
                 painter.drawText(XYZ, name, 0, 10, 10, false);
             }
 			//If visible but not in sight -> draw an icon
-			else if (hintBrightness == 0 && mag > maxMag && visibility == VISIBLE)
+            else if (hintBrightness == 0 && mag > maxMag && visibility == VISIBLE)
 			{
 				Vec3d xy;
 				if (prj->projectCheck(XYZ,xy))
@@ -627,6 +627,8 @@ bool Satellite::draw(StelCore* core, StelPainter& painter, float)
     }
 
     if (orbitDisplayed && Satellite::orbitLinesFlag) drawOrbit(painter);
+    //reset the flag set by Satellites::drawPointer (selection)
+    if (orbitDisplayed) orbitDisplayed = false;
     return ret;
 }
 

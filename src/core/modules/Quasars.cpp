@@ -75,7 +75,6 @@ Quasars::Quasars()
 {
 	setObjectName("Quasars");
 	conf = StelApp::getInstance().getSettings();
-	connect(&StelApp::getInstance(), SIGNAL(screenFontSizeChanged(int)), this, SLOT(setFontSize(int)));
 }
 
 /*
@@ -141,7 +140,7 @@ void Quasars::init()
 
 		// key bindings and other actions
         addAction("actionShow_Quasars", N_("Quasars"), N_("Show quasars"), "quasarsVisible", "Ctrl+Alt+Q");
-        // addAction("actionDistribution_Quasars", N_("Quasars"), N_("Distribution"), "quasarsVisible", "");
+        addAction("actionDistribution_Quasars", N_("Quasars"), N_("Quasars Distribution"), "quasarsDistribution", "");
 
 
 		setFlagShowQuasars(getEnableAtStartup());
@@ -176,7 +175,7 @@ void Quasars::init()
 	updateState = CompleteNoUpdates;
 	updateTimer = new QTimer(this);
 	updateTimer->setSingleShot(false);   // recurring check for update
-	updateTimer->setInterval(13000);     // check once every 13 seconds to see if it is time for an update
+    updateTimer->setInterval(25000);     // check once every 13 seconds to see if it is time for an update
 	connect(updateTimer, SIGNAL(timeout()), this, SLOT(checkForUpdate()));
 	updateTimer->start();
 
@@ -690,7 +689,7 @@ void Quasars::startDownload(QString urlString)
 	progressBar->setValue(0);
 	progressBar->setRange(0, 0);
 
-	connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 	QNetworkRequest request;
 	request.setUrl(QUrl(updateUrl));
     request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
@@ -767,6 +766,16 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 		return;
 	}
 
+    //Check if link is correct
+
+    if (!updateUrl.contains(reply->url().toString(QUrl::RemoveUserInfo)))
+    {
+        updateState = Quasars::DownloadError;
+        emit(updateStateChanged(updateState));
+        return;
+    }
+
+
 	// download completed successfully.
 	try
 	{
@@ -791,6 +800,8 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 		qWarning() << "[Quasars] Cannot write JSON data to file:" << e.what();
 		updateState = Quasars::DownloadError;
 	}
+
+    qDebug() << "[Quasars] update finished";
 
 	emit(updateStateChanged(updateState));
 	emit(jsonUpdateComplete());

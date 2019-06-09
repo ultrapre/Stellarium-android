@@ -273,6 +273,7 @@ QStringList StelObjectMgr::listMatchingObjects(const QString& objPrefix, unsigne
 	}
 
 	result.sort();
+    // qDebug() << "Results" << result;
 	return result;
 }
 

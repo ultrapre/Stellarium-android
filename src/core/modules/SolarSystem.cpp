@@ -127,7 +127,8 @@ void SolarSystem::init()
 	setFlagHints(conf->value("astro/flag_planets_hints").toBool());
 	setFlagLabels(conf->value("astro/flag_planets_labels", true).toBool());
 	setLabelsAmount(conf->value("astro/labels_amount", 3.).toFloat());
-	setFlagOrbits(conf->value("astro/flag_planets_orbits").toBool());
+    //setFlagOrbits(conf->value("astro/flag_planets_orbits").toBool());
+    setFlagOrbits(false);
 	setFlagLightTravelTime(conf->value("astro/flag_light_travel_time", false).toBool());
 	setFlagMarkers(conf->value("astro/flag_planets_markers", true).toBool());
 
@@ -181,7 +182,6 @@ void SolarSystem::drawPointer(const StelCore* core)
 		if (!prj->project(pos, screenpos))
 			return;
 
-
 		StelPainter sPainter(prj);
 		Vec3f color = getPointersColor();
 		sPainter.setColor(color[0],color[1],color[2]);
@@ -194,8 +194,8 @@ void SolarSystem::drawPointer(const StelCore* core)
 		texPointer->bind();
 
 		sPainter.enableTexture2d(true);
-		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Normal transparency mode
+        glEnable(GL_BLEND);
 
 		size*=0.5;
 		const float angleBase = StelApp::getInstance().getTotalRunTime() * 10;
@@ -207,6 +207,12 @@ void SolarSystem::drawPointer(const StelCore* core)
 			const double y = screenpos[1] + size * sin(angle / 180 * M_PI);
 			sPainter.drawSprite2dMode(x, y, 10, angle);
 		}
+        QString name = obj->getNameI18n();
+        foreach (PlanetP p, systemPlanets)
+        {
+            if (p->getNameI18n().contains(name))
+                p->setFlagOrbits(true);
+        }
 	}
 }
 

@@ -1060,12 +1060,12 @@ void Satellites::updateFromOnlineSources()
 {
 	if (updateState==Satellites::Updating)
 	{
-		qWarning() << "Satellites: Internet update already in progress!";
+        qWarning() << "[Satellites]: Internet update already in progress!";
 		return;
 	}
 	else
 	{
-		qDebug() << "Satellites: starting Internet update...";
+        qDebug() << "[Satellites]: starting Internet update...";
 	}
 
 	// Setting lastUpdate should be done only when the update is finished. -BM
@@ -1083,7 +1083,7 @@ void Satellites::updateFromOnlineSources()
 		emit updateStateChanged(OtherError);
 		emit tleUpdateComplete(0, satellites.count(), 0, 0);
 		return;
-	}
+    }
 
 	updateState = Satellites::Updating;
 	emit(updateStateChanged(updateState));
@@ -1160,7 +1160,7 @@ void Satellites::saveDownloadedUpdate()
 			}
 		}
 		return;
-	}
+    }
 
 	// All files have been downloaded, finish the update
 	TleDataHash newData;
@@ -1252,6 +1252,7 @@ void Satellites::updateSatellites(TleDataHash& newTleSets)
 		qWarning() << "Satellites: update files contain no TLE sets!";
 		updateState = OtherError;
 		emit(updateStateChanged(updateState));
+        //*bIsNetworkFree = true;
 		return;
 	}
 	
@@ -1535,8 +1536,18 @@ void Satellites::drawPointer(StelCore* core, StelPainter& painter)
             painter.drawSprite2dMode(x, y, 10, angle);
 		}
 
-		//TODO: draw orbit lines on selection.
-
+        //not much optimized
+        QString name = obj->getNameI18n();
+        foreach (const SatelliteP& sat, satellites)
+        {
+            if (sat && !sat->asleep && sat->initialized && sat->displayed)
+            {
+                if ((sat->name).contains(name) && !(sat->orbitDisplayed))
+                {
+                    sat->orbitDisplayed = true;
+                }
+            }
+        }
 	}
 }
 

@@ -30,6 +30,9 @@ build/
 
 *.autosave
 
+# Openssl sources
+openssl/
+
 # IDE's
 .vscode
 

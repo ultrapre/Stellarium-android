@@ -30,6 +30,7 @@
 #include <QUrl>
 #include <QVariantMap>
 #include <QByteArray>
+#include <QMutex>
 
 class Planet;
 class QNetworkAccessManager;
@@ -162,7 +163,7 @@ public:
 
 	///////////////////////////////////////////////////////////////////////////
 	// Methods defined in the StelModule class
-	virtual void init();
+    virtual void init();
 	virtual void deinit();
 	virtual void update(double deltaTime);
 	virtual void draw(StelCore* core);

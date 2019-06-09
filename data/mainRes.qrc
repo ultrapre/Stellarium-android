@@ -29,6 +29,7 @@
         <file>qml/images/landscape.png</file>
         <file>qml/images/location.png</file>
         <file>qml/images/map-pointer.png</file>
+        <file>qml/images/meteors.png</file>
         <file>qml/images/nebulas.png</file>
         <file>qml/images/nightView.png</file>
         <file>qml/images/openQuickBar.png</file>
@@ -76,5 +77,6 @@
         <file>qml/images/satellites.png</file>
         <file>qml/AdvancedDialog.qml</file>
         <file>qml/ValuePicker.qml</file>
+        <file>qml/Plugins.qml</file>
     </qresource>
 </RCC>

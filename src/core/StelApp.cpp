@@ -29,7 +29,8 @@
 #include "LandscapeMgr.hpp"
 #include "GridLinesMgr.hpp"
 #include "MilkyWay.hpp"
-#include "MeteorMgr.hpp"
+#include "SporadicMeteorMgr.hpp"
+#include "MeteorShowersMgr.hpp"
 #include "Exoplanets.hpp"
 #include "LabelMgr.hpp"
 #include "Quasars.hpp"
@@ -354,7 +355,9 @@ void StelApp::init(QSettings* conf)
 	textureMgr = new StelTextureMgr();
 
 	networkAccessManager = new QNetworkAccessManager(this);
-	// Activate http cache if Qt version >= 4.5
+    //Mutex for network access
+    bool * bIsMutexFree = (bool *)true;
+    // Activate http cache if Qt version >= 4.5
 	QNetworkDiskCache* cache = new QNetworkDiskCache(networkAccessManager);
 	QString cachePath = StelFileMgr::getCacheDir();
 
@@ -422,15 +425,25 @@ void StelApp::init(QSettings* conf)
 	gridLines->init();
 	getModuleMgr().registerModule(gridLines);
 
-	// Meteors
-	MeteorMgr* meteors = new MeteorMgr(10, 60);
-	meteors->init();
-	getModuleMgr().registerModule(meteors);
+    // User labels
+    LabelMgr* skyLabels = new LabelMgr();
+    skyLabels->init();
+    getModuleMgr().registerModule(skyLabels);
 
-	// User labels
-	LabelMgr* skyLabels = new LabelMgr();
-	skyLabels->init();
-	getModuleMgr().registerModule(skyLabels);
+    // Meteors old one
+    // MeteorMgr* meteors = new MeteorMgr(10, 60);
+    // meteors->init();
+    // getModuleMgr().registerModule(meteors);
+
+    //SporadicMeteor
+    SporadicMeteorMgr* sporadicMeteorMgr = new SporadicMeteorMgr(10, 60);
+    sporadicMeteorMgr->init();
+    getModuleMgr().registerModule(sporadicMeteorMgr);
+
+    // MeteorShower
+    MeteorShowersMgr* meteorsShowersMgr = new MeteorShowersMgr();
+    meteorsShowersMgr->init();
+    getModuleMgr().registerModule(meteorsShowersMgr);
 
 	// Satellites
     Satellites* satellites = new Satellites();
