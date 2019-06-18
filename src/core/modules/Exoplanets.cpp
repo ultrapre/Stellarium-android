@@ -135,7 +135,7 @@ void Exoplanets::init()
 		if (jsonCatalogPath.isEmpty())
 			return;
 
-		texPointer = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
+        texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
         Exoplanet::markerTexture = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/exoplanet.png");
 
 		// key bindings and other actions
