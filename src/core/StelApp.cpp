@@ -355,8 +355,6 @@ void StelApp::init(QSettings* conf)
 	textureMgr = new StelTextureMgr();
 
 	networkAccessManager = new QNetworkAccessManager(this);
-    //Mutex for network access
-    bool * bIsMutexFree = (bool *)true;
     // Activate http cache if Qt version >= 4.5
 	QNetworkDiskCache* cache = new QNetworkDiskCache(networkAccessManager);
 	QString cachePath = StelFileMgr::getCacheDir();
