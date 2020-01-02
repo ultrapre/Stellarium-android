@@ -201,6 +201,11 @@ public slots:
 	//! Get the current value of the flag which determines if Earth's moon is scaled or not.
 	bool getFlagMoonScale(void) const {return flagMoonScale;}
 
+    //! Set flag for HD texture.
+    void setTextureResolution(int res);
+    //! Get the current value of the flag which determines if HD textures should be used or not.
+    int getTextureResolution(void) const {return textureResolution;}
+
 	//! Set the display scaling factor for Earth's moon.
 	void setMoonScale(float f);
 	//! Get the display scaling factor for Earth's oon.
@@ -355,6 +360,8 @@ private:
 
 	bool flagShow;
 	bool flagMarker;
+
+    int textureResolution;
 
 	class TrailGroup* allTrails;
 	LinearFader trailFader;

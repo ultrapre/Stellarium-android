@@ -33,7 +33,7 @@ Item {
 			right: root.right
 			top: root.top
 		}
-		height: Math.max(nameAndInfo.height + 2*rootStyle.margin-2.*rootStyle.scale, 40*rootStyle.scale)
+        height: Math.max(nameAndInfo.height + 2*rootStyle.margin-2.*rootStyle.scale, 40*rootStyle.scale)
 		
 		MouseArea {
 			anchors.fill: parent
@@ -126,7 +126,6 @@ Item {
 			color: "white"
 			font.pixelSize: rootStyle.fontNormalSize
 			font.weight: Font.Bold
-            textFormat: Text.RichText
 			anchors {
 				left: parent.left
 				top: parent.top
@@ -148,7 +147,7 @@ Item {
 			font.pixelSize: rootStyle.fontSmallSize
 			font.weight: Font.Light
 			color: "white"
-            textFormat: Text.RichText
+            textFormat: Text.AutoText
 		}
 		Text {
 			id: selectedObjectInfo
@@ -162,9 +161,7 @@ Item {
 			font.pixelSize: rootStyle.fontSmallSize
 			font.weight: Font.Light
 			color: "white"
-            textFormat: Text.RichText
-            renderType: Text.NativeRendering
-			
+            textFormat: Text.AutoText
 			Rectangle {
 				color: "white"
 				opacity: 0.1

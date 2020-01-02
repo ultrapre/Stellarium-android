@@ -471,11 +471,12 @@ OTHER_FILES += \
 	data/qml/AnglePicker.qml \
 	data/qml/ValuePicker.qml \
 
-contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
-    ANDROID_EXTRA_LIBS = \
-        $$PWD/openssl/armeabi-v7a/libcrypto.so \
-        $$PWD/openssl/armeabi-v7a/libssl.so
-}
+
+#contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+#    ANDROID_EXTRA_LIBS = \
+#        $$PWD/openssl/armeabi-v7a/libcrypto.so \
+#        $$PWD/openssl/armeabi-v7a/libssl.so
+#}
 
 DISTFILES += \
     android/AndroidManifest.xml \

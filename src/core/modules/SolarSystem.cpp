@@ -114,6 +114,9 @@ void SolarSystem::init()
 	QSettings* conf = StelApp::getInstance().getSettings();
 	Q_ASSERT(conf);
 
+	//Check status for texture before loading planets
+	setTextureResolution(conf->value("viewing/texture_resolution", 1).toInt());
+
 	loadPlanets();	// Load planets data
 
 	// Compute position and matrix of sun and all the satellites (ie planets)
@@ -229,7 +232,24 @@ void cometOrbitPosFunc(double jd,double xyz[3], void* userDataPtr)
 void SolarSystem::loadPlanets()
 {
 	qDebug() << "Loading Solar System data (1: planets and moons) ...";
-	QString solarSystemFile = StelFileMgr::findFile("data/ssystem_major.ini");
+
+	QString solarSystemFile;
+	switch (getTextureResolution())
+	{
+	case 2:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major_2k.ini");
+		qDebug() << "[SolarSystem] Using 2K textures";
+		break;
+	case 8:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major_8k.ini");
+		qDebug() << "[SolarSystem] Using 8K textures";
+		break;		
+	default:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major.ini");
+		qDebug() << "[SolarSystem] Using default textures";
+		break;
+	}
+
 	if (solarSystemFile.isEmpty())
 	{
 		qWarning() << "ERROR while loading ssystem_major.ini (unable to find data/ssystem_major.ini): " << endl;
@@ -1431,6 +1451,11 @@ void SolarSystem::setMoonScale(float f)
 	moonScale = f;
 	if (flagMoonScale)
 		getMoon()->setSphereScale(moonScale);
+}
+
+void SolarSystem::setTextureResolution(int res)
+{
+    textureResolution = res;
 }
 
 // Set selected planets by englishName
