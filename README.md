@@ -50,6 +50,8 @@ Copyright: Original Stellarium dev team
 
 - UI
     - [ ] Improve search dialog
+    - [ ] Material themed
+    - [ ] Full HD support for planet textures
 
 - Performance
     - [ ] 30fps stable
