@@ -120,16 +120,16 @@ Vec3f gSatWrapper::getSubPoint()
 void gSatWrapper::updateEpoch()
 {
 	double jul_utc = StelApp::getInstance().getCore()->getJDay();
-        epoch = jul_utc;
+		epoch = jul_utc;
 
 	if (pSatellite)
-                pSatellite->setEpoch(epoch);
+				pSatellite->setEpoch(epoch);
 }
 
 void gSatWrapper::setEpoch(double ai_julianDaysEpoch)
 {
-    epoch = ai_julianDaysEpoch;
-    if (pSatellite)
+	epoch = ai_julianDaysEpoch;
+	if (pSatellite)
 		pSatellite->setEpoch(ai_julianDaysEpoch);
 }
 

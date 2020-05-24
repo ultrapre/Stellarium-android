@@ -135,12 +135,12 @@ void Quasars::init()
 		if (catalogJsonPath.isEmpty())
 			return;
 
-        texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
-        Quasar::markerTexture = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/quasar.png");
+		texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
+		Quasar::markerTexture = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/quasar.png");
 
 		// key bindings and other actions
-        addAction("actionShow_Quasars", N_("Quasars"), N_("Show quasars"), "quasarsVisible", "Ctrl+Alt+Q");
-        addAction("actionDistribution_Quasars", N_("Quasars"), N_("Quasars Distribution"), "quasarsDistribution", "");
+		addAction("actionShow_Quasars", N_("Quasars"), N_("Show quasars"), "quasarsVisible", "Ctrl+Alt+Q");
+		addAction("actionDistribution_Quasars", N_("Quasars"), N_("Quasars Distribution"), "quasarsDistribution", "");
 
 
 		setFlagShowQuasars(getEnableAtStartup());
@@ -175,7 +175,7 @@ void Quasars::init()
 	updateState = CompleteNoUpdates;
 	updateTimer = new QTimer(this);
 	updateTimer->setSingleShot(false);   // recurring check for update
-    updateTimer->setInterval(25000);     // check once every 13 seconds to see if it is time for an update
+	updateTimer->setInterval(25000);     // check once every 13 seconds to see if it is time for an update
 	connect(updateTimer, SIGNAL(timeout()), this, SLOT(checkForUpdate()));
 	updateTimer->start();
 
@@ -289,32 +289,32 @@ StelObjectP Quasars::searchByNameI18n(const QString& nameI18n) const
 QStringList Quasars::listMatchingObjectsI18n(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const
 {
 	QStringList result;
-    bool find;
+	bool find;
 
-    QString objw = objPrefix.toUpper();
+	QString objw = objPrefix.toUpper();
 
 	if (flagShowQuasars)
 	{
-        for (const auto& quasar : QSO)
+		for (const auto& quasar : QSO)
 		{
-            find = false;
+			find = false;
 			if (useStartOfWords)
 			{
-                if (quasar->getNameI18n().toUpper().left(objw.length()) == objw)
+				if (quasar->getNameI18n().toUpper().left(objw.length()) == objw)
 				{
 					find = true;
 				}
 			}
 			else
 			{
-                if (quasar->getNameI18n().toUpper().contains(objw, Qt::CaseInsensitive))
+				if (quasar->getNameI18n().toUpper().contains(objw, Qt::CaseInsensitive))
 				{
 					find = true;
 				}
 			}
 			if (find)
 			{
-                result << quasar->getNameI18n().toUpper();
+				result << quasar->getNameI18n().toUpper();
 			}
 		}
 	}
@@ -330,32 +330,32 @@ QStringList Quasars::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 QStringList Quasars::listMatchingObjects(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const
 {
 	QStringList result;
-    bool find;
+	bool find;
 
-    QString objw = objPrefix.toUpper();
+	QString objw = objPrefix.toUpper();
 
 	if (flagShowQuasars)
 	{
-        for (const auto&quasar : QSO)
+		for (const auto&quasar : QSO)
 		{
 			find = false;
 			if (useStartOfWords)
 			{
-                if (quasar->getEnglishName().toUpper().left(objw.length()) == objw)
+				if (quasar->getEnglishName().toUpper().left(objw.length()) == objw)
 				{
 					find = true;
 				}
 			}
 			else
 			{
-                if (quasar->getEnglishName().toUpper().contains(objw, Qt::CaseInsensitive))
+				if (quasar->getEnglishName().toUpper().contains(objw, Qt::CaseInsensitive))
 				{
 					find = true;
 				}
 			}
 			if (find)
 			{
-                result << quasar->getEnglishName().toUpper();
+				result << quasar->getEnglishName().toUpper();
 			}
 		}
 	}
@@ -578,7 +578,7 @@ QuasarP Quasars::getByID(const QString& id) const
 bool Quasars::configureGui(bool show)
 {
 	if (show)
-        return true;
+		return true;
 	return true;
 }
 
@@ -600,10 +600,10 @@ void Quasars::restoreDefaultConfigIni(void)
 	conf->setValue("distribution_enabled", false);
 	conf->setValue("enable_at_startup", false);
 	conf->setValue("updates_enabled", true);
-    conf->setValue("url", "http://stellarium.org/json/quasars.json");
+	conf->setValue("url", "http://stellarium.org/json/quasars.json");
 	conf->setValue("update_frequency_days", 100);
 	conf->setValue("flag_show_quasars_button", true);
-    conf->setValue("flag_show_quasars", true);
+	conf->setValue("flag_show_quasars", true);
 	conf->setValue("marker_color", "1.0,0.5,0.4");
 	conf->endGroup();
 }
@@ -612,7 +612,7 @@ void Quasars::readSettingsFromConfig(void)
 {
 	conf->beginGroup("Quasars");
 
-    updateUrl = conf->value("url", "http://stellarium.org/json/quasars.json").toString();
+	updateUrl = conf->value("url", "http://stellarium.org/json/quasars.json").toString();
 	updateFrequencyDays = conf->value("update_frequency_days", 100).toInt();
 	lastUpdate = QDateTime::fromString(conf->value("last_update", "2012-05-24T12:00:00").toString(), Qt::ISODate);
 	updatesEnabled = conf->value("updates_enabled", true).toBool();
@@ -689,10 +689,10 @@ void Quasars::startDownload(QString urlString)
 	progressBar->setValue(0);
 	progressBar->setRange(0, 0);
 
-    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
+	connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 	QNetworkRequest request;
 	request.setUrl(QUrl(updateUrl));
-    request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
+	request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
 	#if QT_VERSION >= 0x050600
 	request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 	#endif
@@ -761,19 +761,19 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 
 		reply->deleteLater();
 		downloadReply = Q_NULLPTR;
-        updateState = Quasars::DownloadError;
-        emit(updateStateChanged(updateState));
+		updateState = Quasars::DownloadError;
+		emit(updateStateChanged(updateState));
 		return;
 	}
 
-    //Check if link is correct
+	//Check if link is correct
 
-    if (!updateUrl.contains(reply->url().toString(QUrl::RemoveUserInfo)))
-    {
-        updateState = Quasars::DownloadError;
-        emit(updateStateChanged(updateState));
-        return;
-    }
+	if (!updateUrl.contains(reply->url().toString(QUrl::RemoveUserInfo)))
+	{
+		updateState = Quasars::DownloadError;
+		emit(updateStateChanged(updateState));
+		return;
+	}
 
 
 	// download completed successfully.
@@ -801,7 +801,7 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 		updateState = Quasars::DownloadError;
 	}
 
-    qDebug() << "[Quasars] update finished";
+	qDebug() << "[Quasars] update finished";
 
 	emit(updateStateChanged(updateState));
 	emit(jsonUpdateComplete());
@@ -814,7 +814,7 @@ void Quasars::downloadComplete(QNetworkReply *reply)
 
 void Quasars::displayMessage(const QString& message, const QString hexColor)
 {
-    messageIDs << GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30 + (20*messageIDs.count()), true, 16, hexColor);
+	messageIDs << GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30 + (20*messageIDs.count()), true, 16, hexColor);
 }
 
 void Quasars::upgradeConfigIni(void)
@@ -832,7 +832,7 @@ void Quasars::upgradeConfigIni(void)
 // Define whether the button toggling quasars should be visible
 void Quasars::setFlagShowQuasarsButton(bool b)
 {
-    /*
+	/*
 	StelGui* gui = dynamic_cast<StelGui*>(StelApp::getInstance().getGui());
 	if (gui!=Q_NULLPTR)
 	{
@@ -847,7 +847,7 @@ void Quasars::setFlagShowQuasarsButton(bool b)
 		}
 	}
 	flagShowQuasarsButton = b;
-    */
+	*/
 }
 
 bool Quasars::getDisplayMode()

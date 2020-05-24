@@ -37,12 +37,12 @@
 #include <QMagnetometer>
 
 SensorsMgr::SensorsMgr() :
-    enabled(false),
-    accelerometerSensor(NULL),
-    magnetometerSensor(NULL),
-    sensorX(0), sensorY(0), sensorZ(0),
-    magnetX(0), magnetY(0), magnetZ(0),
-    firstMeasure(true)
+	enabled(false),
+	accelerometerSensor(NULL),
+	magnetometerSensor(NULL),
+	sensorX(0), sensorY(0), sensorZ(0),
+	magnetX(0), magnetY(0), magnetZ(0),
+	firstMeasure(true)
 {
 	setObjectName("SensorsMgr");
 }
@@ -75,42 +75,42 @@ void SensorsMgr::setEnabled(bool value)
 		StelMovementMgr* mmgr = GETSTELMODULE(StelMovementMgr);
 		mmgr->setViewUpVectorJ2000(StelApp::getInstance().getCore()->altAzToJ2000(up));
 		StelApp::getInstance().getCore()->setDefautAngleForGravityText(0);
-    }
-    // Begin modification: add magnetic declination correction (Cheng Xinlun, Apr 18, 2017)
-    if (enabled)
-    {
-        const StelLocation location = StelApp::getInstance().getCore()->getCurrentLocation();
-        double longitude = location.longitude;
-        double latitude = location.latitude;
-        double height = location.altitude;
-        double t = StelUtils::jdToQDateTime(StelApp::getInstance().getCore()->getJDay()).date().year();
-        try
-        {
-            QString wmm_dir = StelFileMgr::findFile("data/magnetic/wmm2015.wmm");
-            QString cof_dir = StelFileMgr::findFile("data/magnetic/wmm2015.wmm.cof");
-            // Cheat to get absolute dir
-            QFile wmm_file(wmm_dir);
-            wmm_file.copy(StelFileMgr::getUserDir() + "wmm2015.wmm");
-            QFile cof_file(cof_dir);
-            cof_file.copy(StelFileMgr::getUserDir() + "wmm2015.wmm.cof");
-            GeographicLib::MagneticModel* mag = new GeographicLib::MagneticModel("wmm2015", StelFileMgr::getUserDir().toStdString());
-            double Bx, By, Bz;
-            (*mag)(t, latitude, longitude, height, Bx, By, Bz);
-            double h, f, i;
-            GeographicLib::MagneticModel::FieldComponents(Bx, By, Bz, h, f, magd, i);
-            delete mag;
-            wmm_file.remove();
-            cof_file.remove();
-            qDebug() << "Magnetic declination: " << magd;
-        }
-        catch (const std::runtime_error& e)
-        {
-            qWarning() << "RuntimeError in GeographicLib: " << e.what();
-            qWarning() << "Magnetic declination correction will not funcion correctly.";
-            magd = 0.0;
-        }
 	}
-    // End modification
+	// Begin modification: add magnetic declination correction (Cheng Xinlun, Apr 18, 2017)
+	if (enabled)
+	{
+		const StelLocation location = StelApp::getInstance().getCore()->getCurrentLocation();
+		double longitude = location.longitude;
+		double latitude = location.latitude;
+		double height = location.altitude;
+		double t = StelUtils::jdToQDateTime(StelApp::getInstance().getCore()->getJDay()).date().year();
+		try
+		{
+			QString wmm_dir = StelFileMgr::findFile("data/magnetic/wmm2015.wmm");
+			QString cof_dir = StelFileMgr::findFile("data/magnetic/wmm2015.wmm.cof");
+			// Cheat to get absolute dir
+			QFile wmm_file(wmm_dir);
+			wmm_file.copy(StelFileMgr::getUserDir() + "wmm2015.wmm");
+			QFile cof_file(cof_dir);
+			cof_file.copy(StelFileMgr::getUserDir() + "wmm2015.wmm.cof");
+			GeographicLib::MagneticModel* mag = new GeographicLib::MagneticModel("wmm2015", StelFileMgr::getUserDir().toStdString());
+			double Bx, By, Bz;
+			(*mag)(t, latitude, longitude, height, Bx, By, Bz);
+			double h, f, i;
+			GeographicLib::MagneticModel::FieldComponents(Bx, By, Bz, h, f, magd, i);
+			delete mag;
+			wmm_file.remove();
+			cof_file.remove();
+			qDebug() << "Magnetic declination: " << magd;
+		}
+		catch (const std::runtime_error& e)
+		{
+			qWarning() << "RuntimeError in GeographicLib: " << e.what();
+			qWarning() << "Magnetic declination correction will not funcion correctly.";
+			magd = 0.0;
+		}
+	}
+	// End modification
 	emit enabledChanged(enabled);
 }
 
@@ -218,7 +218,7 @@ void SensorsMgr::update(double deltaTime)
 
 	rot2d(&x, &y, -roll);
 	rot2d(&y, &z, pitch);
-    float az = std::atan2(-x, z) - magd * 0.0174533; // Magnetic declination correction (Cheng Xinlun, Apr 18, 2017)
+	float az = std::atan2(-x, z) - magd * 0.0174533; // Magnetic declination correction (Cheng Xinlun, Apr 18, 2017)
 	StelUtils::spheToRect(az, pitch, viewDirection);
 	mmgr->setViewDirectionJ2000(StelApp::getInstance().getCore()->altAzToJ2000(viewDirection));
 }

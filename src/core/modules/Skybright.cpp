@@ -96,8 +96,8 @@ void Skybright::setSunMoon(float cosDistMoonZenith, float cosDistSunZenith)
 //			cosDistSun  = cos(angular distance between sun  and the position)
 //			cosDistZenith = cos(angular distance between zenith and the position)
 float Skybright::getLuminance(float cosDistMoon,
-                               float cosDistSun,
-                               float cosDistZenith) const
+							   float cosDistSun,
+							   float cosDistZenith) const
 {
 	// Air mass
 	const float bKX = stelpow10f(-0.4f * K * (1.f / (cosDistZenith + 0.025f*StelUtils::fastExp(-11.f*cosDistZenith))));

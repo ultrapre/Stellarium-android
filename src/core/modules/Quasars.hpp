@@ -323,7 +323,7 @@ private slots:
 	void checkForUpdate(void);
 
 	void updateDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
-    void downloadComplete(QNetworkReply * reply);
+	void downloadComplete(QNetworkReply * reply);
 
 	//! Display a message. This is used for plugin-specific warnings and such
 	void displayMessage(const QString& message, const QString hexColor="#999999");

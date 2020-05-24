@@ -187,8 +187,8 @@ SkyLabel::Style SkyLabel::stringToStyle(const QString& s)
 // SkyLabel class //
 ////////////////////
 SkyLabel::SkyLabel(const QString& text, StelObjectP bindObject, const QFont& font,
-                   Vec3f color, QString side, double distance, SkyLabel::Style style,
-                   double enclosureSize)
+				   Vec3f color, QString side, double distance, SkyLabel::Style style,
+				   double enclosureSize)
 	: StelLabel(text, font, color),
 	  labelObject(bindObject),
 	  labelSide(side),
@@ -351,13 +351,13 @@ void LabelMgr::draw(StelCore* core)
 }
 	
 int LabelMgr::labelObject(const QString& text,
-                          const QString& objectName,
-                          bool visible,
-                          float fontSize,
-                          const QString& fontColor,
-                          const QString& side,
-                          double labelDistance,
-                          const QString& style)
+						  const QString& objectName,
+						  bool visible,
+						  float fontSize,
+						  const QString& fontColor,
+						  const QString& side,
+						  double labelDistance,
+						  const QString& style)
 {
 	QFont font;
 	font.setPixelSize(fontSize);
@@ -380,11 +380,11 @@ int LabelMgr::labelObject(const QString& text,
 }
 
 int LabelMgr::labelScreen(const QString& text,
-                          int x,
-                          int y,
-                          bool visible,
-                          float fontSize,
-                          const QString& fontColor)
+						  int x,
+						  int y,
+						  bool visible,
+						  float fontSize,
+						  const QString& fontColor)
 {
 	QFont font;
 	font.setPixelSize(fontSize);
@@ -442,7 +442,7 @@ double LabelMgr::getCallOrder(StelModuleActionName actionName) const
 {
 	if (actionName==StelModule::ActionDraw)
 		return StelApp::getInstance().getModuleMgr().getModule("LandscapeMgr")->getCallOrder(actionName)+11;
-        return 0;
+		return 0;
 }
 
 int LabelMgr::deleteAllLabels(void)

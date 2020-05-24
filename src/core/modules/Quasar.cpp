@@ -123,8 +123,8 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 	{
 		oss << "<h2>" << designation << "</h2>";
 	}
-    if (flags&Type)
-        oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << endl;
+	if (flags&Type)
+		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << endl;
 
 	if (flags&Magnitude && VMagnitude>-99.f)
 	{
@@ -132,11 +132,11 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 		StelUtils::rectToSphe(&az_app,&alt_app,getAltAzPosApparent(core));
 		Q_UNUSED(az_app);
 
-        if (core->getSkyDrawer()->getFlagHasAtmosphere())
-        oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
-                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
-        else
-        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
+		if (core->getSkyDrawer()->getFlagHasAtmosphere())
+		oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
+										QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
+		else
+		oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
 	}
 
 	if (flags&AbsoluteMagnitude && AMagnitude>-99.f)
@@ -146,8 +146,8 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 		oss << QString("%1: <b>%2</b>").arg(q_("Color Index (B-V)"), QString::number(bV, 'f', 2)) << endl;
 	
 	// Ra/Dec etc.
-    if (flags&Size)
-        oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << endl;
+	if (flags&Size)
+		oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << endl;
 
 
 	if (flags&Extra)
@@ -170,7 +170,7 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 
 QVariantMap Quasar::getInfoMap(const StelCore *core) const
 {
-    QVariantMap map = getInfoMap(core);
+	QVariantMap map = getInfoMap(core);
 
 	map["amag"] = AMagnitude;
 	map["bV"] = bV;

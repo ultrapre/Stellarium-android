@@ -296,9 +296,9 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 		oss << "<h2>" << systemName << "</h2>";
 	}
 	
-    if (flags&Type)
+	if (flags&Type)
 	{
-        oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << endl;
+		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << endl;
 	}
 
 	if (flags&Magnitude && Vmag<99 && !distributionMode)
@@ -307,43 +307,43 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 		StelUtils::rectToSphe(&az_app,&alt_app,getAltAzPosApparent(core));
 		Q_UNUSED(az_app);
 
-        if (core->getSkyDrawer()->getFlagHasAtmosphere())
-        oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
-                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
-        else
-        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
+		if (core->getSkyDrawer()->getFlagHasAtmosphere())
+		oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
+										QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
+		else
+		oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
 	}
 
 	// Ra/Dec etc.
-    // oss << getCommonInfoString(core, flags);
+	// oss << getCommonInfoString(core, flags);
 
 	if (flags&Extra && !stype.isEmpty())
-        oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << endl;
+		oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << endl;
 
 	if (flags&Distance && distance>0)
 	{
 		//TRANSLATORS: Unit of measure for distance - Light Years
 		QString ly = qc_("ly", "distance");
-        oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << endl;
+		oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << endl;
 	}
 
 	if (flags&Extra)
 	{
 		if (smetal!=0)
 		{
-            oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << endl;
+			oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << endl;
 		}
 		if (smass>0)
 		{
-            oss << QString("%1: %2 %3 M").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << endl;
+			oss << QString("%1: %2 %3 M").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << endl;
 		}
 		if (sradius>0)
 		{
-            oss << QString("%1: %2 %3 R").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << endl;
+			oss << QString("%1: %2 %3 R").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << endl;
 		}
 		if (effectiveTemp>0)
 		{
-            oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << endl;
+			oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << endl;
 		}
 		if (exoplanets.size() > 0)
 		{
@@ -430,7 +430,7 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 			}
 			oss << description;
 			if (hasHabitableExoplanets)
-                oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << endl;
+				oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << endl;
 		}
 	}
 
@@ -478,7 +478,7 @@ float Exoplanet::getTemperature(float temperature) const
 
 QVariantMap Exoplanet::getInfoMap(const StelCore *core) const
 {
-    QVariantMap map = getInfoMap(core);
+	QVariantMap map = getInfoMap(core);
 
 	// Tentatively add a few more strings. Details are left to the plugin author.
 	if (!starProperName.isEmpty()) map["starProperName"] = starProperName;
@@ -549,7 +549,7 @@ bool Exoplanet::isDiscovered(const StelCore *core)
 	QList<int> discovery;
 	// For getting value of new year from midnight at 1 Jan we need increase a value of JD on 0.5.
 	// This hack need for correct display of discovery mode of exoplanets.
-    StelUtils::getDateFromJulianDay(core->getJDay()+0.5, &year, &month, &day);
+	StelUtils::getDateFromJulianDay(core->getJDay()+0.5, &year, &month, &day);
 	discovery.clear();
 	for (const auto& p : exoplanets)
 	{
@@ -587,8 +587,8 @@ void Exoplanet::draw(StelCore* core, StelPainter *painter)
 	StelUtils::spheToRect(RA, DE, XYZ);
 	double mag = getVMagnitudeWithExtinction(core);
 
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	painter->setColor(color[0], color[1], color[2], 1);
 
 	if (timelineMode)
@@ -623,8 +623,8 @@ void Exoplanet::draw(StelCore* core, StelPainter *painter)
 		float coeff = 4.5f + std::log10(sradius + 0.1f);
 		if (labelsFader.getInterstate()<=0.f && !distributionMode && (mag+coeff)<mlimit && smgr->getFlagLabels() && showDesignations)
 		{
-            // Bug on stellarium-android
-            // painter->drawText(XYZ, getNameI18n(), 0, shift, shift, false);
+			// Bug on stellarium-android
+			// painter->drawText(XYZ, getNameI18n(), 0, shift, shift, false);
 		}
 	}
 }

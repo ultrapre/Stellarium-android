@@ -135,8 +135,8 @@ void Exoplanets::init()
 		if (jsonCatalogPath.isEmpty())
 			return;
 
-        texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
-        Exoplanet::markerTexture = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/exoplanet.png");
+		texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur2.png");
+		Exoplanet::markerTexture = StelApp::getInstance().getTextureManager().createTextureThread(StelFileMgr::getInstallationDir()+"/textures/exoplanet.png");
 
 		// key bindings and other actions
 		addAction("actionShow_Exoplanets", N_("Exoplanets"), N_("Show exoplanets"), "showExoplanets", "Ctrl+Alt+E");
@@ -173,7 +173,7 @@ void Exoplanets::init()
 	updateState = CompleteNoUpdates;
 	updateTimer = new QTimer(this);
 	updateTimer->setSingleShot(false);   // recurring check for update
-    updateTimer->setInterval(30000);     // check once every 13 seconds to see if it is time for an update
+	updateTimer->setInterval(30000);     // check once every 13 seconds to see if it is time for an update
 	connect(updateTimer, SIGNAL(timeout()), this, SLOT(checkForUpdate()));
 	updateTimer->start();
 
@@ -214,8 +214,8 @@ void Exoplanets::drawPointer(StelCore* core, StelPainter& painter)
 		if (!painter.getProjector()->project(pos, screenpos))
 			return;
 
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
 		const Vec3f& c(obj->getInfoColor());
 		painter.setColor(c[0],c[1],c[2]);
 		texPointer->bind();
@@ -321,80 +321,80 @@ StelObjectP Exoplanets::searchByNameI18n(const QString& nameI18n) const
 
 QStringList Exoplanets::listMatchingObjectsI18n(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const
 {
-    QStringList result;
-    bool find;
+	QStringList result;
+	bool find;
 
-    QString objw = objPrefix.toUpper();
+	QString objw = objPrefix.toUpper();
 
-    if (flagShowExoplanets)
-    {
-        for (const auto&eps : ep)
-        {
-            find = false;
-            if (useStartOfWords)
-            {
-                if (eps->getNameI18n().toUpper().left(objw.length()) == objw)
-                {
-                    find = true;
-                }
-            }
-            else
-            {
-                if (eps->getNameI18n().toUpper().contains(objw, Qt::CaseInsensitive))
-                {
-                    find = true;
-                }
-            }
-            if (find)
-            {
-                result << eps->getNameI18n().toUpper();
-            }
-        }
-    }
+	if (flagShowExoplanets)
+	{
+		for (const auto&eps : ep)
+		{
+			find = false;
+			if (useStartOfWords)
+			{
+				if (eps->getNameI18n().toUpper().left(objw.length()) == objw)
+				{
+					find = true;
+				}
+			}
+			else
+			{
+				if (eps->getNameI18n().toUpper().contains(objw, Qt::CaseInsensitive))
+				{
+					find = true;
+				}
+			}
+			if (find)
+			{
+				result << eps->getNameI18n().toUpper();
+			}
+		}
+	}
 
-    result.sort();
-    if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
+	result.sort();
+	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
 
-    return result;
+	return result;
 }
 
 QStringList Exoplanets::listMatchingObjects(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const
 {
-    QStringList result;
-    bool find;
+	QStringList result;
+	bool find;
 
-    QString objw = objPrefix.toUpper();
+	QString objw = objPrefix.toUpper();
 
-    if (flagShowExoplanets)
-    {
-        for (const auto&eps: ep)
-        {
-            find = false;
-            if (useStartOfWords)
-            {
-                if (eps->getEnglishName().toUpper().left(objw.length()) == objw)
-                {
-                    find = true;
-                }
-            }
-            else
-            {
-                if (eps->getEnglishName().toUpper().contains(objw, Qt::CaseInsensitive))
-                {
-                    find = true;
-                }
-            }
-            if (find)
-            {
-                result << eps->getEnglishName().toUpper();
-            }
-        }
-    }
+	if (flagShowExoplanets)
+	{
+		for (const auto&eps: ep)
+		{
+			find = false;
+			if (useStartOfWords)
+			{
+				if (eps->getEnglishName().toUpper().left(objw.length()) == objw)
+				{
+					find = true;
+				}
+			}
+			else
+			{
+				if (eps->getEnglishName().toUpper().contains(objw, Qt::CaseInsensitive))
+				{
+					find = true;
+				}
+			}
+			if (find)
+			{
+				result << eps->getEnglishName().toUpper();
+			}
+		}
+	}
 
-    result.sort();
-    if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
+	result.sort();
+	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
 
-    return result;
+	return result;
 }
 
 QStringList Exoplanets::listAllObjects(bool inEnglish) const
@@ -573,7 +573,7 @@ void Exoplanets::setEPMap(const QVariantMap& map)
 		{
 			// ...if exists, let's use our coordinates of star instead exoplanets.eu website data
 			StelUtils::rectToSphe(&ra, &dec, star->getJ2000EquatorialPos(core));
-            epsData["RA"] = StelUtils::radToDecDegStr(ra, 6);
+			epsData["RA"] = StelUtils::radToDecDegStr(ra, 6);
 			epsData["DE"] = StelUtils::radToDecDegStr(dec, 6);
 		}
 
@@ -669,7 +669,7 @@ ExoplanetP Exoplanets::getByID(const QString& id) const
 bool Exoplanets::configureGui(bool show)
 {
 	if (show)
-        return true;
+		return true;
 	return true;
 }
 
@@ -698,7 +698,7 @@ void Exoplanets::loadConfiguration(void)
 {
 	conf->beginGroup("Exoplanets");
 
-    updateUrl = conf->value("url", "http://www.stellarium.org/json/exoplanets.json").toString();
+	updateUrl = conf->value("url", "http://www.stellarium.org/json/exoplanets.json").toString();
 	updateFrequencyHours = conf->value("update_frequency_hours", 72).toInt();
 	lastUpdate = QDateTime::fromString(conf->value("last_update", "2012-05-24T12:00:00").toString(), Qt::ISODate);
 	updatesEnabled = conf->value("updates_enabled", true).toBool();
@@ -760,7 +760,7 @@ void Exoplanets::updateJSON(void)
 
 void Exoplanets::displayMessage(const QString& message, const QString hexColor)
 {
-    GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30, true, 16, hexColor);
+	GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30, true, 16, hexColor);
 }
 
 void Exoplanets::upgradeConfigIni(void)
@@ -778,7 +778,7 @@ void Exoplanets::upgradeConfigIni(void)
 // Define whether the button toggling exoplanets should be visible
 void Exoplanets::setFlagShowExoplanetsButton(bool b)
 {
-    /*
+	/*
 	StelGui* gui = dynamic_cast<StelGui*>(StelApp::getInstance().getGui());
 	if (gui!=Q_NULLPTR)
 	{
@@ -798,7 +798,7 @@ void Exoplanets::setFlagShowExoplanetsButton(bool b)
 		}
 	}
 	flagShowExoplanetsButton = b;
-    */
+	*/
 }
 
 bool Exoplanets::getDisplayMode() const
@@ -874,22 +874,22 @@ void Exoplanets::setFlagShowExoplanets(bool b)
 
 void Exoplanets::setCurrentTemperatureScaleKey(QString key)
 {   
-    /*
-    const QMetaEnum& en = metaObject()->enumerator(metaObject()->indexOfEnumerator("TemperatureScale"));
+	/*
+	const QMetaEnum& en = metaObject()->enumerator(metaObject()->indexOfEnumerator("TemperatureScale"));
 	TemperatureScale ts = (TemperatureScale)en.keyToValue(key.toLatin1().data());
 	if (ts<0)
 	{
 		qWarning() << "Unknown temperature scale:" << key << "setting \"Celsius\" instead";
 		ts = Celsius;
-    }*/
-    TemperatureScale ts = Celsius;
+	}*/
+	TemperatureScale ts = Celsius;
 	setCurrentTemperatureScale(ts);
 }
 
 QString Exoplanets::getCurrentTemperatureScaleKey() const
 {
-    //return metaObject()->enumerator(metaObject()->indexOfEnumerator("TemperatureScale")).key(Exoplanet::temperatureScaleID);
-    return "Celsius";
+	//return metaObject()->enumerator(metaObject()->indexOfEnumerator("TemperatureScale")).key(Exoplanet::temperatureScaleID);
+	return "Celsius";
 }
 
 void Exoplanets::deleteDownloadProgressBar()
@@ -915,13 +915,13 @@ void Exoplanets::startDownload(QString urlString)
 	if (progressBar == Q_NULLPTR)
 		progressBar = StelApp::getInstance().addProgressBar();
 	progressBar->setValue(0);
-    progressBar->setRange(0, 0);
+	progressBar->setRange(0, 0);
 
 
 	connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 	QNetworkRequest request;
 	request.setUrl(QUrl(updateUrl));
-    request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
+	request.setRawHeader("User-Agent", StelUtils::getUserAgentString().toUtf8());
 	#if QT_VERSION >= 0x050600
 	request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 	#endif
@@ -963,7 +963,7 @@ void Exoplanets::downloadComplete(QNetworkReply *reply)
 
 	disconnect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadComplete(QNetworkReply*)));
 
-    #if QT_VERSION < 0x050600
+	#if QT_VERSION < 0x050600
 	int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 	if (statusCode == 301 || statusCode == 302 || statusCode == 307)
 	{
@@ -990,8 +990,8 @@ void Exoplanets::downloadComplete(QNetworkReply *reply)
 
 		reply->deleteLater();
 		downloadReply = Q_NULLPTR;
-        updateState = Exoplanets::DownloadError;
-        emit(updateStateChanged(updateState));
+		updateState = Exoplanets::DownloadError;
+		emit(updateStateChanged(updateState));
 		return;
 	}
 

@@ -70,16 +70,16 @@ void MeteorShowersMgr::init()
 {
 	loadTextures();
 
-    m_meteorShowers = new MeteorShowers(this);
+	m_meteorShowers = new MeteorShowers(this);
 
 	createActions();
-    loadConfig();
+	loadConfig();
 
 	// MeteorShowers directory
-    StelFileMgr::makeSureDirExistsAndIsWritable(StelFileMgr::getUserDir()+"/modules/MeteorShowers");
+	StelFileMgr::makeSureDirExistsAndIsWritable(StelFileMgr::getUserDir()+"/modules/MeteorShowers");
 
 	// Loads the JSON catalog
-    m_catalogPath = StelFileMgr::findFile("modules/MeteorShowers", (StelFileMgr::Flags)(StelFileMgr::Directory|StelFileMgr::Writable)) + "/showers.json";
+	m_catalogPath = StelFileMgr::findFile("modules/MeteorShowers", (StelFileMgr::Flags)(StelFileMgr::Directory|StelFileMgr::Writable)) + "/showers.json";
 	if (!loadCatalog(m_catalogPath))
 	{
 		displayMessage(q_("The current catalog of Meteor Showers is invalid!"), "#bb0000");
@@ -97,7 +97,7 @@ void MeteorShowersMgr::init()
 	checkForUpdates();
 
 	// always check if we are on Earth
-    StelCore* core = StelApp::getInstance().getCore();
+	StelCore* core = StelApp::getInstance().getCore();
 	m_onEarth = core->getCurrentPlanet()->getEnglishName() == "Earth";
 	connect(core, SIGNAL(locationChanged(StelLocation)),this, SLOT(locationChanged(StelLocation)));
 
@@ -134,9 +134,9 @@ bool MeteorShowersMgr::configureGui(bool show)
 
 void MeteorShowersMgr::createActions()
 {
-    QString msGroup = N_("Meteor_Showers");
-    addAction("actionShow_MeteorShowers",               msGroup, N_("Toggle meteor showers"), this,           "enablePlugin", "Ctrl+Shift+M");
-    addAction("actionShow_MeteorShowers_labels",        msGroup, N_("Toggle radiant labels"), this,           "enableLabels", "Shift+M");
+	QString msGroup = N_("Meteor_Showers");
+	addAction("actionShow_MeteorShowers",               msGroup, N_("Toggle meteor showers"), this,           "enablePlugin", "Ctrl+Shift+M");
+	addAction("actionShow_MeteorShowers_labels",        msGroup, N_("Toggle radiant labels"), this,           "enableLabels", "Shift+M");
 }
 
 void MeteorShowersMgr::loadConfig()
@@ -161,14 +161,14 @@ void MeteorShowersMgr::loadConfig()
 void MeteorShowersMgr::loadTextures()
 {
 	m_bolideTexture = StelApp::getInstance().getTextureManager().createTextureThread(
-                StelFileMgr::getInstallationDir() + "/textures/cometComa.png",
+				StelFileMgr::getInstallationDir() + "/textures/cometComa.png",
 				StelTexture::StelTextureParams(true, GL_LINEAR, GL_CLAMP_TO_EDGE));
 
 	m_pointerTexture = StelApp::getInstance().getTextureManager().createTexture(
 				StelFileMgr::getInstallationDir() + "/textures/pointeur5.png");
 
 	m_radiantTexture = StelApp::getInstance().getTextureManager().createTexture(
-                StelFileMgr::getInstallationDir() + "/textures/radiant.png");
+				StelFileMgr::getInstallationDir() + "/textures/radiant.png");
 }
 
 bool MeteorShowersMgr::loadCatalog(const QString& jsonPath)
@@ -226,7 +226,7 @@ bool MeteorShowersMgr::restoreDefaultCatalog(const QString& destination)
 		return false;
 	}
 
-    QFile defaultJson( "/MeteorShowers/showers.json");
+	QFile defaultJson( "/MeteorShowers/showers.json");
 	if (!defaultJson.copy(destination))
 	{
 		qWarning() << "[MeteorShowersMgr] Cannot copy the default catalog!";
@@ -449,7 +449,7 @@ void MeteorShowersMgr::setActiveRadiantOnly(const bool& b)
 
 void MeteorShowersMgr::setShowEnableButton(const bool& show)
 {
-    /*
+	/*
 	try
 	{
 		StelGui* gui = dynamic_cast<StelGui*>(StelApp::getInstance().getGui());
@@ -479,12 +479,12 @@ void MeteorShowersMgr::setShowEnableButton(const bool& show)
 	}
 	m_showEnableButton = show;
 	m_conf->setValue(MS_CONFIG_PREFIX + "/show_enable_button", show);
-    */
+	*/
 }
 
 void MeteorShowersMgr::setShowSearchButton(const bool& show)
 {
-    /*
+	/*
 	try
 	{
 		StelGui* gui = dynamic_cast<StelGui*>(StelApp::getInstance().getGui());
@@ -514,7 +514,7 @@ void MeteorShowersMgr::setShowSearchButton(const bool& show)
 	}
 	m_showSearchButton = show;
 	m_conf->setValue(MS_CONFIG_PREFIX + "/show_search_button", show);
-    */
+	*/
 }
 
 void MeteorShowersMgr::setColorARG(const Vec3f& rgb)
@@ -605,7 +605,7 @@ QDateTime MeteorShowersMgr::getNextUpdate()
 
 void MeteorShowersMgr::displayMessage(const QString& message, const QString hexColor)
 {
-    //m_messageIDs << GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30 + (20 * m_messageIDs.count()), true, 16, hexColor);
+	//m_messageIDs << GETSTELMODULE(LabelMgr)->labelScreen(message, 30, 30 + (20 * m_messageIDs.count()), true, 16, hexColor);
 }
 
 void MeteorShowersMgr::locationChanged(const StelLocation &location)

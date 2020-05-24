@@ -77,8 +77,8 @@ public:
 	virtual StelObjectP searchByNameI18n(const QString& nameI18n) const;
 	virtual StelObjectP searchByName(const QString& name) const;
 	virtual StelObjectP searchByID(const QString &id) const;
-    virtual QStringList listMatchingObjects(const QString& objPrefix, int maxNbItem=5, bool useStartOfWords=false) const;
-    virtual QStringList listMatchingObjectsI18n(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const;
+	virtual QStringList listMatchingObjects(const QString& objPrefix, int maxNbItem=5, bool useStartOfWords=false) const;
+	virtual QStringList listMatchingObjectsI18n(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const;
 	virtual QStringList listAllObjects(bool inEnglish) const;
 	virtual QString getName() const { return "Meteor Showers"; }
 	virtual QString getStelObjectType() const { return MeteorShower::METEORSHOWER_TYPE; }

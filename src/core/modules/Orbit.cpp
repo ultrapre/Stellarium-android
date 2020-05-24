@@ -207,13 +207,13 @@ void Init3D(const double i, const double Omega, const double w, const double rCo
 
 
 CometOrbit::CometOrbit(double pericenterDistance,
-                       double eccentricity,
-                       double inclination,
-                       double ascendingNode,
-                       double argOfPerhelion,
-                       double timeAtPerihelion,
-                       double orbitGoodDays,
-                       double meanMotion,              // GZ: for parabolics, this is W/dt in Heafner's lettering
+					   double eccentricity,
+					   double inclination,
+					   double ascendingNode,
+					   double argOfPerhelion,
+					   double timeAtPerihelion,
+					   double orbitGoodDays,
+					   double meanMotion,              // GZ: for parabolics, this is W/dt in Heafner's lettering
 		       double parentRotObliquity,
 		       double parentRotAscendingnode,
 		       double parentRotJ2000Longitude)
@@ -276,14 +276,14 @@ void CometOrbit::positionAtTimevInVSOP87Coordinates(double JDE, double *v, bool 
 
 
 EllipticalOrbit::EllipticalOrbit(double pericenterDistance,
-                                 double eccentricity,
-                                 double inclination,
-                                 double ascendingNode,
-                                 double argOfPeriapsis,
-                                 double meanAnomalyAtEpoch,
-                                 double period,
-                                 double epoch,
-                                 double parentRotObliquity,
+								 double eccentricity,
+								 double inclination,
+								 double ascendingNode,
+								 double argOfPeriapsis,
+								 double meanAnomalyAtEpoch,
+								 double period,
+								 double epoch,
+								 double parentRotObliquity,
 				 double parentRotAscendingnode,
 				 double parentRotJ2000Longitude)
 	: pericenterDistance(pericenterDistance),

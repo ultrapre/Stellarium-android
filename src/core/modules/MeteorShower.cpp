@@ -229,7 +229,7 @@ void MeteorShower::update(StelCore* core, double deltaTime)
 	}
 
 	// gets the current UTC date
-    double currentJD = core->getJDay();
+	double currentJD = core->getJDay();
 	QDate currentDate = QDate::fromJulianDay(currentJD);
 
 	// updating status and activity
@@ -335,8 +335,8 @@ void MeteorShower::drawRadiant(StelCore *core)
 	StelUtils::spheToRect(m_radiantAlpha, m_radiantDelta, m_position);
 	painter.getProjector()->project(m_position, XY);
 
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 
 	Vec3f rgb;
 	float alpha = 0.85f + ((float) qrand() / (float) RAND_MAX) / 10.f;
@@ -519,7 +519,7 @@ QString MeteorShower::getInfoString(const StelCore* core, const InfoStringGroup&
 
 	QString str;
 	QTextStream oss(&str);
-    bool withDecimalDegree = true; //StelApp::getInstance().getFlagShowDecimalDegrees();
+	bool withDecimalDegree = true; //StelApp::getInstance().getFlagShowDecimalDegrees();
 
 	QString mstdata;
 	if (m_status == ACTIVE_GENERIC)
@@ -554,7 +554,7 @@ QString MeteorShower::getInfoString(const StelCore* core, const InfoStringGroup&
 	}
 
 	// Ra/Dec etc.
-    // oss << getCommonInfoString(core, flags);
+	// oss << getCommonInfoString(core, flags);
 
 	if (flags&Extra)
 	{
@@ -640,7 +640,7 @@ QString MeteorShower::getInfoString(const StelCore* core, const InfoStringGroup&
 
 QVariantMap MeteorShower::getInfoMap(const StelCore *core) const
 {
-    QVariantMap map = getInfoMap(core);
+	QVariantMap map = getInfoMap(core);
 
 	if (enabled())
 	{

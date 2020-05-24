@@ -145,7 +145,7 @@ void MeteorMgr::update(double deltaTime)
 			mlaunch++;
 		}
 	}
-    // qDebug("mpf: %d\tm launched: %d\t(mps: %f)\t%d\n", mpf, mlaunch, ZHR*zhrToWsr, deltaTime);
+	// qDebug("mpf: %d\tm launched: %d\t(mps: %f)\t%d\n", mpf, mlaunch, ZHR*zhrToWsr, deltaTime);
 }
 
 
