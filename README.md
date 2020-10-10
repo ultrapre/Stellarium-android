@@ -76,6 +76,14 @@ TODO
 
 ## Change Log
 
+
+
+### October 10, 2020
+
+add dss survey.
+
+Search and locate; new Type; Nebula data changer; bug fix (label show when size=0); remove unuse panel.
+
 ### June 2, 2019
 
 Upgrading Main app and texture manager to implement QtConcurrent and Thread for increases speed.
