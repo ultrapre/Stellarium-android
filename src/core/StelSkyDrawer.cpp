@@ -318,6 +318,12 @@ float StelSkyDrawer::surfacebrightnessToLuminance(float sb)
 	return 2.f*2025000.f*std::exp(-0.92103f*(sb + 12.12331f))/(1.f/60.f*1.f/60.f);
 }
 
+// Compute the luminance for an extended source with the given surface brightness in Vmag/arcmin^2
+float StelSkyDrawer::surfaceBrightnessToLuminance(float sb)
+{
+    return 2.f*2025000.f*std::exp(-0.92103f*(sb + 12.12331f))/(1.f/60.f*1.f/60.f);
+}
+
 // Compute the surface brightness from the luminance of an extended source
 float StelSkyDrawer::luminanceToSurfacebrightness(float lum)
 {

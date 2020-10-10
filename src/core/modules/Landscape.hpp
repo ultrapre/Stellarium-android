@@ -116,11 +116,11 @@ protected:
 	// GZ patched, these can now be set in landscape.ini:
 	int rows; // horizontal rows
 	int cols; // vertical columns
-		int defaultBortleIndex; // light pollution from landscape.ini, or -1(no change)
-		int defaultFogSetting; // fog flag setting from landscape.ini: -1(no change), 0(off), 1(on)
-		double defaultExtinctionCoefficient; // atmospheric_extinction_coefficient from landscape.ini or -1
-		double defaultTemperature; // atmospheric_temperature from landscape.ini or -1000.0
-		double defaultPressure; // atmospheric_pressure from landscape.ini or -1.0
+        int defaultBortleIndex; // light pollution from landscape.ini, or -1(no change)
+        int defaultFogSetting; // fog flag setting from landscape.ini: -1(no change), 0(off), 1(on)
+        double defaultExtinctionCoefficient; // atmospheric_extinction_coefficient from landscape.ini or -1
+        double defaultTemperature; // atmospheric_temperature from landscape.ini or -1000.0
+        double defaultPressure; // atmospheric_pressure from landscape.ini or -1.0
 
 	typedef struct
 	{

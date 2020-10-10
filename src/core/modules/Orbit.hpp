@@ -22,11 +22,11 @@ class OrbitSampleProc;
 class Orbit
 {
 public:
-	Orbit(void) {}
-	virtual ~Orbit(void) {}
+    Orbit(void) {}
+    virtual ~Orbit(void) {}
 private:
-	Orbit(const Orbit&);
-	const Orbit &operator=(const Orbit&);
+    Orbit(const Orbit&);
+    const Orbit &operator=(const Orbit&);
 };
 
 

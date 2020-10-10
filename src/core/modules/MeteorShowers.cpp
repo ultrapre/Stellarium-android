@@ -78,8 +78,8 @@ void MeteorShowers::drawPointer(StelCore* core)
 		return;
 	}
 
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
 
 	const Vec3f& c(obj->getInfoColor());
 	painter.setColor(c[0],c[1],c[2]);
@@ -230,30 +230,30 @@ QStringList MeteorShowers::listMatchingObjects(const QString& objPrefix, int max
 {
 	QStringList result;
 
-	QString objw = objPrefix.toUpper();
+    QString objw = objPrefix.toUpper();
 
-	if (!m_mgr->getEnablePlugin() || maxNbItem <= 0)
+    if (!m_mgr->getEnablePlugin() || maxNbItem <= 0)
 	{
 		return result;
 	}
 
 	for (const auto& ms : m_meteorShowers)
 	{
-		QString name = ms->getEnglishName();
-		if (useStartOfWords)
-		{
-			if (!ms->enabled() || !(name.toUpper().left(objw.length()) == objw))
-			{
-				continue;
-			}
-		}
-		else
-		{
-			if (!ms->enabled() || !(name.toUpper().contains(objw, Qt::CaseInsensitive)))
-			{
-				continue;
-			}
-		}
+        QString name = ms->getEnglishName();
+        if (useStartOfWords)
+        {
+            if (!ms->enabled() || !(name.toUpper().left(objw.length()) == objw))
+            {
+                continue;
+            }
+        }
+        else
+        {
+            if (!ms->enabled() || !(name.toUpper().contains(objw, Qt::CaseInsensitive)))
+            {
+                continue;
+            }
+        }
 
 
 		result.append(name);
@@ -265,49 +265,49 @@ QStringList MeteorShowers::listMatchingObjects(const QString& objPrefix, int max
 
 	result.sort();
 
-	return result;
+    return result;
 }
 
 QStringList MeteorShowers::listMatchingObjectsI18n(const QString& objPrefix, int maxNbItem, bool useStartOfWords) const
 {
-	QStringList result;
+    QStringList result;
 
-	QString objw = objPrefix.toUpper();
+    QString objw = objPrefix.toUpper();
 
-	if (!m_mgr->getEnablePlugin() || maxNbItem <= 0)
-	{
-		return result;
-	}
+    if (!m_mgr->getEnablePlugin() || maxNbItem <= 0)
+    {
+        return result;
+    }
 
-	for (const auto& ms : m_meteorShowers)
-	{
-		QString name = ms->getNameI18n();
-		if (useStartOfWords)
-		{
-			if (!ms->enabled() || !(name.toUpper().left(objw.length()) == objw))
-			{
-				continue;
-			}
-		}
-		else
-		{
-			if (!ms->enabled() || !(name.toUpper().contains(objw, Qt::CaseInsensitive)))
-			{
-				continue;
-			}
-		}
+    for (const auto& ms : m_meteorShowers)
+    {
+        QString name = ms->getNameI18n();
+        if (useStartOfWords)
+        {
+            if (!ms->enabled() || !(name.toUpper().left(objw.length()) == objw))
+            {
+                continue;
+            }
+        }
+        else
+        {
+            if (!ms->enabled() || !(name.toUpper().contains(objw, Qt::CaseInsensitive)))
+            {
+                continue;
+            }
+        }
 
 
-		result.append(name);
-		if (result.size() >= maxNbItem)
-		{
-			break;
-		}
-	}
+        result.append(name);
+        if (result.size() >= maxNbItem)
+        {
+            break;
+        }
+    }
 
-	result.sort();
+    result.sort();
 
-	return result;
+    return result;
 }
 
 QStringList MeteorShowers::listAllObjects(bool inEnglish) const

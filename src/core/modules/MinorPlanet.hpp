@@ -29,7 +29,7 @@
 
 	There are two main reasons for having a separate class from Planet:
 	 - visual magnitude calculation (asteroids use the H,G system;
-	   Stellarium's default algorithm is not easily applied to asteroids);
+       Stellarium's default algorithm is not easily applied to asteroids);
 	 - support for minor planet numbers and provisional designations.
 
 	Some of the code in this class is re-used from the parent Planet class.

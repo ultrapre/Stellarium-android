@@ -88,7 +88,7 @@ public:
 	{
 		return XYZ;
 	}
-		virtual float getVMagnitude(const StelCore* core) const;
+        virtual float getVMagnitude(const StelCore* core) const;
 	virtual double getAngularSize(const StelCore* core) const;
 	virtual QString getNameI18n(void) const
 	{

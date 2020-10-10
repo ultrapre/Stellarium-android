@@ -123,8 +123,8 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 	{
 		oss << "<h2>" << designation << "</h2>";
 	}
-	if (flags&Type)
-		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << endl;
+    if (flags&Type)
+		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << "<br />";
 
 	if (flags&Magnitude && VMagnitude>-99.f)
 	{
@@ -132,36 +132,36 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 		StelUtils::rectToSphe(&az_app,&alt_app,getAltAzPosApparent(core));
 		Q_UNUSED(az_app);
 
-		if (core->getSkyDrawer()->getFlagHasAtmosphere())
-		oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
-										QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
-		else
-		oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
+        if (core->getSkyDrawer()->getFlagHasAtmosphere())
+        oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
+                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << "<br>";
+        else
+        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << "<br>";
 	}
 
 	if (flags&AbsoluteMagnitude && AMagnitude>-99.f)
-		oss << QString("%1: %2").arg(q_("Absolute Magnitude")).arg(QString::number(AMagnitude, 'f', 2)) << endl;
+		oss << QString("%1: %2").arg(q_("Absolute Magnitude")).arg(QString::number(AMagnitude, 'f', 2)) << "<br />";
 
 	if (flags&Extra && bV>-99.f)
-		oss << QString("%1: <b>%2</b>").arg(q_("Color Index (B-V)"), QString::number(bV, 'f', 2)) << endl;
+		oss << QString("%1: <b>%2</b>").arg(q_("Color Index (B-V)"), QString::number(bV, 'f', 2)) << "<br />";
 	
 	// Ra/Dec etc.
-	if (flags&Size)
-		oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << endl;
+    if (flags&Size)
+        oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << "<br>";
 
 
 	if (flags&Extra)
 	{
 		if (!sclass.isEmpty())
-			oss <<  QString("%1: %2").arg(q_("Spectral Type"), sclass) << endl;
+			oss <<  QString("%1: %2").arg(q_("Spectral Type"), sclass) << "<br />";
 		// TRANSLATORS: Jy is Jansky(10-26W/m2/Hz)
 		QString sfd  = qc_("Jy", "radio flux density");
 		if (redshift>0.f)
-			oss << QString("%1: %2").arg(q_("Redshift")).arg(redshift) << endl;
+			oss << QString("%1: %2").arg(q_("Redshift")).arg(redshift) << "<br />";
 		if (f6>-9999.f)
-			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 5GHz (6cm)")).arg(QString::number(f6, 'f', 3)).arg(sfd) << endl;
+			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 5GHz (6cm)")).arg(QString::number(f6, 'f', 3)).arg(sfd) << "<br />";
 		if (f20>-9999.f)
-			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 1.4GHz (21cm)")).arg(QString::number(f20, 'f', 3)).arg(sfd) << endl;
+			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 1.4GHz (21cm)")).arg(QString::number(f20, 'f', 3)).arg(sfd) << "<br />";
 	}
 
 	postProcessInfoString(str, flags);
@@ -170,7 +170,7 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 
 QVariantMap Quasar::getInfoMap(const StelCore *core) const
 {
-	QVariantMap map = getInfoMap(core);
+    QVariantMap map = getInfoMap(core);
 
 	map["amag"] = AMagnitude;
 	map["bV"] = bV;

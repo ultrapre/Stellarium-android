@@ -20,7 +20,6 @@ Copyright: Original Stellarium dev team
 * Tweak UI size for better handling on mobile
 * Correct for magnetic declination angle (Magnetic North is not real North)
 * Higher quality texture compared to official Stellarium-Mobile
-* 2K - 4K - 8K textures from [solarsystemscope.com](https://www.solarsystemscope.com/) distributed under *Attribution 4.0 International (CC BY 4.0)*
 
 ## Planned features
 
@@ -51,8 +50,6 @@ Copyright: Original Stellarium dev team
 
 - UI
     - [ ] Improve search dialog
-    - [ ] Material themed
-    - [X] Full HD support for planet textures
 
 - Performance
     - [ ] 30fps stable
@@ -73,27 +70,16 @@ Push the Build button.
 
 If the building process runs into problems while compiling ```dummy.cpp```, simply copy the file to build directory and rename it ```moc_predefs.h```.
 
-## Using a release
-
-**! Important !**
-If updating from a previous release do not forget to delete the *stellarium* folder present in your internal storage.
-
-See the lastest releases from the [releases page](https://github.com/raymas/Stellarium-android/releases)
-
 ## Localization guide
 
 TODO
 
 ## Change Log
 
-### January 2, 2020
-
-Starlink magnitude updated. 2K and 8K support for major celestial bodies. Newline correction for Quasars, Exoplanets and MeteoShowers informations.
-
 ### June 2, 2019
 
 Upgrading Main app and texture manager to implement QtConcurrent and Thread for increases speed.
-Not enough fast.
+Not enough rapid.
 
 ### June 1, 2019
 

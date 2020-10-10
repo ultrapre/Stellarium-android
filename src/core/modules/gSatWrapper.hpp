@@ -77,7 +77,7 @@ public:
 	//! @return Vec3d Geographical coordinates\n
 	//!    Latitude:  Coord[0]  measured in degrees\n
 	//!    Longitude: Coord[1]  measured in degrees\n
-		//!    Altitude:  Coord[2]  measured in Km.\n
+        //!    Altitude:  Coord[2]  measured in Km.\n
 	Vec3f getSubPoint();
 
 	// Operation getAltAz

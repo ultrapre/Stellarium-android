@@ -163,7 +163,7 @@ public:
 
 	///////////////////////////////////////////////////////////////////////////
 	// Methods defined in the StelModule class
-	virtual void init();
+    virtual void init();
 	virtual void deinit();
 	virtual void update(double deltaTime);
 	virtual void draw(StelCore* core);
@@ -242,7 +242,7 @@ public:
 	//! group name, return all satallites
 	QHash<QString,QString> getSatellites(const QString& group=QString(), Status vis=Both);
 	//! Get a model representing the list of satellites.
-	// SatellitesListModel* getSatellitesListModel();
+    // SatellitesListModel* getSatellitesListModel();
 
 	//! Get a satellite object by its identifier (i.e. NORAD number).
 	SatelliteP getById(const QString& id);

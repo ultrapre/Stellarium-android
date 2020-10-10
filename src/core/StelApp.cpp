@@ -44,6 +44,8 @@
 #include "SensorsMgr.hpp"
 #include "GPSMgr.hpp"
 
+#include "ToastMgr.hpp"
+
 #include "StelProgressController.hpp"
 #include "StelModuleMgr.hpp"
 #include "StelLocaleMgr.hpp"
@@ -355,6 +357,8 @@ void StelApp::init(QSettings* conf)
 	textureMgr = new StelTextureMgr();
 
 	networkAccessManager = new QNetworkAccessManager(this);
+    //Mutex for network access
+    bool * bIsMutexFree = (bool *)true;
     // Activate http cache if Qt version >= 4.5
 	QNetworkDiskCache* cache = new QNetworkDiskCache(networkAccessManager);
 	QString cachePath = StelFileMgr::getCacheDir();
@@ -402,6 +406,13 @@ void StelApp::init(QSettings* conf)
 	skyImageMgr = new StelSkyLayerMgr();
 	skyImageMgr->init();
 	getModuleMgr().registerModule(skyImageMgr);
+
+    // Toast surveys
+        //SplashScreen::showMessage(q_("Initializing TOAST surveys..."));
+    qDebug()<<"Initializing TOAST surveys...";
+        ToastMgr* toasts = new ToastMgr();
+        toasts->init();
+        getModuleMgr().registerModule(toasts);
 
 	// Init audio manager
 	audioMgr = new StelAudioMgr();

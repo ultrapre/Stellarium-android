@@ -29,14 +29,15 @@ Grid {
 	// Compute the optimal number of columns so that the buttons are evently distributed.
 	onParentWidthChanged: {
 		function sizeForColumns(n) { return 48 * rootStyle.scale * n + buttonGrid.spacing * ( n - 1); }
-        var choices = [16, 8];
+        var choices = [14,7];
+        //var choices = [16, 8];
 		for (var i = 0; i < choices.length; i++)
 		if (parentWidth >= sizeForColumns(choices[i])) {
 			columns = choices[i];
 			return;
 		}
 		// default
-        columns = 8;
+        columns = 7;
 	}
 
 	ImageButton {
@@ -85,13 +86,19 @@ Grid {
 		source: "images/location.png"
 		action: "actionShow_Cardinal_Points"
 		setting: "viewing/flag_cardinal_points"
-	}
+    }
 
-	ImageButton {
-		source: "images/nebulas.png"
-		action: "actionShow_Nebulas"
-		setting: "astro/flag_nebula_name"
-	}
+    ImageButton {
+        source: "images/nebulas.png"
+        action: "actionShow_Nebulas"
+        setting: "astro/flag_nebula_name"
+    }
+
+    ImageButton {
+        source: "images/DSS.png"
+        action: "actionShow_Toast_Survey"
+        setting: "astro/flag_toast_survey"
+    }
 
 	ImageButton {
 		source: "images/satellites.png"
@@ -99,7 +106,7 @@ Grid {
 		setting: "Satellites/hints_visible"
     }
 
-    ImageButton {
+    /*ImageButton {
         source: "images/quasars.png"
         action: "actionShow_Quasars"
         setting: "Quasars/flag_show_quasars"
@@ -115,7 +122,7 @@ Grid {
         source: "images/meteors.png"
         action: "actionShow_MeteorShowers"
         setting: "MeteorShowers/flag_show_meteor_shower"
-    }
+    }*/
 
 	ImageButton {
 		source: "images/sensors.png"

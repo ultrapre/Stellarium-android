@@ -485,15 +485,15 @@ template<class Star>
 void SpecialZoneArray<Star>::draw(StelPainter* sPainter, int index, bool isInsideViewport, const RCMag* rcmag_table,
 	int limitMagIndex, StelCore* core, int maxMagStarName, float names_brightness, const QVector<SphericalCap> &boundingCaps) const
 {
-	StelSkyDrawer* drawer = core->getSkyDrawer();
-	Vec3f vf;
-	static const double d2000 = 2451545.0;
-	const float movementFactor = (M_PI/180)*(0.0001/3600) * ((core->getJDay()-d2000)/365.25) / star_position_scale;
-	
-	// GZ, added for extinction
-	const Extinction& extinction=core->getSkyDrawer()->getExtinction();
-	const bool withExtinction=drawer->getFlagHasAtmosphere() && extinction.getExtinctionCoefficient()>=0.01f;
-	const float k = 0.001f*mag_range/mag_steps; // from StarMgr.cpp line 654
+    StelSkyDrawer* drawer = core->getSkyDrawer();
+    Vec3f vf;
+    static const double d2000 = 2451545.0;
+    const float movementFactor = (M_PI/180)*(0.0001/3600) * ((core->getJDay()-d2000)/365.25) / star_position_scale;
+    
+    // GZ, added for extinction
+    const Extinction& extinction=core->getSkyDrawer()->getExtinction();
+    const bool withExtinction=drawer->getFlagHasAtmosphere() && extinction.getExtinctionCoefficient()>=0.01f;
+    const float k = 0.001f*mag_range/mag_steps; // from StarMgr.cpp line 654
 	
 	// Allow artificial cutoff:
 	// find the (integer) mag at which is just bright enough to be drawn.
@@ -505,16 +505,16 @@ void SpecialZoneArray<Star>::draw(StelPainter* sPainter, int index, bool isInsid
 			cutoffMagStep = limitMagIndex;
 	}
 	Q_ASSERT(cutoffMagStep<RCMAG_TABLE_SIZE);
-	
+    
 	// Go through all stars, which are sorted by magnitude (bright stars first)
 	const SpecialZoneData<Star>* zoneToDraw = getZones() + index;
 	const Star* lastStar = zoneToDraw->getStars() + zoneToDraw->size;
-	for (const Star* s=zoneToDraw->getStars();s<lastStar;++s)
-	{
+    for (const Star* s=zoneToDraw->getStars();s<lastStar;++s)
+    {
 		// Artifical cutoff per magnitude
 		if (s->mag > cutoffMagStep)
 			break;
-	
+    
 		// Because of the test above, the star should always be visible from this point.
 		
 		// Array of 2 numbers containing radius and magnitude
@@ -562,7 +562,7 @@ void SpecialZoneArray<Star>::draw(StelPainter* sPainter, int index, bool isInsid
 			sPainter->setColor(colorr[0], colorr[1], colorr[2],names_brightness);
 			sPainter->drawText(Vec3d(vf[0], vf[1], vf[2]), s->getNameI18n(), 0, offset, offset, false);
 		}
-	}
+    }
 }
 
 template<class Star>

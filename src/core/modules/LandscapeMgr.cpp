@@ -632,6 +632,12 @@ float LandscapeMgr::getLuminance()
 	return atmosphere->getRealDisplayIntensityFactor();
 }
 
+//m3
+float LandscapeMgr::getAtmosphereAverageLuminance() const
+{
+    return atmosphere->getAverageLuminance();
+}
+
 Landscape* LandscapeMgr::createFromFile(const QString& landscapeFile, const QString& landscapeId)
 {
 	QSettings landscapeIni(landscapeFile, StelIniFormat);
