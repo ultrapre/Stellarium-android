@@ -1047,6 +1047,8 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 				if (maxNbItem==0)
 					break;
 				result << getCommonName(it.value());
+				//silas
+				return result;
 				--maxNbItem;
 			}
 			else
@@ -1064,6 +1066,8 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 				if (maxNbItem==0)
 					break;
 				result << getCommonName(i.value());
+				//silas
+				return result;
 				--maxNbItem;
 			}
 		}
@@ -1085,6 +1089,8 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 			if (maxNbItem==0)
 				break;
 			result << getSciName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else if (it.key().at(0) != objw.at(0))
@@ -1098,6 +1104,8 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 			if (maxNbItem==0)
 				break;
 			result << getSciAdditionalName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else if (it.key().at(0) != objw.at(0))
@@ -1111,6 +1119,8 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 			if (maxNbItem==0)
 				break;
 			result << getGcvsName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else
@@ -1130,12 +1140,14 @@ QStringList StarMgr::listMatchingObjectsI18n(const QString& objPrefix, int maxNb
 			if (s && maxNbItem>0)
 			{
 				result << QString("HIP%1").arg(hpNum);
+				//silas
+				return result;
 				maxNbItem--;
 			}
 		}
 	}
-
-	result.sort();
+	//silas
+	//result.sort();
 	return result;
 }
 
@@ -1158,6 +1170,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 				if (maxNbItem==0)
 					break;
 				result << getCommonName(it.value());
+				//silas
+				return result;
 				--maxNbItem;
 			}
 			else
@@ -1175,6 +1189,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 				if (maxNbItem==0)
 					break;
 				result << getCommonName(i.value());
+				//silas
+				return result;
 				--maxNbItem;
 			}
 		}
@@ -1196,6 +1212,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 			if (maxNbItem==0)
 				break;
 			result << getSciName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else if (it.key().at(0) != objw.at(0))
@@ -1209,6 +1227,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 			if (maxNbItem==0)
 				break;
 			result << getSciAdditionalName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else if (it.key().at(0) != objw.at(0))
@@ -1223,6 +1243,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 			if (maxNbItem==0)
 				break;
 			result << getGcvsName(it.value());
+			//silas
+			return result;
 			--maxNbItem;
 		}
 		else
@@ -1247,7 +1269,8 @@ QStringList StarMgr::listMatchingObjects(const QString& objPrefix, int maxNbItem
 		}
 	}
 
-	result.sort();
+	//silas
+	//result.sort();
 	return result;
 }
 

@@ -124,7 +124,7 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 		oss << "<h2>" << designation << "</h2>";
 	}
     if (flags&Type)
-		oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << "<br />";
+        oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("quasar")) << endl;
 
 	if (flags&Magnitude && VMagnitude>-99.f)
 	{
@@ -134,34 +134,34 @@ QString Quasar::getInfoString(const StelCore* core, const InfoStringGroup& flags
 
         if (core->getSkyDrawer()->getFlagHasAtmosphere())
         oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
-                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << "<br>";
+                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
         else
-        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << "<br>";
+        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
 	}
 
 	if (flags&AbsoluteMagnitude && AMagnitude>-99.f)
-		oss << QString("%1: %2").arg(q_("Absolute Magnitude")).arg(QString::number(AMagnitude, 'f', 2)) << "<br />";
+		oss << QString("%1: %2").arg(q_("Absolute Magnitude")).arg(QString::number(AMagnitude, 'f', 2)) << endl;
 
 	if (flags&Extra && bV>-99.f)
-		oss << QString("%1: <b>%2</b>").arg(q_("Color Index (B-V)"), QString::number(bV, 'f', 2)) << "<br />";
+		oss << QString("%1: <b>%2</b>").arg(q_("Color Index (B-V)"), QString::number(bV, 'f', 2)) << endl;
 	
 	// Ra/Dec etc.
     if (flags&Size)
-        oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << "<br>";
+        oss << q_("Size: %1").arg(StelUtils::radToDmsStr(0*M_PI/180.)) << endl;
 
 
 	if (flags&Extra)
 	{
 		if (!sclass.isEmpty())
-			oss <<  QString("%1: %2").arg(q_("Spectral Type"), sclass) << "<br />";
+			oss <<  QString("%1: %2").arg(q_("Spectral Type"), sclass) << endl;
 		// TRANSLATORS: Jy is Jansky(10-26W/m2/Hz)
 		QString sfd  = qc_("Jy", "radio flux density");
 		if (redshift>0.f)
-			oss << QString("%1: %2").arg(q_("Redshift")).arg(redshift) << "<br />";
+			oss << QString("%1: %2").arg(q_("Redshift")).arg(redshift) << endl;
 		if (f6>-9999.f)
-			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 5GHz (6cm)")).arg(QString::number(f6, 'f', 3)).arg(sfd) << "<br />";
+			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 5GHz (6cm)")).arg(QString::number(f6, 'f', 3)).arg(sfd) << endl;
 		if (f20>-9999.f)
-			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 1.4GHz (21cm)")).arg(QString::number(f20, 'f', 3)).arg(sfd) << "<br />";
+			oss << QString("%1: %2 %3").arg(q_("Radio flux density around 1.4GHz (21cm)")).arg(QString::number(f20, 'f', 3)).arg(sfd) << endl;
 	}
 
 	postProcessInfoString(str, flags);

@@ -1,0 +1,454 @@
+M   1                                 1952                              
+M   2                                 7089                              
+M   3                                 5272                              
+M   4                                 6121                              
+M   5                                 5904                              
+M   6                                 6405                              
+M   7                                 6475                              
+M   8                                 6523                              
+M   9                                 6333                              
+M  10                                 6254                              
+M  11                                 6705                              
+M  12                                 6218                              
+M  13                                 6205                              
+M  14                                 6402                              
+M  15                                 7078                              
+M  16                                 6611                              
+M  17                                 6618                              
+M  18                                 6613                              
+M  19                                 6273                              
+M  20                                 6514                              
+M  21                                 6531                              
+M  22                                 6656                              
+M  23                                 6494                              
+M  24                                I4715                              
+M  25                                I4725                              
+M  26                                 6694                              
+M  27                                 6853                              
+M  28                                 6626                              
+M  29                                 6913                              
+M  30                                 7099                              
+M  31                                  224                              
+M  32                                  221                              
+M  33                                  598                              
+M  34                                 1039                              
+M  35                                 2168                              
+M  36                                 1960                              
+M  37                                 2099                              
+M  38                                 1912                              
+M  39                                 7092                              
+M  40                                I8127                              
+M  41                                 2287                              
+M  42                                 1976                              
+M  43                                 1982                              
+M  44                                 2632                              
+M  45                                I8126                              
+M  46                                 2437                              
+M  47                                 2422                              
+M  48                                 2548                              
+M  49                                 4472                              
+M  50                                 2323                              
+M  51                                 5194                              
+M  51                                 5194                              
+M  52                                 7654                              
+M  53                                 5024                              
+M  54                                 6715                              
+M  55                                 6809                              
+M  56                                 6779                              
+M  57                                 6720                              
+M  58                                 4579                              
+M  59                                 4621                              
+M  60                                 4649                              
+M  61                                 4303                              
+M  62                                 6266                              
+M  63                                 5055                              
+M  64                                 4826                              
+M  65                                 3623                              
+M  66                                 3627                              
+M  67                                 2682                              
+M  68                                 4590                              
+M  69                                 6637                              
+M  70                                 6681                              
+M  71                                 6838                              
+M  72                                 6981                              
+M  73                                 6994                              
+M  74                                  628                              
+M  75                                 6864                              
+M  76                                  650                              
+M  76                                  650                              
+M  77                                 1068                              
+M  78                                 2068                              
+M  79                                 1904                              
+M  80                                 6093                              
+M  81                                 3031                              
+M  82                                 3034                              
+M  83                                 5236                              
+M  84                                 4374                              
+M  85                                 4382                              
+M  86                                 4406                              
+M  87                                 4486                              
+M  88                                 4501                              
+M  89                                 4552                              
+M  90                                 4569                              
+M  91                                 4548                              
+M  92                                 6341                              
+M  93                                 2447                              
+M  94                                 4736                              
+M  95                                 3351                              
+M  96                                 3368                              
+M  97                                 3587                              
+M  98                                 4192                              
+M  99                                 4254                              
+M 100                                 4321                              
+M 101                                 5457                              
+M 102                                 5866                              
+M 103                                  581                              
+M 104                                 4594                              
+M 105                                 3379                              
+M 106                                 4258                              
+M 107                                 6171                              
+M 108                                 3556                              
+M 109                                 3992                              
+M 110                                  205                              
+C   1                                  188                              
+C   2                                   40                              
+C   3                                 4236                              
+C   4                                 7023                              
+C   5                                I 342                              
+C   6                                 6543                              
+C   7                                 2403                              
+C   8                                  559                              
+C   9                                I8128                              
+C  10                                  663                              
+C  11                                 7635                              
+C  12                                 6946                              
+C  13                                  457                              
+C  14                                  869                              
+C  15                                 6826                              
+C  16                                 7243                              
+C  17                                  147                              
+C  18                                  185                              
+C  19                                I5146                              
+C  20                                 7000                              
+C  21                                 4449                              
+C  22                                 7662                              
+C  23                                  891                              
+C  24                                 1275                              
+C  25                                 2419                              
+C  26                                 4244                              
+C  27                                 6888                              
+C  28                                  752                              
+C  29                                 5005                              
+C  30                                 7331                              
+C  31                                I 405                              
+C  32                                 4631                              
+C  33                                 6992                              
+C  34                                 6960                              
+C  35                                 4889                              
+C  36                                 4559                              
+C  37                                 6885                              
+C  38                                 4565                              
+C  39                                 2392                              
+C  40                                 3626                              
+C  41                                I8129                              
+C  42                                 7006                              
+C  43                                 7814                              
+C  44                                 7479                              
+C  45                                 5248                              
+C  46                                 2261                              
+C  47                                 6934                              
+C  48                                 2775                              
+C  49                                 2237                              
+C  50                                 2244                              
+C  51                                I1613                              
+C  52                                 4697                              
+C  53                                 3115                              
+C  54                                 2506                              
+C  55                                 7009                              
+C  56                                  246                              
+C  57                                 6822                              
+C  58                                 2360                              
+C  59                                 3242                              
+C  60                                 4038                              
+C  61                                 4039                              
+C  62                                  247                              
+C  63                                 7293                              
+C  64                                 2362                              
+C  65                                  253                              
+C  66                                 5694                              
+C  67                                 1097                              
+C  68                                 6729                              
+C  69                                 6302                              
+C  70                                  300                              
+C  71                                 2477                              
+C  72                                   55                              
+C  73                                 1851                              
+C  74                                 3132                              
+C  75                                 6124                              
+C  76                                 6231                              
+C  77                                 5128                              
+C  78                                 6541                              
+C  79                                 3201                              
+C  80                                 5139                              
+C  81                                 6352                              
+C  82                                 6193                              
+C  83                                 4945                              
+C  84                                 5286                              
+C  85                                I2391                              
+C  86                                 6397                              
+C  87                                 1261                              
+C  88                                 5823                              
+C  89                                 6087                              
+C  90                                 2867                              
+C  91                                 3532                              
+C  92                                 3372                              
+C  93                                 6752                              
+C  94                                 4755                              
+C  95                                 6025                              
+C  96                                 2516                              
+C  97                                 3766                              
+C  98                                 4609                              
+C  99                                I8130                              
+C 100                                I2944                              
+C 101                                 6744                              
+C 102                                I2602                              
+C 103                                 2070                              
+C 104                                  362                              
+C 105                                 4833                              
+C 106                                  104                              
+C 107                                 6101                              
+C 108                                 4372                              
+C 109                                 3195                              
+B-WZ Cas                             I9000                              
+C-SU And                             I9001                              
+D-SAO 109003                         I9002                              
+C-ST Cas                             I9003                              
+S-VX And                             I9004                              
+D-NQ Cas                             I9005                              
+S-AQ And                             I9006                              
+D-SAO 74353                          I9007                              
+C-W Cas                              I9008                              
+B-Z Psc                              I9009                              
+S-R Scl                              I9010                              
+C-WW Cas                             I9011                              
+C-V Ari                              I9012                              
+SS-R For                             I9013                              
+D-SAO 129989                         I9014                              
+DY Per                               I9015                              
+UY And                               I9016                              
+C-V623 Cas                           I9017                              
+B-Y Per                              I9018                              
+S-V466 Per                           I9019                              
+S-U Cam                              I9020                              
+A-AC Per                             I9021                              
+C-UV Cam                             I9022                              
+D-XX Cam                             I9023                              
+C-T Cae                              I9024                              
+A-ST Cam                             I9025                              
+B-TT Tau                             I9026                              
+B-V346 Aur                           I9027                              
+SS-R Lep                             I9028                              
+A-EL Aur                             I9029                              
+A-W Ori                              I9030                              
+A-TX Aur                             I9031                              
+B-SY Eri                             I9032                              
+D-UV Aur                             I9033                              
+D-S Aur                              I9034                              
+B-RT Ori                             I9035                              
+C-SZ Lep                             I9036                              
+C-S Cam                              I9037                              
+B-TU Tau                             I9038                              
+A-Y Tau                              I9039                              
+B-FU Aur                             I9040                              
+D-SU Tau                             I9041                              
+B-TU Gem                             I9042                              
+C-GK Ori                             I9043                              
+A-FU Mon                             I9044                              
+S-V Aur                              I9045                              
+C-BL Ori                             I9046                              
+A-RV Aur                             I9047                              
+B-UU Aur                             I9048                              
+C-VW Gem                             I9049                              
+C-GY Mon                             I9050                              
+C-NP Pup                             I9051                              
+B-RV Mon                             I9052                              
+D-V614 Mon                           I9053                              
+S-RY Mon                             I9054                              
+C-W CMa                              I9055                              
+A-R CMi                              I9056                              
+B-BM Gem                             I9057                              
+D-RU Cam                             I9058                              
+B-BE CMa                             I9059                              
+C-NQ Gem                             I9060                              
+C-W CMi                              I9061                              
+C-RT Pup                             I9062                              
+A-RU Pup                             I9063                              
+S-IR Pup                             I9064                              
+S-RY Hya                             I9065                              
+A-AC Pup                             I9066                              
+A-YY Pyx                             I9067                              
+D-UZ Pyx                             I9068                              
+A-X Cnc                              I9069                              
+SS-T Cnc                             I9070                              
+A-RT UMa                             I9071                              
+S-Y Hya                              I9072                              
+S-X Vel                              I9073                              
+B-SZ Car                             I9074                              
+C-AB Ant                             I9075                              
+B-U Ant                              I9076                              
+B-U Hya                              I9077                              
+C-VY UMa                             I9078                              
+C-TZ Car                             I9079                              
+SS-V Hya                             I9080                              
+C-SY Car                             I9081                              
+D-S Cen                              I9082                              
+S-SS Vir                             I9083                              
+C-Y CVn                              I9084                              
+SS-RU Vir                            I9085                              
+A-RY Dra                             I9087                              
+D-TT CVn                             I9088                              
+D-SAO 157721                         I9089                              
+D-HM Lib                             I9090                              
+D-R CrB                              I9091                              
+S-V CrB                              I9092                              
+A-RR Her                             I9093                              
+D-SAO 46574                          I9097                              
+S-V Pav                              I9099                              
+C-SZ Sgr                             I9100                              
+B-SX Sco                             I9101                              
+SS-T Dra                             I9102                              
+D-FO Ser                             I9103                              
+S-AC Her                             I9104                              
+S-SS Sgr                             I9105                              
+B-RV Sct                             I9108                              
+S-DR Ser                             I9109                              
+A-UV Aql                             I9111                              
+C-V1942 Sgr                          I9113                              
+U Lyr                                I9114                              
+B-UX Dra                             I9115                              
+D-NSV 11960                          I9116                              
+C-V1469 Aql                          I9121                              
+BF Sge                               I9122                              
+A-X Sge                              I9123                              
+S-RT Cap                             I9127                              
+V778 Cyg                             I9130                              
+A-BD Vul                             I9131                              
+CY Cyg                               I9133                              
+D-SAO 106516                         I9134                              
+D-NSV 13571                          I9135                              
+S-S Cep                              I9136                              
+C-V460 Cyg                           I9137                              
+SS-RV Cyg                            I9138                              
+S-LW Cyg                             I9139                              
+A-RX Peg                             I9140                              
+S-RZ Peg                             I9141                              
+B-DG Cep                             I9142                              
+B-TV Lac                             I9143                              
+S-VY And                             I9144                              
+D-RU Aqr                             I9145                              
+A-EW And                             I9146                              
+A-ST And                             I9147                              
+C-TX Psc                             I9148                              
+D-SAO 128396                         I9149                              
+1 Ari (3/6:7)                        I8269                              
+1 Cam (10.3/6:7)                     I8282                              
+100 Her (14/6:6)                     I8385                              
+11-12 Cam (179/5:6)                  I8372                              
+118 Taurus (4.8/6:7)                 I8285                              
+12 Aqr (3/6:7)                       I8388                              
+12 Lynx (1.7/5:7)                    I8298                              
+145 CMa (27/5:7)                     I8300                              
+16 Cyg (40/6:6)                      I8386                              
+16/17 Draco (3.4/5:6)                I8334                              
+19 Lynx (14.8/6:7)                   I8302                              
+22 Ori (242/5:6)                     I8373                              
+31 Cygnus (107/4:7)                  I8354                              
+32 Cam (21.6/5:6)                    I8315                              
+32 Eridanus (6.8/5:6)                I8280                              
+32 Ori (1/4:6)                       I8375                              
+36 And (1/6:6)                       I8368                              
+36 Oph (4.4/5:5)                     I8338                              
+38 Lynx (2.7/4:7)                    I8307                              
+39 Boo (3/6:7)                       I8382                              
+40/41 Draco (19.3/6:6)               I8343                              
+42-45 Ori (252/5:5)                  I8376                              
+52 Ori (1/5:5)                       I8377                              
+54 Leo (6.5/5:6)                     I8310                              
+55 Eridanus (9.2/7:7)                I8283                              
+56 And (200/6:6)                     I8370                              
+57 Aquila (36/6:7)                   I8353                              
+57 Cnc (2/5:6)                       I8380                              
+65 Psc (4.4/6:6)                     I8266                              
+70 Oph (3.6/4:6)                     I8345                              
+8 Lacerta (22.4/6:7)                 I8365                              
+94 Aquarius (12.7/5:7)               I8366                              
+95 Hercules (6.3/5:5)                I8344                              
+Alpha Gemini (2.2/2:3)               I8303                              
+Alpha Leo (177/1:8)                  I8308                              
+Alpha Libra (231/3:5)                I8322                              
+Alpha Psc (1.7/4:5)                  I8272                              
+Alpha UMi (18.4/2:9)                 I8276                              
+Beta Cepheus (13.3/3:8)              I8359                              
+Beta Lyra (46/3:9)                   I8348                              
+Beta Mon (2.9/5:5)                   I8297                              
+Beta Orion (9.5/0:7)                 I8284                              
+Chi Taurus (19.4/6:8)                I8281                              
+Delta Cepheus (41/4:6)               I8364                              
+Delta Corvus (24.2/3:9)              I8312                              
+Delta Gemini (6.8/4:8)               I8301                              
+Delta Hercules (8.9/3:8)             I8337                              
+Delta Orion (52.6/2:6)               I8286                              
+Epsilon CMa (7.5/2:7)                I8299                              
+Epsilon Mon (13.4/5:7)               I8296                              
+Epsilon Peg (142/2:8)                I8361                              
+Eta Cas (12/3:8)                     I8265                              
+Eta Perseus (28.3/4:9)               I8278                              
+Gamma And (9.8/2:6)                  I8273                              
+Gamma Ari (7.8/5:5)                  I8270                              
+Gamma Cetus (2.8/4:7)                I8277                              
+Gamma Leo (4.4/2:4)                  I8309                              
+Gamma Lepus (96/4:6)                 I8294                              
+Iota Bootes (38/5:8)                 I8319                              
+Iota Cancer (30/4:7)                 I8306                              
+Iota Cas (2.5/5:7)                   I8275                              
+Iota Orion (11.3/3:7)                I8290                              
+Iota Tri (3.9/5:7)                   I8274                              
+Kappa Bootes (13.4/5:7)              I8318                              
+Kappa Hercules (28/5:7)              I8331                              
+Kappa Puppis (9.9/5:5)               I8304                              
+Lambda Ari (37/5:8)                  I8271                              
+Lambda Orion (4.4/4:6)               I8288                              
+Mu Draco (2/6:6)                     I8335                              
+N Hydra (9.2/6:6)                    I8311                              
+Nu Draco (62/5:5)                    I8341                              
+Nu Scorpius (1.3/4:6)                I8332                              
+Otto Struve 525 (45/6:8)             I8350                              
+Psi 1 Psc (30/6:6)                   I8267                              
+Psi Draco (30.3/5:6)                 I8342                              
+Sigma Cas (3/5:7)                    I8367                              
+Sigma Orion (12.9/4:8)               I8292                              
+Struve 1999 (11.6/7:8)               I8329                              
+Struve 2404 (3.6/7:8)                I8349                              
+Struve 2816 (11.7/6:8)               I8360                              
+Struve 331 (12.1/5:7)                I8279                              
+Struve 747 (35.7/5:6)                I8287                              
+Theta 1 Orion (8.8/7:8)              I8289                              
+Theta 2 Orion (52/5:7)               I8291                              
+Theta Auriga (3.6/3:7)               I8295                              
+Theta Serpens (22.3/5:5)             I8351                              
+Xi Cepheus (7.7/4:7)                 I8362                              
+Xi Scorpius (7.6/5:7)                I8328                              
+Zeta Aquarius (1.8/4:5)              I8363                              
+Zeta Cancer (0.9/6:6)                I8305                              
+Zeta Lyra (44/4:6)                   I8347                              
+Zeta Orion (2.4/2:4)                 I8293                              
+Zeta Psc (23/6:7)                    I8268                              
+ε Ari (1/5:5)                        I8371                              
+η Ori (2/3:5)                        I8374                              
+θ3 Cnc (5/6:6)                       I8379                              
+λ Oph (2/4:5)                        I8384                              
+μ CMa (3/5:7)                        I8378                              
+μ Cyg (2/5:6)                        I8389                              
+ξ UMa (2/4:5)                        I8381                              
+ο Oph (10.3/5:7)                     I8339                              
+χ Cet (184/5:7)                      I8369                              

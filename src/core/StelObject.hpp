@@ -55,13 +55,21 @@ public:
 		HourAngle		= 0x00000400, //!< The hour angle + DE (of date)
 		AbsoluteMagnitude	= 0x00000800, //!< The absolute magnitude
 		GalacticCoord		= 0x00001000, //!< The galactic position
-		Type			= 0x00002000  //!< The type of the object (star, planet, etc.)
+        Type			= 0x00002000,  //!< The type of the object (star, planet, etc.)
+
+
+        bmag1			= 0x00004000,  //!< The type of the object (star, planet, etc.)
+        bV1			= 0x00008000,  //!< The type of the object (star, planet, etc.)
+        surfBright1			= 0x00010000,  //!< The type of the object (star, planet, etc.)
+        posAngle1			= 0x00020000,  //!< The type of the object (star, planet, etc.)
+        nickName1			= 0x00040000,  //!< The type of the object (star, planet, etc.)
+        dsp1			= 0x00080000  //!< The type of the object (star, planet, etc.)
 	};
 	typedef QFlags<InfoStringGroupFlags> InfoStringGroup;
 	Q_FLAGS(InfoStringGroup)
 
 	//! A pre-defined set of specifiers for the getInfoString flags argument to getInfoString
-	static const InfoStringGroupFlags AllInfo = (InfoStringGroupFlags)(Name|CatalogNumber|Magnitude|RaDecJ2000|RaDecOfDate|AltAzi|Distance|Size|Extra|Type|HourAngle|AbsoluteMagnitude|GalacticCoord);
+    static const InfoStringGroupFlags AllInfo = (InfoStringGroupFlags)(Name|CatalogNumber|Magnitude|RaDecJ2000|RaDecOfDate|AltAzi|Distance|Size|Extra|Type|HourAngle|AbsoluteMagnitude|GalacticCoord|bmag1|bV1|surfBright1|posAngle1|nickName1|dsp1);
 	//! A pre-defined set of specifiers for the getInfoString flags argument to getInfoString
 	static const InfoStringGroupFlags ShortInfo = (InfoStringGroupFlags)(Name|CatalogNumber|Magnitude|RaDecJ2000);
 

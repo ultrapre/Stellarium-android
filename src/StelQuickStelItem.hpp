@@ -21,6 +21,7 @@
 #include <QDateTime>
 #include <QQuickFramebufferObject>
 
+/*所在地 地景*/
 // Special object that is just there so we can invoke some methods in the main thread.
 class MainThreadProxy : public QObject
 {
@@ -32,6 +33,7 @@ public:
 	Q_INVOKABLE void setManualPosition(double latitude, double longitude);
 };
 
+/*所在地 地景*/
 class StelQuickStelItem : public QQuickFramebufferObject
 {
 	Q_OBJECT
@@ -66,60 +68,80 @@ class StelQuickStelItem : public QQuickFramebufferObject
 	Q_PROPERTY(int milkyWayBrightness READ getMilkyWayBrightness WRITE setMilkyWayBrightness NOTIFY milkyWayBrightnessChanged)
 	Q_PROPERTY(int linesThickness READ getLinesThickness WRITE setLinesThickness NOTIFY LinesThicknessChanged)
 public:
+    //初始化，包括设置自动跳转到夜晚
 	StelQuickStelItem();
-	virtual Renderer* createRenderer() const Q_DECL_OVERRIDE;
+    //渲染器
+    virtual Renderer* createRenderer() const Q_DECL_OVERRIDE;
+    //选择的目标
 	QString getSelectedObjectName() const;
 	QString getSelectedObjectInfo() const;
 	QString getSelectedObjectShortInfo() const;
 	Q_INVOKABLE void unselectObject();
+    //单位时间跳动
 	void setForwardClicks(bool value) {forwardClicks = value;}
 	bool getForwardClicks() const {return forwardClicks;}
 	bool getTracking() const;
+    //拖动改变时间
 	bool getDragTimeMode() const;
 	void setDragTimeMode(bool value);
+    //缩放
 	Q_INVOKABLE void zoom(int direction);
 	Q_INVOKABLE void pinch(float scale, bool started);
 	Q_INVOKABLE void touch(int state, float x, float y);
+    //时间
 	double getJd() const;
 	Q_INVOKABLE void setJd(double value);
 	double getTimeRate() const;
 	void setTimeRate(double value);
 	QString getPrintableTime() const;
 	bool isTimeNow() const;
+
 	int getFps() const;
+    //地景
 	Q_INVOKABLE QStringList getLandscapeNames() const;
 	QString getCurrentLandscapeName() const;
 	void setCurrentLandscapeName(const QString& value);
 	QString getCurrentLandscapeHtmlDescription() const;
+    //文化
 	Q_INVOKABLE QStringList getSkyCultureListI18() const;
 	QString getCurrentSkyCultureI18() const;
 	void setCurrentSkyCultureI18(const QString& value);
 	QString getCurrentSkyCultureHtmlDescription() const;
 	QString getCurrentSkyCultureBaseUrl() const;
+    //地方
 	Q_INVOKABLE QStringList getCountryNames() const;
     Q_INVOKABLE QStringList getCityNames(const QString& country, const QString& search) const;
     Q_INVOKABLE bool testCityNames(const QString& country, const QString& search) const;
+    //经纬度
 	QString getLocation() const;
 	void setLocation(const QString locationId);
 	double getLatitude() const;
 	double getLongitude() const;
 	Q_INVOKABLE void setManualPosition(double latitude, double longitude);
 	float getGuiScaleFactor() const;
+    //视场
 	float getFov() const;
 	Q_INVOKABLE void writeSetting(const QString& key, bool value);
+    //搜索
 	Q_INVOKABLE QStringList search(const QString& name);
+    //goto
 	Q_INVOKABLE void gotoObject(const QString& objectName);
 	QString getVersion() const {return MOBILE_GUI_VERSION;}
 	QString getModel() const;
 	Q_INVOKABLE bool isDay() const;
+    //跳转夜晚
 	bool getAutoGotoNight() const {return autoGotoNight;}
 	void setAutoGotoNight(bool value) {autoGotoNight = value;}
+    //版本
 	bool isDesktop() const;
 	QString getGpsState() const;
+    //光污染
 	int getLightPollution() const;
 	void setLightPollution(int value);
+    //银河亮度
 	int getMilkyWayBrightness() const;
 	void setMilkyWayBrightness(int value);
+    //星座线厚度
 	int getLinesThickness() const;
 	void setLinesThickness(int value);
 	Q_INVOKABLE void resetSettings();

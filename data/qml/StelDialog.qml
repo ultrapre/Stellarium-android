@@ -104,7 +104,7 @@ MouseArea {
 	}
 	Rectangle {
 		color: "black"
-        opacity: 0
+        opacity: 1
 		anchors {
 			fill: contentItem
 			topMargin: root.withMargins ? -rootStyle.margin : 0

@@ -867,7 +867,7 @@ void StelMainScriptAPI::clear(const QString& state)
 	{
 		movmgr->setMountMode(StelMovementMgr::MountAltAzimuthal);
 		skyd->setFlagTwinkle(true);
-		skyd->setFlagLuminanceAdaptation(true);
+                skyd->setFlagLuminanceAdaptation(false); //silas fixed
 		ssmgr->setFlagPlanets(true);
 		ssmgr->setFlagHints(false);
 		ssmgr->setFlagOrbits(false);

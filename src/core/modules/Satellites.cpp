@@ -360,8 +360,8 @@ QStringList Satellites::listMatchingObjectsI18n(const QString& objPrefix, int ma
 			}
 		}
 	}
-
-	result.sort();
+	//silas
+	//result.sort();
 	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
 
 	return result;
@@ -412,12 +412,14 @@ QStringList Satellites::listMatchingObjects(const QString& objPrefix, int maxNbI
 			}
 			else if (find==false && !numberPrefix.isEmpty() && sat->getCatalogNumberString().left(numberPrefix.length()) == numberPrefix)
 			{
-				result << QString("NORAD %1").arg(sat->getCatalogNumberString());			
+				result << QString("NORAD %1").arg(sat->getCatalogNumberString());
+				//silas
+				return result;
 			}
 		}
 	}
-
-	result.sort();
+	//silas
+	//result.sort();
 	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
 
 	return result;

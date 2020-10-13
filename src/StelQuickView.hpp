@@ -64,6 +64,7 @@ signals:
 	void initialized();
 	void nightModeChanged(bool);
 protected slots:
+    //调整大小
 	void handleResize();
 	void synchronize();
 	void showGui();

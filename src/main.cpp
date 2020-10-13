@@ -91,6 +91,7 @@ void copyDefaultConfigFile(const QString& newPath)
 	if (defaultConfigFilePath.isEmpty())
 		qFatal("ERROR copyDefaultConfigFile failed to locate data/default_config.ini. Please check your installation.");
 	QFile::copy(defaultConfigFilePath, newPath);
+    qDebug()<<"silas: ready to copy config.ini"<<defaultConfigFilePath<<newPath;
 	if (!StelFileMgr::exists(newPath))
 	{
 		qFatal("ERROR copyDefaultConfigFile failed to copy file %s  to %s. You could try to copy it by hand.",
@@ -219,14 +220,16 @@ int main(int argc, char **argv)
 		qWarning() << "WARNING: while looking for --config-file option: " << e.what() << ". Using \"config.ini\"";
 		configName = "config.ini";
 	}
-
+    qDebug()<<QString("silas before configName:%1;").arg(configName)<<configName;
 	QString configFileFullPath = StelFileMgr::findFile(configName, StelFileMgr::Flags(StelFileMgr::Writable|StelFileMgr::File));
+    qDebug()<<"silas middle configName:"<<configFileFullPath;
 	if (configFileFullPath.isEmpty())
 	{
 		configFileFullPath = StelFileMgr::findFile(configName, StelFileMgr::New);
 		if (configFileFullPath.isEmpty())
 			qFatal("Could not create configuration file %s.", qPrintable(configName));
 	}
+    qDebug()<<"silas after configName:"<<configFileFullPath;
         qDebug() << "Config file: " << configFileFullPath;
 	QSettings* confSettings = NULL;
 	if (StelFileMgr::exists(configFileFullPath))

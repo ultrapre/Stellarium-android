@@ -1,0 +1,103 @@
+没什么有趣的
+StelQuickView.hpp
+CLIProcessor.hpp
+StelAndroid.hpp
+StelLogger.hpp
+StelMainView.hpp
+StelQuickStelItem.hpp
+
+
+
+MultiLevelJsonBase.hpp
+OctahedronPolygon.hpp
+RefractionExtinction.hpp
+SimbadSearcher.hpp
+SphericMirrorCalculator.hpp
+StelActionMgr.hpp
+StelApp.hpp **
+StelAudioMgr.hpp
+StelCore.hpp **核心
+StelFader.hpp
+StelFileMgr.hpp
+StelGeodesicGrid.hpp 测地线
+StelGuiBase.hpp
+StelIniParser.hpp
+StelJsonParser.hpp
+StelLoadingBar.hpp
+StelLocaleMgr.hpp
+StelLocation.hpp
+StelLocationMgr.hpp
+StelModule.hpp
+StelModuleMgr.hpp
+StelMovementMgr.hpp
+StelObject.hpp
+StelObjectMgr.hpp
+StelObjectModule.hpp
+StelObjectType.hpp
+StelObserver.hpp 移动到别的行星
+StelOpenGL.hpp
+StelPainter.hpp 着色器 绘图
+StelPluginInterface.hpp
+StelProgressController.hpp
+StelProjector.hpp
+StelProjectorClasses.hpp
+StelProjectorType.hpp
+StelRegionObject.hpp
+StelSkyCultureMgr.hpp
+StelSkyDrawer.hpp 重点
+StelSkyImageTile.hpp
+StelSkyLayer.hpp
+StelSkyLayerMgr.hpp
+StelSkyPolygon.hpp
+StelSphereGeometry.hpp
+StelSphericalIndex.hpp
+StelTexture.hpp
+StelTextureMgr.hpp
+StelTextureTypes.hpp
+StelToneReproducer.hpp
+StelTranslator.hpp
+StelUtils.hpp
+StelVertexArray.hpp
+StelVideoMgr.hpp
+StelViewportEffect.hpp
+TrailGroup.hpp
+VecMath.hpp
+
+src\core\modules\Skybright.cpp:
+maxmag
+min1mag
+
+//！通常，当FOV变小时，恒星/行星晕变亮。
+
+src\core\StelSkyDrawer.hpp
+
+
+eye adaption
+
+	//! Get the magnitude of the currently faintest visible point source
+	//! It depends on the zoom level, on the eye adapation and on the point source rendering parameters
+	//! @return the limit V mag at which a point source will be displayed
+	//！获取当前最模糊的可见点源的大小
+	//！它取决于缩放级别，眼睛适应度和点源渲染参数
+	//！@返回将显示点源的极限V mag
+	float getLimitMagnitude() const {return limitMagnitude;}
+	
+LandscapeMgr
+MilkyWay
+Skylight
+StelSkyDrawer
+StelSkyDrawer
+StelToneReproducer
+StelToneReproducer
+
+Luminance.*adaptation
+
+
+use\_luminance\_adaptation         & bool  & Enable dynamic eye adaptation\\\midrule %% TODO: DESCRIBE!
+
+src/gui/viewDialog.ui
+<widget class="QCheckBox" name="adaptationCheckbox">
+
+bool flagAdaptationMain;	//!< Flag to track if adaptationCheckbox was enabled at activation.
+
+connectBoolProperty(ui->adaptationCheckbox, "StelSkyDrawer.flagLuminanceAdaptation");

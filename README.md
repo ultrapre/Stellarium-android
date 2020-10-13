@@ -20,6 +20,7 @@ Copyright: Original Stellarium dev team
 * Tweak UI size for better handling on mobile
 * Correct for magnetic declination angle (Magnetic North is not real North)
 * Higher quality texture compared to official Stellarium-Mobile
+* 2K - 4K - 8K textures from [solarsystemscope.com](https://www.solarsystemscope.com/) distributed under *Attribution 4.0 International (CC BY 4.0)*
 
 ## Planned features
 
@@ -50,6 +51,8 @@ Copyright: Original Stellarium dev team
 
 - UI
     - [ ] Improve search dialog
+    - [ ] Material themed
+    - [X] Full HD support for planet textures
 
 - Performance
     - [ ] 30fps stable
@@ -70,28 +73,57 @@ Push the Build button.
 
 If the building process runs into problems while compiling ```dummy.cpp```, simply copy the file to build directory and rename it ```moc_predefs.h```.
 
+## Using a release
+
+**! Important !**
+If updating from a previous release do not forget to delete the *stellarium* folder present in your internal storage.
+
+See the lastest releases from the [releases page](https://github.com/raymas/Stellarium-android/releases)
+
 ## Localization guide
 
 TODO
 
 ## Change Log
 
-update
-
-### October 13, 2020
-
-update comets (GVB or MPC)
-
-### October 10, 2020
-
-add dss survey.
+### October 9, 2020
 
 Search and locate; new Type; Nebula data changer; bug fix (label show when size=0); remove unuse panel.
+
+## 深空观测特别版V1.1
+
+1.NGC搜索 / 回车定位 / 列表长度5+
+2.可选：新版数据，新版类型
+3.修复尺寸=0不显示bug
+4.外部ini配置深空天体数据源
+5.去除planes轨道线
+6.去除quickbar无用的选项
+7.测试外置
+
+### June 11, 2020
+
+DeepSky Special, extended info of DSO
+
+## 深空观测特别版V1.0
+
+1.修正深空类型等，从7种类型增加到19种类型。
+2.自定义深空目录路径。
+ngc2000.dat、ngc2000names.dat均可以自己设计放在/sdcard/stellarium/中。
+3.修正了NGC/IC的所有数据。
+4.增加了bmag、b-v mag、详细类型（比如I2r）、德雷尔描述（详细描述一个天体）
+5.增加了1000+明亮的非NGC/IC深空，可以支持6位数数量级别的深空数量
+6.支持按照梅西耶、NGC、Caldwell显示或不显示目标
+7.支持按照星系、疏散星团等深空类型显示或不显示目标
+8.支持观测清单，观测记录；可以按照设置显示或不显示已观测或者观测清单中的目标。
+
+### January 2, 2020
+
+Starlink magnitude updated. 2K and 8K support for major celestial bodies. Newline correction for Quasars, Exoplanets and MeteoShowers informations.
 
 ### June 2, 2019
 
 Upgrading Main app and texture manager to implement QtConcurrent and Thread for increases speed.
-Not enough rapid.
+Not enough fast.
 
 ### June 1, 2019
 

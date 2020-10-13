@@ -29,15 +29,16 @@ Grid {
 	// Compute the optimal number of columns so that the buttons are evently distributed.
 	onParentWidthChanged: {
 		function sizeForColumns(n) { return 48 * rootStyle.scale * n + buttonGrid.spacing * ( n - 1); }
-        var choices = [14,7];
-        //var choices = [16, 8];
+//        var choices = [16, 8];
+        var choices = [12, 6];
 		for (var i = 0; i < choices.length; i++)
 		if (parentWidth >= sizeForColumns(choices[i])) {
 			columns = choices[i];
 			return;
 		}
 		// default
-        columns = 7;
+//        columns = 8;
+        columns = 6;
 	}
 
 	ImageButton {
@@ -86,19 +87,13 @@ Grid {
 		source: "images/location.png"
 		action: "actionShow_Cardinal_Points"
 		setting: "viewing/flag_cardinal_points"
-    }
+	}
 
-    ImageButton {
-        source: "images/nebulas.png"
-        action: "actionShow_Nebulas"
-        setting: "astro/flag_nebula_name"
-    }
-
-    ImageButton {
-        source: "images/DSS.png"
-        action: "actionShow_Toast_Survey"
-        setting: "astro/flag_toast_survey"
-    }
+	ImageButton {
+		source: "images/nebulas.png"
+		action: "actionShow_Nebulas"
+		setting: "astro/flag_nebula_name"
+	}
 
 	ImageButton {
 		source: "images/satellites.png"

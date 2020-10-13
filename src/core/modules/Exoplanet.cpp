@@ -298,7 +298,7 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 	
     if (flags&Type)
 	{
-        oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << "<br />\r\n";
+        oss << QString("%1: <b>%2</b>").arg(q_("Type"), q_("planetary system")) << endl;
 	}
 
 	if (flags&Magnitude && Vmag<99 && !distributionMode)
@@ -309,186 +309,128 @@ QString Exoplanet::getInfoString(const StelCore* core, const InfoStringGroup& fl
 
         if (core->getSkyDrawer()->getFlagHasAtmosphere())
         oss << q_("Magnitude: <b>%1</b> (extincted to: <b>%2</b>)").arg(QString::number(getVMagnitude(core), 'f', 2),
-                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << "<br />\r\n";
+                                        QString::number(getVMagnitudeWithExtinction(core), 'f', 2)) << endl;
         else
-        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << "<br />\r\n";
+        oss << q_("Magnitude: <b>%1</b>").arg(getVMagnitude(core), 0, 'f', 2) << endl;
 	}
 
 	// Ra/Dec etc.
     // oss << getCommonInfoString(core, flags);
 
 	if (flags&Extra && !stype.isEmpty())
-        oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << "<br />\r\n";
+        oss <<  QString("%1: <b>%2</b>").arg(q_("Spectral Type"), stype) << endl;
 
 	if (flags&Distance && distance>0)
 	{
 		//TRANSLATORS: Unit of measure for distance - Light Years
 		QString ly = qc_("ly", "distance");
-        oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << "<br />\r\n";
+        oss << QString("%1: %2 %3").arg(q_("Distance"), QString::number(distance/0.306601, 'f', 2), ly) << endl;
 	}
 
 	if (flags&Extra)
 	{
 		if (smetal!=0)
 		{
-            oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << "<br />\r\n";
+            oss << QString("%1 [Fe/H]: %2").arg(q_("Metallicity"), QString::number(smetal, 'f', 3)) << endl;
 		}
 		if (smass>0)
 		{
-            oss << QString("%1: %2 M<sub>%3</sub>").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << "<br />\r\n";
+            oss << QString("%1: %2 %3 M").arg(q_("Mass"), QString::number(smass, 'f', 3), q_("Sun")) << endl;
 		}
 		if (sradius>0)
 		{
-            oss << QString("%1: %2 R<sub>%3</sub>").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << "<br />\r\n";
+            oss << QString("%1: %2 %3 R").arg(q_("Radius"), QString::number(sradius, 'f', 5), q_("Sun")) << endl;
 		}
 		if (effectiveTemp>0)
 		{
-            oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << "<br />\r\n";
+            oss << QString("%1: %2 %3").arg(q_("Effective temperature")).arg(effectiveTemp).arg(qc_("K", "temperature")) << endl;
 		}
 		if (exoplanets.size() > 0)
 		{
-			QString qss = "padding: 0 2px 0 0;";
-			QString planetNameLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Exoplanet")).arg(qss);
-			QString planetProperNameLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Name")).arg(qss);
-			QString periodLabel = QString("<td style=\"%3\">%1 (%2)</td>").arg(q_("Period")).arg(qc_("days", "period")).arg(qss);
-			QString massLabel = QString("<td style=\"%3\">%1 (M<sub>%2</sub>)</td>").arg(q_("Mass")).arg(q_("Jup")).arg(qss);
-			QString radiusLabel = QString("<td style=\"%3\">%1 (R<sub>%2</sub>)</td>").arg(q_("Radius")).arg(q_("Jup")).arg(qss);
-			QString semiAxisLabel = QString("<td style=\"%3\">%1 (%2)</td>").arg(q_("Semi-Major Axis")).arg(qc_("AU", "distance, astronomical unit")).arg(qss);
-			QString eccentricityLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Eccentricity")).arg(qss);
-			QString inclinationLabel = QString("<td style=\"%3\">%1 (%2)</td>").arg(q_("Inclination")).arg(QChar(0x00B0)).arg(qss);
-			QString angleDistanceLabel = QString("<td style=\"%2\">%1 (\")</td>").arg(q_("Angle Distance")).arg(qss);
-			QString discoveredLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Discovered year")).arg(qss);
-			QString detectionMethodLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Detection method")).arg(qss);
-			QString pClassLabel = QString("<td style=\"%2\">%1</td>").arg(q_("Planetary class")).arg(qss);
+			QString planetNameLabel = QString("%1: ").arg(q_("Exoplanet"));
+			QString planetProperNameLabel = QString("%1: ").arg(q_("Name"));
+			QString periodLabel = QString("%1 (%2): ").arg(q_("Period")).arg(qc_("days", "period"));
+			QString massLabel = QString("%1 %2 Mass: ").arg(q_("Mass")).arg(q_("Jup"));
+			QString radiusLabel = QString("%1 %2 Radius: ").arg(q_("Radius")).arg(q_("Jup"));
+			QString semiAxisLabel = QString("%1 (%2): ").arg(q_("Semi-Major Axis")).arg(qc_("AU", "distance, astronomical unit"));
+			QString eccentricityLabel = QString("%1: ").arg(q_("Eccentricity"));
+			QString inclinationLabel = QString("%1 (%2): ").arg(q_("Inclination")).arg(QChar(0x00B0));
+			QString angleDistanceLabel = QString("%1 (\"): ").arg(q_("Angle Distance"));
+			QString discoveredLabel = QString("%1: ").arg(q_("Discovered year"));
+			QString detectionMethodLabel = QString("%1: ").arg(q_("Detection method"));
+			QString pClassLabel = QString("%1: ").arg(q_("Planetary class"));
 			//TRANSLATORS: Full phrase is "Equilibrium Temperature"
-			QString equilibriumTempLabel = QString("<td style=\"%3\">%1 (%2)</td>").arg(q_("Equilibrium temp.")).arg(getTemperatureScaleUnit()).arg(qss);
+			QString equilibriumTempLabel = QString("%1 (%2): ").arg(q_("Equilibrium temp.")).arg(getTemperatureScaleUnit());
 			//TRANSLATORS: Average stellar flux of the planet
-			QString fluxLabel = QString("<td style=\"%2\">%1 (S<sub>E</sub>)</td>").arg(q_("Flux")).arg(qss);
+			QString fluxLabel = QString("%1 (SE): ").arg(q_("Flux"));
 			//TRANSLATORS: ESI = Earth Similarity Index
-			QString ESILabel = QString("<td style=\"%2\">%1</td>").arg(q_("ESI")).arg(qss);
+			QString ESILabel = QString("%1: ").arg(q_("ESI"));
 
-			QString row = "<td style=\"padding:0 2px;\">%1</td>";
-			QString emRow = "<td style=\"padding:0 2px;\"><em>%1</em></td>";
-			QString emptyRow = "<td style=\"padding:0 2px;\">&mdash;</td>";
+			QString description = "";
+			QString value = "%1\n";
 			for (const auto& p : exoplanets)
 			{
 				if (!p.planetName.isEmpty())
-					planetNameLabel.append(row.arg(p.planetName));
-				else
-					planetNameLabel.append(emptyRow);
+					description.append(planetNameLabel.append(value.arg(p.planetName)));
 
 				if (!p.planetProperName.isEmpty())
-					planetProperNameLabel.append(row.arg(trans.qtranslate(p.planetProperName)));
-				else
-					planetProperNameLabel.append(emptyRow);
+					description.append(planetProperNameLabel.append(value.arg(trans.qtranslate(p.planetProperName))));
 
 				if (p.period > -1.f)
-					periodLabel.append(row.arg(QString::number(p.period, 'f', 2)));
-				else
-					periodLabel.append(emptyRow);
+					description.append(periodLabel.append(value.arg(QString::number(p.period, 'f', 2))));
 
 				if (p.mass > -1.f)
-					massLabel.append(row.arg(QString::number(p.mass, 'f', 2)));
-				else
-					massLabel.append(emptyRow);
+					description.append(massLabel.append(value.arg(QString::number(p.mass, 'f', 2))));
 
 				if (p.radius > -1.f)
-					radiusLabel.append(row.arg(QString::number(p.radius, 'f', 1)));
-				else
-					radiusLabel.append(emptyRow);
+					description.append(radiusLabel.append(value.arg(QString::number(p.radius, 'f', 1))));
 
 				if (p.eccentricity > -1.f)
-					eccentricityLabel.append(row.arg(QString::number(p.eccentricity, 'f', 3)));
-				else
-					eccentricityLabel.append(emptyRow);
+					description.append(eccentricityLabel.append(value.arg(QString::number(p.eccentricity, 'f', 3))));
 
 				if (p.inclination > -1.f)
-					inclinationLabel.append(row.arg(QString::number(p.inclination, 'f', 1)));
-				else
-					inclinationLabel.append(emptyRow);
+					description.append(inclinationLabel.append(value.arg(QString::number(p.inclination, 'f', 1))));
 
 				if (p.semiAxis > -1.f)
-					semiAxisLabel.append(row.arg(QString::number(p.semiAxis, 'f', 4)));
-				else
-					semiAxisLabel.append(emptyRow);
+					description.append(semiAxisLabel.append(value.arg(QString::number(p.semiAxis, 'f', 4))));
 
 				if (p.angleDistance > -1.f)
-					angleDistanceLabel.append(row.arg(QString::number(p.angleDistance, 'f', 6)));
-				else
-					angleDistanceLabel.append(emptyRow);
+					description.append(angleDistanceLabel.append(value.arg(QString::number(p.angleDistance, 'f', 6))));
 
 				if (p.discovered > 0)
-					discoveredLabel.append(row.arg(QString::number(p.discovered)));
-				else
-					discoveredLabel.append(emptyRow);
+					description.append(discoveredLabel.append(value.arg(QString::number(p.discovered))));
 
+				//TODO: fix conservative labels
 				if (!p.pclass.isEmpty())
 				{
 					if (!p.conservative)
-						pClassLabel.append(emRow.arg(getPlanetaryClassI18n(p.pclass)));
-					else
-						pClassLabel.append(row.arg(getPlanetaryClassI18n(p.pclass)));
+						description.append(pClassLabel.append(value.arg(getPlanetaryClassI18n(p.pclass))));
 				}
-				else
-					pClassLabel.append(emptyRow);
 
 				if (p.EqTemp > 0)
 				{
 					if (!p.conservative)
-						equilibriumTempLabel.append(emRow.arg(QString::number(getTemperature(p.EqTemp), 'f', 2)));
-					else
-						equilibriumTempLabel.append(row.arg(QString::number(getTemperature(p.EqTemp), 'f', 2)));
+						description.append(equilibriumTempLabel.append(value.arg(QString::number(getTemperature(p.EqTemp), 'f', 2))));
 				}
-				else
-					equilibriumTempLabel.append(emptyRow);
 
 				if (p.flux > 0)
 				{
 					if (!p.conservative)
-						fluxLabel.append(emRow.arg(QString::number(p.flux * 0.01, 'f', 2)));
-					else
-						fluxLabel.append(row.arg(QString::number(p.flux * 0.01, 'f', 2)));
+						description.append(fluxLabel.append(value.arg(QString::number(p.flux * 0.01, 'f', 2))));
 				}
-				else
-					fluxLabel.append(emptyRow);
 
 				if (p.ESI > 0)
 				{
 					if (!p.conservative)
-						ESILabel.append(emRow.arg(QString::number(p.ESI * 0.01, 'f', 2)));
-					else
-						ESILabel.append(row.arg(QString::number(p.ESI * 0.01, 'f', 2)));
+						description.append(ESILabel.append(value.arg(QString::number(p.ESI * 0.01, 'f', 2))));
 				}
-				else
-					ESILabel.append(emptyRow);
 
-				if (p.detectionMethod.isEmpty())
-					detectionMethodLabel.append(emptyRow);
-				else
-					detectionMethodLabel.append(row.arg(q_(p.detectionMethod)));
+				if (!p.detectionMethod.isEmpty())
+					description.append(detectionMethodLabel.append(value.arg(q_(p.detectionMethod))));
 			}
-			oss << "<table style='margin-left: -2px;'>"; // Cosmetic fix
-			oss << "<tr>" << planetNameLabel << "</tr>";
-			oss << "<tr>" << planetProperNameLabel << "</tr>";
-			oss << "<tr>" << periodLabel << "</tr>";
-			oss << "<tr>" << massLabel << "</tr>";
-			oss << "<tr>" << radiusLabel << "</tr>";
-			oss << "<tr>" << semiAxisLabel << "</tr>";
-			oss << "<tr>" << eccentricityLabel << "</tr>";
-			oss << "<tr>" << inclinationLabel << "</tr>";
-			oss << "<tr>" << angleDistanceLabel << "</tr>";
-			oss << "<tr>" << discoveredLabel << "</tr>";
-			oss << "<tr>" << detectionMethodLabel << "</tr>";
+			oss << description;
 			if (hasHabitableExoplanets)
-			{
-				oss << "<tr>" << pClassLabel << "</tr>";
-				oss << "<tr>" << equilibriumTempLabel << "</tr>";
-				oss << "<tr>" << fluxLabel << "</tr>";
-				oss << "<tr>" << ESILabel << "</tr>";
-			}
-			oss << "</table>";
-			if (hasHabitableExoplanets)
-                oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << "<br />\r\n";
+                oss << QString("%1: %2%3").arg(q_("Equilibrium temperature on Earth")).arg(QString::number(getTemperature(255), 'f', 2)).arg(getTemperatureScaleUnit()) << endl;
 		}
 	}
 

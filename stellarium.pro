@@ -36,10 +36,10 @@ QMAKE_CXXFLAGS_RELEASE += -Ofast
 android {
 	QT += androidextras
 	ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-	ANDROID_PACKAGE = com.noctuasoftware.stellarium
+        ANDROID_PACKAGE = com.nictuasoftware.stellarium
         ANDROID_MINIMUM_VERSION = 16
         ANDROID_TARGET_VERSION = 26
-	ANDROID_APP_NAME = Stellarium Mobile
+        ANDROID_APP_NAME = Stellarium for Observer
 
 	data_dir.source = mobileData/data
 	data_dir.path = data
@@ -79,12 +79,7 @@ ios {
 }
 
 HEADERS += \
-    plugins/SolarSystemEditor/src/SolarSystemEditor.hpp \
-    plugins/SolarSystemEditor/src/updatecomets.h \
 	src/config.h \
-    src/core/StelToast.hpp \
-    src/core/StelToastGrid.hpp \
-    src/core/modules/ToastMgr.hpp \
 	src/translations.h \
 	src/CLIProcessor.hpp \
 	src/StelAndroid.hpp \
@@ -93,12 +88,7 @@ HEADERS += \
 
 
 SOURCES += \
-    plugins/SolarSystemEditor/src/SolarSystemEditor.cpp \
-    plugins/SolarSystemEditor/src/updatecomets.cpp \
 	src/CLIProcessor.cpp \
-    src/core/StelToast.cpp \
-    src/core/StelToastGrid.cpp \
-    src/core/modules/ToastMgr.cpp \
 	src/main.cpp \
 	src/StelLogger.cpp \
 	src/StelMainView.cpp \
@@ -481,11 +471,12 @@ OTHER_FILES += \
 	data/qml/AnglePicker.qml \
 	data/qml/ValuePicker.qml \
 
-contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
-    ANDROID_EXTRA_LIBS = \
-        $$PWD/openssl/armeabi-v7a/libcrypto.so \
-        $$PWD/openssl/armeabi-v7a/libssl.so
-}
+
+#contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+#    ANDROID_EXTRA_LIBS = \
+#        $$PWD/openssl/armeabi-v7a/libcrypto.so \
+#        $$PWD/openssl/armeabi-v7a/libssl.so
+#}
 
 DISTFILES += \
     android/AndroidManifest.xml \

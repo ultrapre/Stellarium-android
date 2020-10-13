@@ -19,8 +19,6 @@
 #ifndef _STELTONEREPRODUCER_HPP_
 #define _STELTONEREPRODUCER_HPP_
 
-#include <cmath>
-
 //! Converts tones in function of the eye adaptation to luminance.
 //! The aim is to get on the screen something which is perceptualy accurate,
 //! ie. to compress high dynamic range luminance to CRT display range.

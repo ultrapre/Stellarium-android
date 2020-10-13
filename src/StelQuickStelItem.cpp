@@ -203,7 +203,7 @@ QString StelQuickStelItem::getSelectedObjectInfo() const
 {
 	StelObject::InfoStringGroup infoTextFilters = StelObject::InfoStringGroup(
 				StelObject::PlainText | StelObject::Size | StelObject::Extra | StelObject::AltAzi | StelObject::RaDecOfDate |
-				StelObject::CatalogNumber | StelObject::HourAngle);
+                StelObject::CatalogNumber | StelObject::HourAngle | StelObject::bV1 | StelObject::dsp1 | StelObject::bmag1 | StelObject::nickName1| StelObject::surfBright1 | StelObject::posAngle1);
 	const QList<StelObjectP>& selected = GETSTELMODULE(StelObjectMgr)->getSelectedObject();
 	if (selected.empty()) return "";
 	StelCore* core = StelApp::getInstance().getCore();

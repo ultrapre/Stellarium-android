@@ -132,7 +132,7 @@ public:
 	void init();
 
 	//! Update all the objects with respect to the time.
-	//! @param deltaTime the time increment in sec.
+    //! @param deltaTime the time increment in sec. 秒
 	void update(double deltaTime);
 
 	//! Handle the resizing of the window
@@ -156,7 +156,7 @@ public:
 	//! If not specified the projection used is the one currently used as default.
 	StelProjectorP getProjection(StelProjector::ModelViewTranformP modelViewTransform, ProjectionType projType=ProjectionDefault) const;
 
-	//! Get the current tone reproducer used in the core.
+    //! Get the current tone reproducer声调再现器 used in the core.
 	StelToneReproducer* getToneReproducer();
 	//! Get the current tone reproducer used in the core.
 	const StelToneReproducer* getToneReproducer() const;
@@ -179,9 +179,11 @@ public:
 	//! Get the near and far clipping planes.
 	void getClippingPlanes(double* zn, double* zf) const;
 
+        //
 	//! Get the translated projection name from its TypeKey for the current locale.
 	QString projectionTypeKeyToNameI18n(const QString& key) const;
 
+        //
 	//! Get the projection TypeKey from its translated name for the current locale.
 	QString projectionNameI18nToTypeKey(const QString& nameI18n) const;
 
@@ -510,11 +512,6 @@ public slots:
 	float getDeltaTCustomNDot() const { return deltaTCustomNDot; }
 	//! Get coefficients for custom equation for calculation of Delta-T
 	Vec3f getDeltaTCustomEquationCoefficients() const { return deltaTCustomEquationCoeff; }
-
-
-    void UpdateCometsCore1();
-    void UpdateCometsCore2();
-    void UpdateCometsCore3();
 
 signals:
 	//! This signal is emitted when the observer location has changed.

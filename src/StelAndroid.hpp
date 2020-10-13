@@ -20,6 +20,7 @@
 #include <QString>
 #include <QFileInfo>
 
+/*对安卓的接口*/
 class StelAndroid
 {
 public:
@@ -27,6 +28,7 @@ public:
 	static bool GPSSupported();
 	static void setGPSCallback(void (*callback)(double, double, double, double));
 	static void (*GPSCallback)(double, double, double, double);
+    //获取方向
 	static int getOrientation();
 	static void setCanPause(bool value);
 	static QString getModel();

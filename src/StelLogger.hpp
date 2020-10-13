@@ -23,6 +23,9 @@
 #include <QString>
 #include <QFile>
 
+
+/*记录读写*/
+
 //! @class StelLogger
 //! Class wit only static members used to manage logging for Stellarium.
 //! The debugLogHandler() method allow to defined it as a standard Qt messages handler

@@ -59,17 +59,18 @@ public:
 	// Create and initialise
 	BooleanFader(bool initialState=false, float minimumValue=0.f, float maximumValue=1.f) : StelFader(initialState, minimumValue, maximumValue) {;}
 	~BooleanFader() {;}
-	// Increments the internal counter of deltaTime ticks
+    // Increments the internal counter of deltaTime ticks 时间刻度的内部计数器
 	void update(int deltaTicks) {Q_UNUSED(deltaTicks);}
-	// Gets current switch state
+    // Gets current switch state 开关状态
 	float getInterstate() const {return state ? maxValue : minValue;}
 	float getInterstatePercentage() const {return state ? 100.f : 0.f;}
-	// Switchors can be used just as bools
+    // Switchors can be used just as bools 开关可以用作bools
 	StelFader& operator=(bool s) {state=s; return *this;}
 	virtual float getDuration() {return 0.f;}
 protected:
 };
 
+//线性转换
 //! @class LinearFader
 //! Implementation of StelFader which implements a linear transition.
 //! Please note that state is updated instantaneously, so if you need to draw something fading in

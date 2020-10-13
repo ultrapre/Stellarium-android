@@ -20,7 +20,7 @@
 
 #ifndef _SPHERICMIRRORCALCULATOR_HPP_
 #define _SPHERICMIRRORCALCULATOR_HPP_
-
+//球面镜像计算
 #include "VecMath.hpp"
 
 class QSettings;

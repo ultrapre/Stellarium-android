@@ -39,6 +39,7 @@
 #endif
 
 #include "StelFileMgr.hpp"
+#include "CLIProcessor.hpp"
 
 // Initialize static members.
 QStringList StelFileMgr::fileLocations;
@@ -61,12 +62,29 @@ void StelFileMgr::init()
 #else
     // Modifiable config file (Cheng Xinlun, May 14 2017)
     // Permission request done in Qt-5.10 (Cheng Xinlun, June 21 2018)
-    QStringList perms;
-    perms << "android.permission.WRITE_EXTERNAL_STORAGE" << "android.permission.ACCESS_FINE_LOCATION" << "android.permission.READ_EXTERNAL_STORAGE" << "android.permission.ACCESS_COARSE_LOCATION";
-    QtAndroid::PermissionResultMap checkPerms = QtAndroid::requestPermissionsSync(perms);
-    QHash<QString, QtAndroid::PermissionResult>::iterator i;
-    for (i = checkPerms.begin(); i != checkPerms.end(); i++)
-        qDebug() << i.key() << ": " << (i.value() == QtAndroid::PermissionResult::Granted);
+
+
+
+    //QString configFileFullPath = StelFileMgr::findFile("config.ini", StelFileMgr::Flags(StelFileMgr::Writable|StelFileMgr::File));
+
+
+    QFile configfile("/sdcard/stellarium/config.ini");
+    if (configfile.open(QIODevice::ReadOnly | QIODevice::Text)){
+        qDebug()<<"silas: config.ini exists";
+    }
+    else{
+        qDebug()<<"silas: config.ini not exists";
+        QStringList perms;
+        perms << "android.permission.WRITE_EXTERNAL_STORAGE" << "android.permission.ACCESS_FINE_LOCATION" << "android.permission.READ_EXTERNAL_STORAGE" << "android.permission.ACCESS_COARSE_LOCATION";
+        QtAndroid::PermissionResultMap checkPerms = QtAndroid::requestPermissionsSync(perms);
+        QHash<QString, QtAndroid::PermissionResult>::iterator i;
+        qDebug() << "";
+        for (i = checkPerms.begin(); i != checkPerms.end(); i++)
+            qDebug() << i.key() << ": " << (i.value() == QtAndroid::PermissionResult::Granted);
+    }
+    configfile.close();
+
+
     userDir = QDir::homePath() + "/.stellarium";
     cuserDir = QString::fromLocal8Bit(qgetenv("EXTERNAL_STORAGE")) + "/stellarium";
 #endif
@@ -172,6 +190,23 @@ QString StelFileMgr::findFile(const QString& path, Flags flags)
 	if (path.startsWith("assets:/"))
 		return path;
 	
+    if (path.endsWith("ngc2000.dat")){
+        foreach (const QString& i, fileLocations)
+        {
+            const QFileInfo finfo(i + "/" + "ngc2000.dat");
+            if (fileFlagsCheck(finfo, flags))
+                return i + "/" + "ngc2000.dat";
+        }
+    }
+    if (path.endsWith("ngc2000names.dat")){
+        foreach (const QString& i, fileLocations)
+        {
+            const QFileInfo finfo(i + "/" + "ngc2000names.dat");
+            if (fileFlagsCheck(finfo, flags))
+                return i + "/" + "ngc2000names.dat";
+        }
+    }
+
 	const QFileInfo fileInfo(path);
 	
 	// explicitly specified relative paths
@@ -184,7 +219,7 @@ QString StelFileMgr::findFile(const QString& path, Flags flags)
 	}
 
 	// explicitly specified absolute paths
-	if (fileInfo.isAbsolute())
+    if (fileInfo.isAbsolute())
 	{
 		if (fileFlagsCheck(fileInfo, flags))
 			return path;

@@ -74,7 +74,7 @@ StelSkyDrawer::StelSkyDrawer(StelCore* acore) : core(acore)
 	setFlagTwinkle(conf->value("stars/flag_star_twinkle",true).toBool());
 	setMaxAdaptFov(conf->value("stars/mag_converter_max_fov",70.0).toFloat());
 	setMinAdaptFov(conf->value("stars/mag_converter_min_fov",0.1).toFloat());
-	setFlagLuminanceAdaptation(conf->value("viewing/use_luminance_adaptation",true).toBool());
+    setFlagLuminanceAdaptation(conf->value("viewing/use_luminance_adaptation",false).toBool());
 	setFlagStarMagnitudeLimit((conf->value("astro/flag_star_magnitude_limit", false).toBool()));
 	setCustomStarMagnitudeLimit(conf->value("astro/star_magnitude_limit", 6.5).toFloat());
 	setFlagNebulaMagnitudeLimit((conf->value("astro/flag_nebula_magnitude_limit", false).toBool()));
@@ -316,12 +316,6 @@ float StelSkyDrawer::pointSourceLuminanceToMag(float lum)
 float StelSkyDrawer::surfacebrightnessToLuminance(float sb)
 {
 	return 2.f*2025000.f*std::exp(-0.92103f*(sb + 12.12331f))/(1.f/60.f*1.f/60.f);
-}
-
-// Compute the luminance for an extended source with the given surface brightness in Vmag/arcmin^2
-float StelSkyDrawer::surfaceBrightnessToLuminance(float sb)
-{
-    return 2.f*2025000.f*std::exp(-0.92103f*(sb + 12.12331f))/(1.f/60.f*1.f/60.f);
 }
 
 // Compute the surface brightness from the luminance of an extended source

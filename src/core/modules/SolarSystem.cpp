@@ -114,6 +114,9 @@ void SolarSystem::init()
 	QSettings* conf = StelApp::getInstance().getSettings();
 	Q_ASSERT(conf);
 
+	//Check status for texture before loading planets
+	setTextureResolution(conf->value("viewing/texture_resolution", 1).toInt());
+
 	loadPlanets();	// Load planets data
 
 	// Compute position and matrix of sun and all the satellites (ie planets)
@@ -211,7 +214,7 @@ void SolarSystem::drawPointer(const StelCore* core)
         foreach (PlanetP p, systemPlanets)
         {
             if (p->getNameI18n().contains(name))
-                p->setFlagOrbits(true);
+		p->setFlagOrbits(false);
         }
 	}
 }
@@ -228,18 +231,43 @@ void cometOrbitPosFunc(double jd,double xyz[3], void* userDataPtr)
 // Init and load the solar system data
 void SolarSystem::loadPlanets()
 {
+	/*qDebug() << "Loading Solar System data (1: planets and moons) ...";
+
+	QString solarSystemFile;
+	switch (getTextureResolution())
+	{
+	case 2:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major_2k.ini");
+		qDebug() << "[SolarSystem] Using 2K textures";
+		break;
+	case 8:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major_8k.ini");
+		qDebug() << "[SolarSystem] Using 8K textures";
+		break;		
+	default:
+		solarSystemFile = StelFileMgr::findFile("data/ssystem_major.ini");
+		qDebug() << "[SolarSystem] Using default textures";
+		break;
+	}*/
 	qDebug() << "Loading Solar System data (1: planets and moons) ...";
 	QString solarSystemFile = StelFileMgr::findFile("data/ssystem_major.ini");
+
 	if (solarSystemFile.isEmpty())
 	{
 		qWarning() << "ERROR while loading ssystem_major.ini (unable to find data/ssystem_major.ini): " << endl;
 		return;
+	}
+	else{
+		qDebug()<<"ssystem_major.ini: "<<solarSystemFile;
 	}
 
 	if (!loadPlanets(solarSystemFile))
 	{
 		qWarning() << "ERROR while loading ssystem_major.ini: " << endl;
 		return;
+	}
+	else{
+		qDebug() << "File ssystem_major.ini is loaded successfully... "<<solarSystemFile;
 	}
 
 	qDebug() << "Loading Solar System data (2: minor bodies)...";
@@ -249,12 +277,16 @@ void SolarSystem::loadPlanets()
 		qWarning() << "ERROR while loading ssystem_minor.ini (unable to find data/ssystem_minor.ini): " << endl;
 		return;
 	}
+	else{
+		qDebug()<<"ssystem_minor.ini: "<<solarSystemFiles;
+	}
 
 	foreach (const QString& solarSystemFile, solarSystemFiles)
 	{
+		qDebug() << "Try to load a solarSystemFile: "<<solarSystemFile;
 		if (loadPlanets(solarSystemFile))
 		{
-			qDebug() << "File ssystem_minor.ini is loaded successfully...";
+			qDebug() << "File ssystem_minor.ini is loaded successfully... "<<solarSystemFile;
 			break;
 		}
 		else
@@ -1433,6 +1465,11 @@ void SolarSystem::setMoonScale(float f)
 		getMoon()->setSphereScale(moonScale);
 }
 
+void SolarSystem::setTextureResolution(int res)
+{
+    textureResolution = res;
+}
+
 // Set selected planets by englishName
 void SolarSystem::setSelected(const QString& englishName)
 {
@@ -1515,13 +1552,4 @@ void SolarSystem::reloadPlanets()
 
 	// Restore translations
 	updateI18n();
-}
-
-
-QStringList SolarSystem::getAllMinorPlanetCommonEnglishNames() const
-{
-    QStringList res;
-//    for (const auto& p : systemMinorBodies)
-//        res.append(p->getCommonEnglishName());
-    return res;
 }

@@ -3,6 +3,7 @@
         <file>icon.bmp</file>
     </qresource>
     <qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
         <file>shaders/xyYToRGB.glsl</file>
         <file>qml/main.qml</file>
         <file>qml/images/button_default.png</file>
@@ -78,6 +79,5 @@
         <file>qml/AdvancedDialog.qml</file>
         <file>qml/ValuePicker.qml</file>
         <file>qml/Plugins.qml</file>
-        <file>qml/images/DSS.png</file>
     </qresource>
 </RCC>

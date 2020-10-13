@@ -4792,70 +4792,125 @@
 39683   14 22D    Allstar/Theia                    .10
 39731   14 24A    KazeoSat 1                       3.9
 39732   14 25A    Cosmos 2495                       14
-44235             OBJECT A        5.0
-44236             OBJECT B        5.0
-44237             OBJECT C        5.0
-44238             OBJECT D        5.0
-44239             OBJECT E        5.0
-44240             OBJECT F        5.0
-44241             OBJECT G        5.0
-44242             OBJECT H        5.0
-44243             OBJECT J        5.0
-44244             OBJECT K        5.0
-44245             OBJECT L        5.0
-44246             OBJECT M        5.0
-44247             OBJECT N        5.0
-44248             OBJECT P        5.0
-44249             OBJECT Q        5.0
-44250             OBJECT R        5.0
-44251             OBJECT S        5.0
-44252             OBJECT T        5.0
-44253             OBJECT U        5.0
-44254             OBJECT V        5.0
-44255             OBJECT W        5.0
-44256             OBJECT X        5.0
-44257             OBJECT Y        5.0
-44258             OBJECT Z        5.0
-44259             OBJECT AA       5.0
-44260             OBJECT AB       5.0
-44261             OBJECT AC       5.0
-44262             OBJECT AD       5.0
-44263             OBJECT AE       5.0
-44264             OBJECT AF       5.0
-44265             OBJECT AG       5.0
-44266             OBJECT AH       5.0
-44267             OBJECT AJ       5.0
-44268             OBJECT AK       5.0
-44269             OBJECT AL       5.0
-44270             OBJECT AM       5.0
-44271             OBJECT AN       5.0
-44272             OBJECT AP       5.0
-44273             OBJECT AQ       5.0
-44274             OBJECT AR       5.0
-44275             OBJECT AS       5.0
-44276             OBJECT AT       5.0
-44277             OBJECT AU       5.0
-44278             OBJECT AV       5.0
-44279             OBJECT AW       5.0
-44280             OBJECT AX       5.0
-44281             OBJECT AY       5.0
-44282             OBJECT AZ       5.0
-44283             OBJECT BA       5.0
-44284             OBJECT BB       5.0
-44285             OBJECT BC       5.0
-44286             OBJECT BD       5.0
-44287             OBJECT BE       5.0
-44288             OBJECT BF       5.0
-44289             OBJECT BG       5.0
-44290             OBJECT BH       5.0
-44291             OBJECT BJ       5.0
-44292             OBJECT BK       5.0
-44293             OBJECT BL       5.0
-44294             OBJECT BM       5.0
-44295             FALCON 9 DEB    5.0
-44296             FALCON 9 DEB    5.0
-44297             FALCON 9 DEB    5.0
-44298             FALCON 9 DEB    5.0
+44235             STARLINK-31        5.0
+44236             STARLINK-22        5.0
+44237             STARLINK-23        5.0
+44238             STARLINK-24        5.0
+44239             STARLINK-25        5.0
+44240             STARLINK-26        5.0
+44241             STARLINK-27        5.0
+44242             STARLINK-28        5.0
+44243             STARLINK-29        5.0
+44244             STARLINK-30        5.0
+44245             STARLINK-21        5.0
+44246             STARLINK-46        5.0
+44247             STARLINK-33        5.0
+44248             STARLINK-34        5.0
+44249             STARLINK-61        5.0
+44250             STARLINK-36        5.0
+44251             STARLINK-37        5.0
+44252             STARLINK-71        5.0
+44253             STARLINK-39        5.0
+44254             STARLINK-32        5.0
+44255             STARLINK-66        5.0
+44256             STARLINK-42        5.0
+44257             STARLINK-43        5.0
+44258             STARLINK-40        5.0
+44259             STARLINK-52        5.0
+44260             STARLINK-45        5.0
+44261             STARLINK-44        5.0
+44262             STARLINK-49        5.0
+44263             STARLINK-72        5.0
+44264             STARLINK-35        5.0
+44265             STARLINK-63        5.0
+44266             STARLINK-54        5.0
+44267             STARLINK-69        5.0
+44268             STARLINK-55        5.0
+44269             STARLINK-57        5.0
+44270             STARLINK-58        5.0
+44271             STARLINK-59        5.0
+44272             STARLINK-51        5.0
+44273             STARLINK-60        5.0
+44274             STARLINK-62        5.0
+44275             STARLINK-64        5.0
+44276             STARLINK-65        5.0
+44277             STARLINK-41        5.0
+44278             STARLINK-67        5.0
+44279             STARLINK-68        5.0
+44280             STARLINK-38        5.0
+44281             STARLINK-70        5.0
+44282             STARLINK-80        5.0
+44283             STARLINK-56        5.0
+44284             STARLINK-73        5.0
+44285             STARLINK-50        5.0
+44286             STARLINK-75        5.0
+44287             STARLINK-76        5.0
+44288             STARLINK-79        5.0
+44289             STARLINK-48        5.0
+44290             STARLINK-78        5.0
+44291             STARLINK-77        5.0
+44292             STARLINK-81        5.0
+44293             STARLINK-74        5.0
+44294             STARLINK-53        5.0
+44713             STARLINK-1007        5.0
+44714             STARLINK-1008        5.0
+44715             STARLINK-1009        5.0
+44716             STARLINK-1010        5.0
+44717             STARLINK-1011        5.0
+44718             STARLINK-1012        5.0
+44719             STARLINK-1013        5.0
+44720             STARLINK-1014        5.0
+44721             STARLINK-1015        5.0
+44722             STARLINK-1016        5.0
+44723             STARLINK-1017        5.0
+44724             STARLINK-1019        5.0
+44725             STARLINK-1020        5.0
+44726             STARLINK-1021        5.0
+44727             STARLINK-1022        5.0
+44728             STARLINK-1023        5.0
+44729             STARLINK-1024        5.0
+44730             STARLINK-1025        5.0
+44731             STARLINK-1026        5.0
+44732             STARLINK-1027        5.0
+44733             STARLINK-1028        5.0
+44734             STARLINK-1029        5.0
+44735             STARLINK-1030        5.0
+44736             STARLINK-1031        5.0
+44737             STARLINK-1032        5.0
+44738             STARLINK-1033        5.0
+44739             STARLINK-1052        5.0
+44740             STARLINK-1035        5.0
+44741             STARLINK-1036        5.0
+44742             STARLINK-1037        5.0
+44743             STARLINK-1038        5.0
+44744             STARLINK-1039        5.0
+44745             STARLINK-1040        5.0
+44746             STARLINK-1041        5.0
+44747             STARLINK-1042        5.0
+44748             STARLINK-1043        5.0
+44749             STARLINK-1044        5.0
+44750             STARLINK-1045        5.0
+44751             STARLINK-1046        5.0
+44752             STARLINK-1047        5.0
+44753             STARLINK-1048        5.0
+44754             STARLINK-1049        5.0
+44755             STARLINK-1050        5.0
+44756             STARLINK-1051        5.0
+44757             STARLINK-1034        5.0
+44758             STARLINK-1053        5.0
+44759             STARLINK-1054        5.0
+44760             STARLINK-1055        5.0
+44761             STARLINK-1056        5.0
+44762             STARLINK-1057        5.0
+44763             STARLINK-1058        5.0
+44764             STARLINK-1059        5.0
+44765             STARLINK-1060        5.0
+44766             STARLINK-1061        5.0
+44767             STARLINK-1062        5.0
+44768             STARLINK-1063        5.0
+44769             STARLINK-1064        5.0
+44770             STARLINK-1065        5.0
+44771             STARLINK-1067        5.0
 90004 h 99 750A   Unknown 990907  2.0
 90006 h 00 596A   Unknown 000405  4.0
 90007 g 00 653A   Unknown 000601  3.5

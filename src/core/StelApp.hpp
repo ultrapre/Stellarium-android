@@ -24,6 +24,7 @@
 #include <QObject>
 #include "config.h"
 
+//
 // Predeclaration of some classes
 class StelCore;
 class StelTextureMgr;
