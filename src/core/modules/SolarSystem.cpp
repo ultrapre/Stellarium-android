@@ -1516,3 +1516,12 @@ void SolarSystem::reloadPlanets()
 	// Restore translations
 	updateI18n();
 }
+
+
+QStringList SolarSystem::getAllMinorPlanetCommonEnglishNames() const
+{
+    QStringList res;
+//    for (const auto& p : systemMinorBodies)
+//        res.append(p->getCommonEnglishName());
+    return res;
+}

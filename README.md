@@ -76,7 +76,9 @@ TODO
 
 ## Change Log
 
-update
+### October 13, 2020
+
+update comets (GVB or MPC)
 
 ### October 10, 2020
 

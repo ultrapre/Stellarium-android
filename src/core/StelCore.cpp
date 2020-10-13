@@ -38,6 +38,9 @@
 #include "StelTranslator.hpp"
 #include "StelActionMgr.hpp"
 
+#include "../plugins/SolarSystemEditor/src/SolarSystemEditor.hpp"
+#include "../plugins/SolarSystemEditor/src/updatecomets.h"
+
 #include <qopengl.h>
 #include <QSettings>
 #include <QDebug>
@@ -94,6 +97,8 @@ StelCore::~StelCore()
 /*************************************************************************
  Load core data and initialize with default values
 *************************************************************************/
+
+
 void StelCore::init()
 {
 	QSettings* conf = StelApp::getInstance().getSettings();
@@ -204,7 +209,13 @@ void StelCore::init()
 	actionsMgr->addAction("actionGo_Home_Global", movementGroup, N_("Go to home"), this, "returnToHome()", "Ctrl+H");
 	actionsMgr->addAction("actionHorizontal_Flip", displayGroup, N_("Flip scene horizontally"), this, "flipHorz", "Ctrl+Shift+H", "", true);
 	actionsMgr->addAction("actionVertical_Flip", displayGroup, N_("Flip scene vertically"), this, "flipVert", "Ctrl+Shift+V", "", true);
-	
+
+
+    //silas
+    actionsMgr->addAction("action_updatecomets1", "Plugins", N_("Update Comets (GVB)"), this, "UpdateCometsCore1()");
+
+    actionsMgr->addAction("action_updatecomets2", "Plugins", N_("Update Comets (MPC)"), this, "UpdateCometsCore2()");
+
 }
 
 
@@ -1166,6 +1177,35 @@ void StelCore::increaseTimeSpeed()
 	else if (s>=0. && s<JD_SECOND) s=JD_SECOND;
 	else if (s>=-JD_SECOND && s<0.) s=0.;
 	setTimeRate(s);
+}
+
+
+//!
+class UpdateComets;
+
+//overwrite
+void StelCore::UpdateCometsCore1()
+{
+    qDebug()<<"update comets now!";
+    UpdateComets * uc = new UpdateComets();
+    uc->startDownload("http://astro.vanbuitenen.nl/cometelements?format=mpc&mag=obs");
+}
+
+//overwrite
+void StelCore::UpdateCometsCore2()
+{
+    qDebug()<<"update comets now!";
+    UpdateComets * uc = new UpdateComets();
+    uc->startDownload("https://www.minorplanetcenter.net/iau/Ephemerides/Comets/Soft00Cmt.txt");
+}
+
+
+//overwrite
+void StelCore::UpdateCometsCore3()
+{
+    qDebug()<<"update comets now!";
+    UpdateComets * uc = new UpdateComets();
+    uc->startDownload("https://www.minorplanetcenter.net/iau/MPCORB/CometEls.txt");
 }
 
 //! Decrease the time speed

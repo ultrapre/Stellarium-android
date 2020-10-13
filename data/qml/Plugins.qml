@@ -57,12 +57,22 @@ StelDialog {
 
             }
 
-			StelListItem {
-				checkbox: true
-                action: "actionDistribution_Quasars"
-                setting: "Quasars/distribution_enabled"
-                text: qsTr("Distribution")
-			}
+//			StelListItem {
+//				checkbox: true
+//                action: "actionDistribution_Quasars"
+//                setting: "Quasars/distribution_enabled"
+//                text: qsTr("Distribution")
+//			}
+
+
+            StelButton {
+                text: qsTr("Update Comets (GVB)")
+                action: "action_updatecomets1"
+            }
+            StelButton {
+                text: qsTr("Update Comets (MPC)")
+                action: "action_updatecomets2"
+            }
 		}
 	}
 }

@@ -54,6 +54,19 @@ public:
 	NebulaMgr();
 	virtual ~NebulaMgr();
 
+
+    QList<int> listmessier;
+
+    QList<int> listcaldwell;
+
+    bool judgetoInput(NebulaP e);
+
+    QMap<QString,QString> dsomap;
+    QList<QString> listObservations;
+    QList<QString> listObserving;
+    void checkdownObserve();
+    bool judgeObserved(NebulaP e);
+
 	///////////////////////////////////////////////////////////////////////////
 	// Methods defined in the StelModule class
 	//! Initialize the NebulaMgr object.
@@ -196,6 +209,44 @@ private:
 	bool loadNGC(const QString& fileName);
 	bool loadNGCOld(const QString& catNGC);
 	bool loadNGCNames(const QString& fileName);
+
+
+    //ini
+    int checked_show = 2 ;
+    float limit_mag_show = 99 ;
+    float limit_size_show = 0 ;
+    float limit_surfbr_show = 99 ;
+    bool flag_nomag_show = true ;
+    bool flag_nosize_show = true ;
+    bool flag_nosurfbr_show = true ;
+
+    bool Messier_show = true ;
+    bool Caldwell_show = true ;
+    bool NGC_show = true ;
+    bool IC_show = true ;
+    bool Other_show = true ;
+
+    bool Gxy_show = true ;
+    bool OCL_show = true ;
+    bool GCL_show = true ;
+    bool Nb_show = true ;
+    bool PN_show = true ;
+    bool NotFound_show = false ;
+    bool SNR_show = true ;
+    bool GxyP_show = true ;
+    bool Ass_show = true ;
+    bool StarCloud_show = true ;
+    bool Stars_show = true ;
+    bool CarbonStar_show = true ;
+    bool Dup_show = false ;
+    bool DarkNebula_show = true ;
+    bool Cluster_nebula_show = true ;
+    bool Gxy_Cluster_show = true ;
+    bool IFN_show = true ;
+    bool DoubleStar_show = true ;
+    bool VariableStar_show = true ;
+
+
 
 	QVector<NebulaP> nebArray;		// The nebulas list
 	QHash<unsigned int, NebulaP> ngcIndex;

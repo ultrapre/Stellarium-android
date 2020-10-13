@@ -62,12 +62,37 @@ public:
 	virtual SphericalRegionP getRegion() const {return pointRegion;}
 
 	// Methods specific to Nebula
-	void setLabelColor(const Vec3f& v) {labelColor = v;}
+    void setLabelColor(const Vec3f& v) {labelColor = v;}
 	void setCircleColor(const Vec3f& v) {circleColor = v;}
 
 	//! Get the printable nebula Type.
 	//! @return the nebula type code.
 	QString getTypeString() const;
+
+
+    //! Get the printable nebula bmag.
+    //! @return the nebula bmag code.
+    QString getbmagString() const;
+
+    //! Get the printable nebula bV.
+    //! @return the nebula bV code.
+    QString getbVString() const;
+
+    //! Get the printable nebula surfBright.
+    //! @return the nebula surfBright code.
+    QString getsurfBrightString() const;
+
+    //! Get the printable nebula posAngle.
+    //! @return the nebula posAngle code.
+    QString getposAngleString() const;
+
+    //! Get the printable nebula nickName.
+    //! @return the nebula nickName code.
+    QString getnickNameString() const;
+
+    //! Get the printable nebula dsp.
+    //! @return the nebula dsp code.
+    QString getdspString() const;
 
 private:
 	friend struct DrawNebulaFuncObject;
@@ -75,15 +100,73 @@ private:
 	//! @enum NebulaType Nebula types
 	enum NebulaType
 	{
-		NebGx=0,     //!< Galaxy
-		NebOc=1,     //!< Open star cluster
-		NebGc=2,     //!< Globular star cluster, usually in the Milky Way Galaxy
-		NebN=3,      //!< Bright emission or reflection nebula
-		NebPn=4,     //!< Planetary nebula
-		NebDn=5,     //!< ??? Dark Nebula?      Does not exist in current catalog
-		NebIg=6,     //!< ??? Irregular Galaxy? Does not exist in current catalog
-		NebCn=7,     //!< Cluster associated with nebulosity
-		NebUnknown=8 //!< Unknown type, catalog errors, "Unidentified Southern Objects" etc.
+        //NebGx=0,     //!< Galaxy
+        //NebOc=1,     //!< Open star cluster
+        //NebGc=2,     //!< Globular star cluster, usually in the Milky Way Galaxy
+        //NebN=3,      //!< Bright emission or reflection nebula
+        //NebPn=4,     //!< Planetary nebula
+        //NebDn=5,     //!< ??? Dark Nebula?      Does not exist in current catalog
+        //NebIg=6,     //!< ??? Irregular Galaxy? Does not exist in current catalog
+        //NebCn=7,     //!< Cluster associated with nebulosity
+        //NebUnknown=8 //!< Unknown type, catalog errors, "Unidentified Southern Objects" etc.
+
+        NebGX=0,
+        NebGXC=9,
+        NebNB=3,
+        NebSNR=10,
+        NebPN=4,
+        NebOC=1,
+        NebGC=2,
+        NebPrt=11,
+        NebDN=5,
+        NebClN=7,
+        NebAss=12,
+        NebSCu=13,
+        NebS=14,
+        NebCbS=15,
+        NebIFN=16,
+        NebDS=17,
+        NebVS=18,
+        NebNF=8,
+	NebDup=19,
+
+	NebGx			= 20,		//!< m Galaxy
+	NebAGx			= 21,  	//!< Active galaxy
+	NebRGx			= 22,		//!< m Radio galaxy
+	NebIGx			= 23,		//!< Interacting galaxy
+	NebQSO			= 24,		//!< Quasar
+	NebCl			= 25,		//!< Star cluster
+	NebOc			= 26,		//!< Open star cluster
+	NebGc			= 27,		//!< Globular star cluster, usually in the Milky Way Galaxy
+	NebSA			= 28,		//!< Stellar association
+	NebSC			= 29,		//!< Star cloud
+	NebN			= 30,	//!< A nebula
+	NebPn			= 31,	//!< Planetary nebula
+	NebDn			= 32,	//!< Dark Nebula
+	NebRn			= 33,	//!< Reflection nebula
+	NebBn			= 34,	//!< Bipolar nebula
+	NebEn			= 35,	//!< Emission nebula
+	NebCn			= 36,	//!< Cluster associated with nebulosity
+	NebHII			= 37,	//!< HII Region
+      //NebSNR			= 38,	//!< Supernova remnant
+	NebISM			= 39,	//!< Interstellar matter
+	NebEMO			= 40,	//!< Emission object
+	NebBLL			= 41,	//!< BL Lac object
+	NebBLA			= 42,	//!< Blazar
+	NebMolCld		= 43, 	//!< Molecular Cloud
+	NebYSO			= 44, 	//!< Young Stellar Object
+	NebPossQSO		= 45, 	//!< Possible Quasar
+	NebPossPN		= 46, 	//!< Possible Planetary Nebula
+	NebPPN			= 47, 	//!< Protoplanetary Nebula
+	NebStar			= 48, 	//!< Star
+	NebSymbioticStar	= 49, 	//!< Symbiotic Star
+	NebEmissionLineStar	= 50, 	//!< Emission-line Star
+	NebSNC			= 51, 	//!< Supernova Candidate
+	NebSNRC			= 52, 	//!< Supernova Remnant Candidate
+	NebGxCl			= 53,	//!< Cluster of Galaxies
+	NebPartOfGx		= 54,	//!< Part of a Galaxy
+	NebRegion		= 55,	//!< Region of the sky
+	NebUnknown		= 56		//!< m Unknown type, catalog errors, "Unidentified Southern Objects" etc.
 	};
 
 	//! Translate nebula name using the passed translator
@@ -99,9 +182,18 @@ private:
 	unsigned int NGC_nb;            // New General Catalog number
 	unsigned int IC_nb;             // Index Catalog number
 	unsigned int C_nb;              // Caldwell Catalog number
-	QString englishName;            // English name
+    QString englishName;            // English name (Science name)
 	QString nameI18;                // Nebula name
 	float mag;                      // Apparent magnitude
+
+    float bmag;                     // blue magnitude
+    float bV;                       // b-v magnitude
+    float surfBright;               // Surface Bright
+    float posAngle;                 // Position angle
+
+    QString nickName;               // nick name
+    QString dsp;                    // Mono Type + description
+
 	float angularSize;              // Angular size in degree
 	Vec3d XYZ;                      // Cartesian equatorial position
 	Vec3d XY;                       // Store temporary 2D position
@@ -109,13 +201,32 @@ private:
 
 	SphericalRegionP pointRegion;
 
-	static StelTextureSP texCircle;   // The symbolic circle texture
+	/*static StelTextureSP texCircle;   // The symbolic circle texture
 	static StelTextureSP texGalaxy;
 	static StelTextureSP texOpenCluster;
 	static StelTextureSP texGlobularCluster;
 	static StelTextureSP texPlanetaryNebula;
 	static StelTextureSP texDiffuseNebula;
-	static StelTextureSP texOpenClusterWithNebulosity;
+	static StelTextureSP texOpenClusterWithNebulosity;*/
+	//silas
+	static StelTextureSP texCircle;				// The symbolic circle texture
+	static StelTextureSP texCircleLarge;			// The symbolic circle texture for large objects
+	static StelTextureSP texRegion;				// The symbolic dashed shape texture
+	static StelTextureSP texGalaxy;				// Type 0
+	static StelTextureSP texGalaxyLarge;			// Type 0_large
+	static StelTextureSP texOpenCluster;			// Type 1
+	static StelTextureSP texOpenClusterLarge;		// Type 1_large
+	static StelTextureSP texOpenClusterXLarge;	// Type 1_extralarge
+	static StelTextureSP texGlobularCluster;		// Type 2
+	static StelTextureSP texGlobularClusterLarge;	// Type 2_large
+	static StelTextureSP texPlanetaryNebula;		// Type 3
+	static StelTextureSP texDiffuseNebula;		// Type 4
+	static StelTextureSP texDiffuseNebulaLarge;	// Type 4_large
+	static StelTextureSP texDiffuseNebulaXLarge;	// Type 4_extralarge
+	static StelTextureSP texDarkNebula;			// Type 5
+	static StelTextureSP texDarkNebulaLarge;		// Type 5_large
+	static StelTextureSP texOpenClusterWithNebulosity;	// Type 6
+	static StelTextureSP texOpenClusterWithNebulosityLarge;	// Type 6_large
 	static float hintsBrightness;
 
 	static Vec3f labelColor, circleColor;

@@ -125,6 +125,9 @@ public:
 	virtual QStringList listAllObjects(bool inEnglish) const;
 	virtual QString getName() const { return "Solar System"; }
 
+    //! Get the list of all the minor planet common english names
+    QStringList getAllMinorPlanetCommonEnglishNames() const;
+
 public slots:
 	///////////////////////////////////////////////////////////////////////////
 	// Method callable from script and GUI

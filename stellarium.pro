@@ -79,6 +79,8 @@ ios {
 }
 
 HEADERS += \
+    plugins/SolarSystemEditor/src/SolarSystemEditor.hpp \
+    plugins/SolarSystemEditor/src/updatecomets.h \
 	src/config.h \
     src/core/StelToast.hpp \
     src/core/StelToastGrid.hpp \
@@ -91,6 +93,8 @@ HEADERS += \
 
 
 SOURCES += \
+    plugins/SolarSystemEditor/src/SolarSystemEditor.cpp \
+    plugins/SolarSystemEditor/src/updatecomets.cpp \
 	src/CLIProcessor.cpp \
     src/core/StelToast.cpp \
     src/core/StelToastGrid.cpp \
