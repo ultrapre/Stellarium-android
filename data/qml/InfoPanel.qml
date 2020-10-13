@@ -126,7 +126,6 @@ Item {
 			color: "white"
 			font.pixelSize: rootStyle.fontNormalSize
 			font.weight: Font.Bold
-            textFormat: Text.RichText
 			anchors {
 				left: parent.left
 				top: parent.top
@@ -148,7 +147,6 @@ Item {
 			font.pixelSize: rootStyle.fontSmallSize
 			font.weight: Font.Light
 			color: "white"
-            textFormat: Text.RichText
 		}
 		Text {
 			id: selectedObjectInfo
@@ -162,8 +160,6 @@ Item {
 			font.pixelSize: rootStyle.fontSmallSize
 			font.weight: Font.Light
 			color: "white"
-            textFormat: Text.RichText
-            renderType: Text.NativeRendering
 			
 			Rectangle {
 				color: "white"

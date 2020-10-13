@@ -35,8 +35,8 @@
 
 StelObjectMgr::StelObjectMgr() : searchRadiusPixel(25.f), distanceWeight(1.f)
 {
-	setObjectName("StelObjectMgr");
-	objectPointerVisibility = true;
+    setObjectName("StelObjectMgr");
+    objectPointerVisibility = true;
 }
 
 StelObjectMgr::~StelObjectMgr()
@@ -48,33 +48,33 @@ StelObjectMgr::~StelObjectMgr()
 *************************************************************************/
 void StelObjectMgr::registerStelObjectMgr(StelObjectModule* mgr)
 {
-	objectsModule.push_back(mgr);
+    objectsModule.push_back(mgr);
 }
 
 
 StelObjectP StelObjectMgr::searchByNameI18n(const QString &name) const
 {
-	StelObjectP rval;
-	foreach (const StelObjectModule* m, objectsModule)
-	{
-		rval = m->searchByNameI18n(name);
-		if (rval)
-			return rval;
-	}
-	return rval;
+    StelObjectP rval;
+    foreach (const StelObjectModule* m, objectsModule)
+    {
+        rval = m->searchByNameI18n(name);
+        if (rval)
+            return rval;
+    }
+    return rval;
 }
 
 //! Find any kind of object by its standard program name
 StelObjectP StelObjectMgr::searchByName(const QString &name) const
 {
-	StelObjectP rval;
-	foreach (const StelObjectModule* m, objectsModule)
-	{
-		rval = m->searchByName(name);
-		if (rval)
-			return rval;
-	}
-	return rval;
+    StelObjectP rval;
+    foreach (const StelObjectModule* m, objectsModule)
+    {
+        rval = m->searchByName(name);
+        if (rval)
+            return rval;
+    }
+    return rval;
 }
 
 
@@ -83,87 +83,87 @@ StelObjectP StelObjectMgr::searchByName(const QString &name) const
 //! @return true if an object was found with the passed name
 bool StelObjectMgr::findAndSelectI18n(const QString &nameI18n, StelModule::StelModuleSelectAction action)
 {
-	// Then look for another object
-	StelObjectP obj = searchByNameI18n(nameI18n);
-	if (!obj)
-		return false;
-	else
-		return setSelectedObject(obj, action);
+    // Then look for another object
+    StelObjectP obj = searchByNameI18n(nameI18n);
+    if (!obj)
+        return false;
+    else
+        return setSelectedObject(obj, action);
 }
 
 //! Find and select an object from its standard program name
 bool StelObjectMgr::findAndSelect(const QString &name, StelModule::StelModuleSelectAction action)
 {
-	// Then look for another object
-	StelObjectP obj = searchByName(name);
-	if (!obj)
-		return false;
-	else
-		return setSelectedObject(obj, action);
+    // Then look for another object
+    StelObjectP obj = searchByName(name);
+    if (!obj)
+        return false;
+    else
+        return setSelectedObject(obj, action);
 }
 
 
 //! Find and select an object near given equatorial position
 bool StelObjectMgr::findAndSelect(const StelCore* core, const Vec3d& pos, StelModule::StelModuleSelectAction action)
 {
-	StelObjectP tempselect = cleverFind(core, pos);
-	return setSelectedObject(tempselect, action);
+    StelObjectP tempselect = cleverFind(core, pos);
+    return setSelectedObject(tempselect, action);
 }
 
 //! Find and select an object near given screen position
 bool StelObjectMgr::findAndSelect(const StelCore* core, int x, int y, StelModule::StelModuleSelectAction action)
 {
-	StelObjectP tempselect = cleverFind(core, x, y);
-	return setSelectedObject(tempselect, action);
+    StelObjectP tempselect = cleverFind(core, x, y);
+    return setSelectedObject(tempselect, action);
 }
 
 // Find an object in a "clever" way, v in J2000 frame
 StelObjectP StelObjectMgr::cleverFind(const StelCore* core, const Vec3d& v) const
 {
-	StelObjectP sobj;
-	QList<StelObjectP> candidates;
+    StelObjectP sobj;
+    QList<StelObjectP> candidates;
 
-	const StelProjectorP prj = core->getProjection(StelCore::FrameJ2000);
+    const StelProjectorP prj = core->getProjection(StelCore::FrameJ2000);
 
-	// Field of view for a searchRadiusPixel pixel diameter circle on screen
-	float fov_around = core->getMovementMgr()->getCurrentFov()/qMin(prj->getViewportWidth(), prj->getViewportHeight()) * prj->getDevicePixelsPerPixel() * searchRadiusPixel;
+    // Field of view for a searchRadiusPixel pixel diameter circle on screen
+    float fov_around = core->getMovementMgr()->getCurrentFov()/qMin(prj->getViewportWidth(), prj->getViewportHeight()) * prj->getDevicePixelsPerPixel() * searchRadiusPixel;
 
-	// Collect the objects inside the range
-	foreach (const StelObjectModule* m, objectsModule)
-		candidates += m->searchAround(v, fov_around, core);
+    // Collect the objects inside the range
+    foreach (const StelObjectModule* m, objectsModule)
+        candidates += m->searchAround(v, fov_around, core);
 
-	float limitMag = core->getSkyDrawer()->getLimitMagnitude()-2.f;
-	QList<StelObjectP> tmp;
-	foreach (const StelObjectP& obj, candidates)
-	{
-		if (obj->getSelectPriority(core)<=limitMag)
-			tmp.append(obj);
-	}
-	
-	candidates = tmp;
-	
-	// Now select the object minimizing the function y = distance(in pixel) + magnitude
-	Vec3d winpos;
-	prj->project(v, winpos);
-	float xpos = winpos[0];
-	float ypos = winpos[1];
+    float limitMag = core->getSkyDrawer()->getLimitMagnitude()-2.f;
+    QList<StelObjectP> tmp;
+    foreach (const StelObjectP& obj, candidates)
+    {
+        if (obj->getSelectPriority(core)<=limitMag)
+            tmp.append(obj);
+    }
 
-	float best_object_value;
-	best_object_value = 100000.f;
-	foreach (const StelObjectP& obj, candidates)
-	{
-		prj->project(obj->getJ2000EquatorialPos(core), winpos);
-		float distance = sqrt((xpos-winpos[0])*(xpos-winpos[0]) + (ypos-winpos[1])*(ypos-winpos[1]))*distanceWeight;
-		float priority =  obj->getSelectPriority(core);
-		// qDebug() << (*iter).getShortInfoString(core) << ": " << priority << " " << distance;
-		if (distance + priority < best_object_value)
-		{
-			best_object_value = distance + priority;
-			sobj = obj;
-		}
-	}
+    candidates = tmp;
 
-	return sobj;
+    // Now select the object minimizing the function y = distance(in pixel) + magnitude
+    Vec3d winpos;
+    prj->project(v, winpos);
+    float xpos = winpos[0];
+    float ypos = winpos[1];
+
+    float best_object_value;
+    best_object_value = 100000.f;
+    foreach (const StelObjectP& obj, candidates)
+    {
+        prj->project(obj->getJ2000EquatorialPos(core), winpos);
+        float distance = sqrt((xpos-winpos[0])*(xpos-winpos[0]) + (ypos-winpos[1])*(ypos-winpos[1]))*distanceWeight;
+        float priority =  obj->getSelectPriority(core);
+        // qDebug() << (*iter).getShortInfoString(core) << ": " << priority << " " << distance;
+        if (distance + priority < best_object_value)
+        {
+            best_object_value = distance + priority;
+            sobj = obj;
+        }
+    }
+
+    return sobj;
 }
 
 /*************************************************************************
@@ -171,12 +171,12 @@ StelObjectP StelObjectMgr::cleverFind(const StelCore* core, const Vec3d& v) cons
 *************************************************************************/
 StelObjectP StelObjectMgr::cleverFind(const StelCore* core, int x, int y) const
 {
-	Vec3d v;
-	if (core->getProjection(StelCore::FrameJ2000)->unProject(x,y,v))
-	{
-		return cleverFind(core, v);
-	}
-	return StelObjectP();
+    Vec3d v;
+    if (core->getProjection(StelCore::FrameJ2000)->unProject(x,y,v))
+    {
+        return cleverFind(core, v);
+    }
+    return StelObjectP();
 }
 
 /*************************************************************************
@@ -184,8 +184,8 @@ StelObjectP StelObjectMgr::cleverFind(const StelCore* core, int x, int y) const
 *************************************************************************/
 void StelObjectMgr::unSelect(void)
 {
-	lastSelectedObjects.clear();
-	emit(selectedObjectChanged(StelModule::RemoveFromSelection));
+    lastSelectedObjects.clear();
+    emit(selectedObjectChanged(StelModule::RemoveFromSelection));
 }
 
 /*************************************************************************
@@ -193,16 +193,16 @@ void StelObjectMgr::unSelect(void)
 *************************************************************************/
 bool StelObjectMgr::setSelectedObject(const StelObjectP obj, StelModule::StelModuleSelectAction action)
 {
-	if (!obj)
-	{
-		unSelect();
-		return false;
-	}
+    if (!obj)
+    {
+        unSelect();
+        return false;
+    }
 
-	// An object has been found
-	QList<StelObjectP> objs;
-	objs.push_back(obj);
-	return setSelectedObject(objs, action);
+    // An object has been found
+    QList<StelObjectP> objs;
+    objs.push_back(obj);
+    return setSelectedObject(objs, action);
 }
 
 /*************************************************************************
@@ -210,12 +210,12 @@ bool StelObjectMgr::setSelectedObject(const StelObjectP obj, StelModule::StelMod
 *************************************************************************/
 bool StelObjectMgr::setSelectedObject(const QList<StelObjectP>& objs, StelModule::StelModuleSelectAction action)
 {
-	if (action==StelModule::AddToSelection)
-		lastSelectedObjects.append(objs);
-	else
-		lastSelectedObjects = objs;
-	emit(selectedObjectChanged(action));
-	return true;
+    if (action==StelModule::AddToSelection)
+        lastSelectedObjects.append(objs);
+    else
+        lastSelectedObjects = objs;
+    emit(selectedObjectChanged(action));
+    return true;
 }
 
 /*************************************************************************
@@ -224,13 +224,13 @@ bool StelObjectMgr::setSelectedObject(const QList<StelObjectP>& objs, StelModule
 *************************************************************************/
 QList<StelObjectP> StelObjectMgr::getSelectedObject(const QString& type)
 {
-	QList<StelObjectP> result;
-	for (QList<StelObjectP>::iterator iter=lastSelectedObjects.begin();iter!=lastSelectedObjects.end();++iter)
-	{
-		if ((*iter)->getType()==type)
-			result.push_back(*iter);
-	}
-	return result;
+    QList<StelObjectP> result;
+    for (QList<StelObjectP>::iterator iter=lastSelectedObjects.begin();iter!=lastSelectedObjects.end();++iter)
+    {
+        if ((*iter)->getType()==type)
+            result.push_back(*iter);
+    }
+    return result;
 }
 
 
@@ -240,19 +240,19 @@ QList<StelObjectP> StelObjectMgr::getSelectedObject(const QString& type)
 *************************************************************************/
 QStringList StelObjectMgr::listMatchingObjectsI18n(const QString& objPrefix, unsigned int maxNbItem, bool useStartOfWords) const
 {
-	QStringList result;
+    QStringList result;
 
-	// For all StelObjectmodules..
-	foreach (const StelObjectModule* m, objectsModule)
-	{
-		// Get matching object for this module
-		QStringList matchingObj = m->listMatchingObjectsI18n(objPrefix, maxNbItem, useStartOfWords);
-		result += matchingObj;
-		maxNbItem-=matchingObj.size();
-	}
+    // For all StelObjectmodules..
+    foreach (const StelObjectModule* m, objectsModule)
+    {
+        // Get matching object for this module
+        QStringList matchingObj = m->listMatchingObjectsI18n(objPrefix, maxNbItem, useStartOfWords);
+        result += matchingObj;
+        maxNbItem-=matchingObj.size();
+    }
 
-	result.sort();
-	return result;
+    result.sort();
+    return result;
 }
 
 /*************************************************************************
@@ -261,48 +261,48 @@ QStringList StelObjectMgr::listMatchingObjectsI18n(const QString& objPrefix, uns
 *************************************************************************/
 QStringList StelObjectMgr::listMatchingObjects(const QString& objPrefix, unsigned int maxNbItem, bool useStartOfWords) const
 {
-	QStringList result;
+    QStringList result;
 
-	// For all StelObjectmodules..
-	foreach (const StelObjectModule* m, objectsModule)
-	{
-		// Get matching object for this module
-		QStringList matchingObj = m->listMatchingObjects(objPrefix, maxNbItem, useStartOfWords);
-		result += matchingObj;
-		maxNbItem-=matchingObj.size();
-	}
+    // For all StelObjectmodules..
+    foreach (const StelObjectModule* m, objectsModule)
+    {
+        // Get matching object for this module
+        QStringList matchingObj = m->listMatchingObjects(objPrefix, maxNbItem, useStartOfWords);
+        result += matchingObj;
+        maxNbItem-=matchingObj.size();
+    }
 
-	result.sort();
+    result.sort();
     // qDebug() << "Results" << result;
-	return result;
+    return result;
 }
 
 QStringList StelObjectMgr::listAllModuleObjects(const QString &moduleId, bool inEnglish) const
 {
-	// search for module
-	StelObjectModule* module = NULL;
-	foreach(StelObjectModule* m, objectsModule)
-	{
-		if (m->objectName() == moduleId)
-		{
-			module = m;
-			break;
-		}
-	}
-	if (module == NULL)
-	{
-		qWarning() << "Can't find module with id " << moduleId;
-		return QStringList();
-	}
-	return module->listAllObjects(inEnglish);
+    // search for module
+    StelObjectModule* module = NULL;
+    foreach(StelObjectModule* m, objectsModule)
+    {
+        if (m->objectName() == moduleId)
+        {
+            module = m;
+            break;
+        }
+    }
+    if (module == NULL)
+    {
+        qWarning() << "Can't find module with id " << moduleId;
+        return QStringList();
+    }
+    return module->listAllObjects(inEnglish);
 }
 
 QMap<QString, QString> StelObjectMgr::objectModulesMap() const
 {
-	QMap<QString, QString> result;
-	foreach(const StelObjectModule* m, objectsModule)
-	{
-		result[m->objectName()] = m->getName();
-	}
-	return result;
+    QMap<QString, QString> result;
+    foreach(const StelObjectModule* m, objectsModule)
+    {
+        result[m->objectName()] = m->getName();
+    }
+    return result;
 }

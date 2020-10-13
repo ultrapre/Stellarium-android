@@ -1191,5 +1191,4 @@ void Planet::update(int deltaTime)
 	hintFader.update(deltaTime);
 	labelsFader.update(deltaTime);
 	orbitFader.update(deltaTime);
-    setFlagOrbits(false);
 }

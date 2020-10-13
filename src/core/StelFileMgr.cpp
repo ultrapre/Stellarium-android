@@ -171,6 +171,25 @@ QString StelFileMgr::findFile(const QString& path, Flags flags)
 	
 	if (path.startsWith("assets:/"))
 		return path;
+
+    //silas
+    if (path.endsWith("ngc2000.dat")){
+        foreach (const QString& i, fileLocations)
+        {
+            const QFileInfo finfo(i + "/" + "ngc2000.dat");
+            if (fileFlagsCheck(finfo, flags))
+                return i + "/" + "ngc2000.dat";
+        }
+    }
+    if (path.endsWith("ngc2000names.dat")){
+        foreach (const QString& i, fileLocations)
+        {
+            const QFileInfo finfo(i + "/" + "ngc2000names.dat");
+            if (fileFlagsCheck(finfo, flags))
+                return i + "/" + "ngc2000names.dat";
+        }
+    }
+
 	
 	const QFileInfo fileInfo(path);
 	

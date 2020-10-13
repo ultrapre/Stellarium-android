@@ -19,8 +19,6 @@
 
 import QtQuick 2.2
 import Stellarium 1.0
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.2
 
 Item {
 	id: root
@@ -271,7 +269,7 @@ Item {
 	// Time.
 	Item {
 		id: timeBarFrame
-        property bool fullWithDate: root.mode == "TIME"
+        property bool fullWithDate: stellarium.dragTimeMode
 		height: openQuickBarButton.height
         width: hourText.width+rootStyle.margin
 		anchors {
@@ -289,7 +287,7 @@ Item {
             anchors.bottom:  timeBarFrame.fullWithDate ? dateText.top : parent.bottom
             anchors.bottomMargin: 5*rootStyle.scale
 			color: "white"
-            font.pixelSize: rootStyle.fontNormalSize //rootStyle.fontLargeSize
+            font.pixelSize: rootStyle.fontLargeSize
             font.bold: true
 			text: {
 				var lines = stellarium.printableTime.split(" ")
@@ -391,16 +389,16 @@ Item {
 	}
 
 	// Show FPS
-
+	/*
 	Text {
 		anchors {
 			top: parent.top
 			right: parent.right
 		}
 		color: "white"
-        text: "FPS:" + stellarium.fps
+		text: "fps:" + stellarium.fps
 	}
-
+	*/
 
 	Item {
 		id: rootStyle
@@ -414,10 +412,8 @@ Item {
 		// A snapped menu width to avoid having menu taking almost the screen width but not quite (which looks bad)
 		property int niceMenuWidth: root.width-(400.*stellarium.guiScaleFactor)<80*stellarium.guiScaleFactor ? root.width : 400.*stellarium.guiScaleFactor
 		property int maxMenuHeight: root.height - 50 * stellarium.guiScaleFactor
-        property color color0: "#000000"
-        property color color1: "#000000"
-        // property color color0: "#01162d"
-        // property color color1: "#012d1b"
+		property color color0: "#01162d"
+		property color color1: "#012d1b"
 	}
 
 	// Create a color based on the style colors

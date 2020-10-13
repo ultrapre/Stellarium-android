@@ -4785,77 +4785,13 @@
 39652 c 14 20A    USA 250
 39653 c 14 20B    USA 250 Rk
 39678   14 21A    Egyptsat 2                       6.2
-39679   14 21B    SL-4 R/B        3.4               19
+39679   14 21B    Egyptsat 2 Rk                     19
 39680   14 22A    DRAGON CRS-3                      27
 39681   14 22B    SporeSat                         .08
 39682   14 22C    TSat                             .10
 39683   14 22D    Allstar/Theia                    .10
 39731   14 24A    KazeoSat 1                       3.9
 39732   14 25A    Cosmos 2495                       14
-44235             OBJECT A        5.0
-44236             OBJECT B        5.0
-44237             OBJECT C        5.0
-44238             OBJECT D        5.0
-44239             OBJECT E        5.0
-44240             OBJECT F        5.0
-44241             OBJECT G        5.0
-44242             OBJECT H        5.0
-44243             OBJECT J        5.0
-44244             OBJECT K        5.0
-44245             OBJECT L        5.0
-44246             OBJECT M        5.0
-44247             OBJECT N        5.0
-44248             OBJECT P        5.0
-44249             OBJECT Q        5.0
-44250             OBJECT R        5.0
-44251             OBJECT S        5.0
-44252             OBJECT T        5.0
-44253             OBJECT U        5.0
-44254             OBJECT V        5.0
-44255             OBJECT W        5.0
-44256             OBJECT X        5.0
-44257             OBJECT Y        5.0
-44258             OBJECT Z        5.0
-44259             OBJECT AA       5.0
-44260             OBJECT AB       5.0
-44261             OBJECT AC       5.0
-44262             OBJECT AD       5.0
-44263             OBJECT AE       5.0
-44264             OBJECT AF       5.0
-44265             OBJECT AG       5.0
-44266             OBJECT AH       5.0
-44267             OBJECT AJ       5.0
-44268             OBJECT AK       5.0
-44269             OBJECT AL       5.0
-44270             OBJECT AM       5.0
-44271             OBJECT AN       5.0
-44272             OBJECT AP       5.0
-44273             OBJECT AQ       5.0
-44274             OBJECT AR       5.0
-44275             OBJECT AS       5.0
-44276             OBJECT AT       5.0
-44277             OBJECT AU       5.0
-44278             OBJECT AV       5.0
-44279             OBJECT AW       5.0
-44280             OBJECT AX       5.0
-44281             OBJECT AY       5.0
-44282             OBJECT AZ       5.0
-44283             OBJECT BA       5.0
-44284             OBJECT BB       5.0
-44285             OBJECT BC       5.0
-44286             OBJECT BD       5.0
-44287             OBJECT BE       5.0
-44288             OBJECT BF       5.0
-44289             OBJECT BG       5.0
-44290             OBJECT BH       5.0
-44291             OBJECT BJ       5.0
-44292             OBJECT BK       5.0
-44293             OBJECT BL       5.0
-44294             OBJECT BM       5.0
-44295             FALCON 9 DEB    5.0
-44296             FALCON 9 DEB    5.0
-44297             FALCON 9 DEB    5.0
-44298             FALCON 9 DEB    5.0
 90004 h 99 750A   Unknown 990907  2.0
 90006 h 00 596A   Unknown 000405  4.0
 90007 g 00 653A   Unknown 000601  3.5

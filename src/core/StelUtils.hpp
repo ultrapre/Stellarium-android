@@ -72,20 +72,6 @@ namespace StelUtils
 	//! @param s second component
 	void radToDms(double rad, bool& sign, unsigned int& d, unsigned int& m, double& s);
 
-    //! Convert an angle in radian to decimal degree.
-    //! @param rad input angle in radian
-    //! @param sign true if positive, false otherwise
-    //! @param deg decimal degree
-    void radToDecDeg(double rad, bool& sign, double& deg);
-
-    //! Convert an angle in radian to a decimal degree string.
-    //! @param angle input angle in radian
-    //! @param precision
-    //! @param useD Define if letter "d" must be used instead of deg sign
-    //! @param useC Define if function should use 0-360 degrees
-    QString radToDecDegStr(const double angle, const int precision = 4, const bool useD=false, const bool useC=false);
-
-
 	//! Convert an angle in radian to a hms formatted string.
 	//! If the second, minute part is == 0, it is not output
 	//! @param angle input angle in radian
@@ -123,8 +109,6 @@ namespace StelUtils
 	//! @param v The vector
 	//! @return The string in HTML color notation "#rrggbb".
 	QString vec3fToHtmlColor(const Vec3f& v);
-
-    QString vec3fToStr(const Vec3f &v);
 
 	//! Converts a color in HTML notation to a Vec3f.
 	//! @param c The HTML spec color string
@@ -584,12 +568,6 @@ namespace StelUtils
 	}
 	//! Uncompress gzip or zlib compressed data.
 	QByteArray uncompress(const QByteArray& data);
-
-    //! Return the user agent name, i.e. "Stellarium/0.15.0 (Linux)"
-    QString getUserAgentString();
-
-    //! Return the name and the version of operating system, i.e. "Mac OS X 10.7"
-    QString getOperatingSystemInfo();
 }
 
 #endif // _STELUTILS_HPP_

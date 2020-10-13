@@ -18,8 +18,6 @@
  */
 
 import QtQuick 2.2
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.2
 
 StelDialog {
 	title: qsTr("Date and Time")
@@ -36,9 +34,9 @@ StelDialog {
 			setting: "gui/auto_goto_night"
 		}
 
-        StelButton {
+		StelButton {
 			text: qsTr("Set time to now")
-            action: "actionReturn_To_Current_Time"
+			action: "actionReturn_To_Current_Time"
 			anchors.margins: rootStyle.margin
 		}
 

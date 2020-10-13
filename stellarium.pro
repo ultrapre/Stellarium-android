@@ -1,7 +1,6 @@
-
 TARGET = stellarium
 VERSION = 0.12.3
-MOBILE_VERSION = 1.29.6_m
+MOBILE_VERSION = 1.29.6_m_1
 INCLUDEPATH += \
 	. src/ src/core src/core/modules src/core/external \
 	src/core/external/glues_stel/source src/core/external/kfilter \
@@ -9,9 +8,8 @@ INCLUDEPATH += \
 	src/core/external/glues_stel/source src/core/external/qtcompress \
         src/core/planetsephems src/scripting src/core/external/GeographicLib/include
 
-
 TEMPLATE = app
-QT += network gui sensors qml quick positioning concurrent
+QT += network gui sensors qml quick positioning
 android {
 	QT += androidextras
 }
@@ -146,7 +144,6 @@ HEADERS += \
 	src/core/StelObjectModule.hpp \
 	src/core/StelObjectType.hpp \
 	src/core/StelObserver.hpp \
-        src/core/StelOpenGL.hpp \
 	src/core/StelPainter.hpp \
 	src/core/StelPluginInterface.hpp \
 	src/core/StelProjectorClasses.hpp \
@@ -177,26 +174,19 @@ HEADERS += \
 	src/core/modules/Comet.hpp \
 	src/core/modules/Constellation.hpp \
 	src/core/modules/ConstellationMgr.hpp \
-        src/core/modules/Exoplanet.hpp \
-        src/core/modules/Exoplanets.hpp \
 	src/core/modules/GPSMgr.hpp \
 	src/core/modules/GridLinesMgr.hpp \
 	src/core/modules/LabelMgr.hpp \
 	src/core/modules/Landscape.hpp \
 	src/core/modules/LandscapeMgr.hpp \
 	src/core/modules/Meteor.hpp \
-	src/core/modules/MeteorObj.hpp \
-	src/core/modules/MeteorShower.hpp \
-	src/core/modules/MeteorShowers.hpp \
-	src/core/modules/MeteorShowersMgr.hpp \
+	src/core/modules/MeteorMgr.hpp \
 	src/core/modules/MilkyWay.hpp \
 	src/core/modules/MinorPlanet.hpp \
 	src/core/modules/Nebula.hpp \
 	src/core/modules/NebulaMgr.hpp \
 	src/core/modules/Orbit.hpp \
 	src/core/modules/Planet.hpp \
-        src/core/modules/Quasar.hpp \
-        src/core/modules/Quasars.hpp \
 	src/core/modules/Satellites.hpp \
 	src/core/modules/Satellite.hpp \
 	src/core/modules/Skybright.hpp \
@@ -204,8 +194,6 @@ HEADERS += \
 	src/core/modules/SensorsMgr.hpp \
 	src/core/modules/SolarSystem.hpp \
 	src/core/modules/Solve.hpp \
-	src/core/modules/SporadicMeteor.hpp \
-	src/core/modules/SporadicMeteorMgr.hpp \
 	src/core/modules/Star.hpp \
 	src/core/modules/StarMgr.hpp \
 	src/core/modules/StarWrapper.hpp \
@@ -316,7 +304,6 @@ SOURCES += \
 	src/core/StelObjectMgr.cpp \
 	src/core/StelObjectModule.cpp \
 	src/core/StelObserver.cpp \
-        src/core/StelOpenGL.cpp \
 	src/core/StelPainter.cpp \
 	src/core/StelProjectorClasses.cpp \
 	src/core/StelProjector.cpp \
@@ -342,34 +329,25 @@ SOURCES += \
 	src/core/modules/Comet.cpp \
 	src/core/modules/Constellation.cpp \
 	src/core/modules/ConstellationMgr.cpp \
-        src/core/modules/Exoplanet.cpp \
-        src/core/modules/Exoplanets.cpp \
 	src/core/modules/GPSMgr.cpp \
 	src/core/modules/GridLinesMgr.cpp \
 	src/core/modules/LabelMgr.cpp \
 	src/core/modules/Landscape.cpp \
 	src/core/modules/LandscapeMgr.cpp \
 	src/core/modules/Meteor.cpp \
-	src/core/modules/MeteorObj.cpp \
-	src/core/modules/MeteorShower.cpp \
-	src/core/modules/MeteorShowers.cpp \
-	src/core/modules/MeteorShowersMgr.cpp \	
+	src/core/modules/MeteorMgr.cpp \
 	src/core/modules/MilkyWay.cpp \
 	src/core/modules/MinorPlanet.cpp \
 	src/core/modules/Nebula.cpp \
 	src/core/modules/NebulaMgr.cpp \
 	src/core/modules/Orbit.cpp \
 	src/core/modules/Planet.cpp \
-        src/core/modules/Quasar.cpp \
-        src/core/modules/Quasars.cpp \
 	src/core/modules/SensorsMgr.cpp \
 	src/core/modules/Satellite.cpp \
 	src/core/modules/Satellites.cpp \
 	src/core/modules/Skybright.cpp \
 	src/core/modules/Skylight.cpp \
 	src/core/modules/SolarSystem.cpp \
-	src/core/modules/SporadicMeteor.cpp \
-	src/core/modules/SporadicMeteorMgr.cpp \
 	src/core/modules/Star.cpp \
 	src/core/modules/StarMgr.cpp \
 	src/core/modules/StarWrapper.cpp \
@@ -471,11 +449,6 @@ OTHER_FILES += \
 	data/qml/AnglePicker.qml \
 	data/qml/ValuePicker.qml \
 
-contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
-    ANDROID_EXTRA_LIBS = \
-        $$PWD/openssl/armeabi-v7a/libcrypto.so \
-        $$PWD/openssl/armeabi-v7a/libssl.so
-}
 
 DISTFILES += \
     android/AndroidManifest.xml \

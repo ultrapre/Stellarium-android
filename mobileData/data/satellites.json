@@ -3936,7 +3936,7 @@
 			}],
 			"description": "The International Space Station",
 			"groups": ["scientific", "amateur", "visual"],
-            "hintColor": [1, 1, 1],
+			"hintColor": [1, 1, 1],
 			"lastUpdated": "2013-04-16T18:04:28",
 			"name": "ISS (ZARYA)",
 			"orbitVisible": true,

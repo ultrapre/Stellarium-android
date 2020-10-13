@@ -19,7 +19,6 @@
 
 import QtQuick 2.2
 
-
 StelDialog {
 	id: root
 	title: qsTr("About")
@@ -30,14 +29,12 @@ StelDialog {
 		id: column
 		spacing: rootStyle.margin
 		width: parent.width
-        // height: childrenRect.height
-        height: parent.height
-
+		height: childrenRect.height
 
 		Text {
 			color: "white"
-            font.pixelSize: rootStyle.fontSmallSize
-            text: "<h2>Stellarium Mobile v" + stellarium.version + "<br></h2>Copyrights (C) 2014<br>Fabien &amp; Guillaume Chéreau<br>Modded by Xinlun Cheng<br>Revision by raymas<br>GNU GPL"
+			font.pixelSize: rootStyle.fontSmallSize
+            text: "<h2>Stellarium Mobile v" + stellarium.version + "<br></h2>Copyrights (C) 2014<br>Fabien &amp; Guillaume Chéreau<br>Modded by Xinlun Cheng<br>GNU GPL"
 			width: parent.width
 			horizontalAlignment: Text.AlignHCenter
 			wrapMode: Text.Wrap

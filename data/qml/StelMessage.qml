@@ -27,18 +27,17 @@ Text {
 		verticalCenter: parent.verticalCenter
 		margins: 10
 	}
-
-    horizontalAlignment: Text.AlignHCenter
-    wrapMode: Text.Wrap
-    color: "white"
-    font.pixelSize: rootStyle.fontLargeSize
-    opacity: 0
+	horizontalAlignment: Text.AlignHCenter
+	wrapMode: Text.Wrap
+	color: "white"
+	font.pixelSize: rootStyle.fontLargeSize
+	opacity: 0
 
 	property int duration
 	SequentialAnimation {
 		id: showAnimation
 		NumberAnimation {
-            target: root
+			target: root
 			properties: "opacity"
 			to: 1
 		}
@@ -55,7 +54,7 @@ Text {
 
 	function show(msg, duration) {
 		root.duration = duration ? duration : 1000
-        root.text = msg
+		root.text = msg
 		hideAnimation.stop()
 		showAnimation.start()
 	}

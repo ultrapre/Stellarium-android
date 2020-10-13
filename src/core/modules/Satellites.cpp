@@ -110,7 +110,8 @@ void Satellites::init()
 		qsMagFilePath = dataDir.absoluteFilePath("qs.mag");
 
 		// Load and find resources used in the plugin
-        texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur4.png");
+		texPointer = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/pointeur5.png");
+		// Satellite::hintTexture = StelApp::getInstance().getTextureManager().createTexture(":/satellites/hint.png");
 		Satellite::hintTexture = StelApp::getInstance().getTextureManager().createTexture(StelFileMgr::getInstallationDir()+"/textures/satellite_hint.png");
 		Q_ASSERT(Satellite::hintTexture);
 
@@ -353,16 +354,19 @@ QStringList Satellites::listMatchingObjectsI18n(const QString& objPrefix, int ma
 			if (find)
 			{
 				result << sat->getNameI18n().toUpper();
+                return result;
 			}
 			else if (!numberPrefix.isEmpty() && sat->getCatalogNumberString().left(numberPrefix.length()) == numberPrefix)
 			{
 				result << QString("NORAD %1").arg(sat->getCatalogNumberString());
+                return result;
 			}
 		}
 	}
-
-	result.sort();
-	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
+    //silas
+    //result.sort();
+    if (result.size()>maxNbItem)
+        result.erase(result.begin()+maxNbItem, result.end());
 
 	return result;
 }
@@ -409,15 +413,17 @@ QStringList Satellites::listMatchingObjects(const QString& objPrefix, int maxNbI
 			if (find)
 			{
 				result << sat->getEnglishName().toUpper();
+                return result;
 			}
 			else if (find==false && !numberPrefix.isEmpty() && sat->getCatalogNumberString().left(numberPrefix.length()) == numberPrefix)
 			{
-				result << QString("NORAD %1").arg(sat->getCatalogNumberString());			
+                result << QString("NORAD %1").arg(sat->getCatalogNumberString());
+                return result;
 			}
 		}
 	}
 
-	result.sort();
+    //result.sort();
 	if (result.size()>maxNbItem) result.erase(result.begin()+maxNbItem, result.end());
 
 	return result;
@@ -487,7 +493,7 @@ void Satellites::restoreDefaultSettings()
 	     << "http://celestrak.com/NORAD/elements/gps-ops.txt"
 	     << "http://celestrak.com/NORAD/elements/galileo.txt"
 	     << "http://celestrak.com/NORAD/elements/iridium.txt"
-         << "http://celestrak.com/NORAD/elements/geo.txt";
+	     << "http://celestrak.com/NORAD/elements/geo.txt";
 	saveTleSources(urls);
 }
 
@@ -589,7 +595,7 @@ void Satellites::loadSettings()
 	// NOTE: Providing default values AND using restoreDefaultSettings() to create the section seems redundant. --BM 
 	
 	// updater related settings...
-    updateFrequencyHours = conf->value("update_frequency_hours", 24).toInt();
+	updateFrequencyHours = conf->value("update_frequency_hours", 72).toInt();
 	// last update default is the first Towell Day.  <3 DA
 	lastUpdate = QDateTime::fromString(conf->value("last_update", "2001-05-25T12:00:00").toString(), Qt::ISODate);
 	setFlagDisplayed(conf->value("show_satellites", true).toBool());
@@ -1060,12 +1066,12 @@ void Satellites::updateFromOnlineSources()
 {
 	if (updateState==Satellites::Updating)
 	{
-        qWarning() << "[Satellites]: Internet update already in progress!";
+		qWarning() << "Satellites: Internet update already in progress!";
 		return;
 	}
 	else
 	{
-        qDebug() << "[Satellites]: starting Internet update...";
+		qDebug() << "Satellites: starting Internet update...";
 	}
 
 	// Setting lastUpdate should be done only when the update is finished. -BM
@@ -1083,7 +1089,7 @@ void Satellites::updateFromOnlineSources()
 		emit updateStateChanged(OtherError);
 		emit tleUpdateComplete(0, satellites.count(), 0, 0);
 		return;
-    }
+	}
 
 	updateState = Satellites::Updating;
 	emit(updateStateChanged(updateState));
@@ -1160,7 +1166,7 @@ void Satellites::saveDownloadedUpdate()
 			}
 		}
 		return;
-    }
+	}
 
 	// All files have been downloaded, finish the update
 	TleDataHash newData;
@@ -1252,7 +1258,6 @@ void Satellites::updateSatellites(TleDataHash& newTleSets)
 		qWarning() << "Satellites: update files contain no TLE sets!";
 		updateState = OtherError;
 		emit(updateStateChanged(updateState));
-        //*bIsNetworkFree = true;
 		return;
 	}
 	
@@ -1488,8 +1493,8 @@ void Satellites::draw(StelCore* core)
 	Satellite::viewportHalfspace = painter.getProjector()->getBoundingCap();
 	foreach (const SatelliteP& sat, satellites)
 	{
-        if (sat && !sat->asleep && sat->initialized && sat->displayed)
-            sat->asleep = !sat->draw(core, painter, 1);
+		if (sat && !sat->asleep && sat->initialized && sat->displayed)
+			sat->asleep = !sat->draw(core, painter, 1.0);
 	}
 
 	if (GETSTELMODULE(StelObjectMgr)->getFlagSelectedObjectPointer())
@@ -1510,44 +1515,20 @@ void Satellites::drawPointer(StelCore* core, StelPainter& painter)
 		// Compute 2D pos and return if outside screen
 		if (!prj->project(pos, screenpos))
 			return;
-
-        Vec3f c(obj->getInfoColor());
-        painter.setColor(c[0], c[1], c[2]);
-
-        float size = obj->getAngularSize(core)*M_PI/180.*prj->getPixelPerRadAtCenter()*2.;
-		
-		const float scale = prj->getDevicePixelsPerPixel()*StelApp::getInstance().getGlobalScalingRatio();
-		size+= scale * (45.f + 10.f*std::sin(2.f * StelApp::getInstance().getTotalRunTime()));
-
+		painter.setColor(0.4f,0.5f,0.8f);
 		texPointer->bind();
 
-        painter.enableTexture2d(true);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Normal transparency mode
 
-        size*=0.35;
-		const float angleBase = 0.0f;
-		// We draw 4 instances of the sprite at the corners of the pointer
-		for (int i = 0; i < 4; ++i)
-		{
-			const float angle = angleBase + i * 90;
-			const double x = screenpos[0] + size * cos(angle / 180 * M_PI);
-			const double y = screenpos[1] + size * sin(angle / 180 * M_PI);
-            painter.drawSprite2dMode(x, y, 10, angle);
-		}
-
-        //not much optimized
-        QString name = obj->getNameI18n();
-        foreach (const SatelliteP& sat, satellites)
-        {
-            if (sat && !sat->asleep && sat->initialized && sat->displayed)
-            {
-                if ((sat->name).contains(name) && !(sat->orbitDisplayed))
-                {
-                    sat->orbitDisplayed = true;
-                }
-            }
-        }
+		// Size on screen
+		float size = obj->getAngularSize(core)*M_PI/180.*prj->getPixelPerRadAtCenter();
+		size += 12.f + 3.f*std::sin(2.f * StelApp::getInstance().getTotalRunTime());
+		// size+=20.f + 10.f*std::sin(2.f * StelApp::getInstance().getTotalRunTime());
+		painter.drawSprite2dMode(screenpos[0]-size/2, screenpos[1]-size/2, 20, 90);
+		painter.drawSprite2dMode(screenpos[0]-size/2, screenpos[1]+size/2, 20, 0);
+		painter.drawSprite2dMode(screenpos[0]+size/2, screenpos[1]+size/2, 20, -90);
+		painter.drawSprite2dMode(screenpos[0]+size/2, screenpos[1]-size/2, 20, -180);
 	}
 }
 

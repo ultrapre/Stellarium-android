@@ -127,8 +127,7 @@ void SolarSystem::init()
 	setFlagHints(conf->value("astro/flag_planets_hints").toBool());
 	setFlagLabels(conf->value("astro/flag_planets_labels", true).toBool());
 	setLabelsAmount(conf->value("astro/labels_amount", 3.).toFloat());
-    //setFlagOrbits(conf->value("astro/flag_planets_orbits").toBool());
-    setFlagOrbits(false);
+	setFlagOrbits(conf->value("astro/flag_planets_orbits").toBool());
 	setFlagLightTravelTime(conf->value("astro/flag_light_travel_time", false).toBool());
 	setFlagMarkers(conf->value("astro/flag_planets_markers", true).toBool());
 
@@ -182,6 +181,7 @@ void SolarSystem::drawPointer(const StelCore* core)
 		if (!prj->project(pos, screenpos))
 			return;
 
+
 		StelPainter sPainter(prj);
 		Vec3f color = getPointersColor();
 		sPainter.setColor(color[0],color[1],color[2]);
@@ -194,8 +194,8 @@ void SolarSystem::drawPointer(const StelCore* core)
 		texPointer->bind();
 
 		sPainter.enableTexture2d(true);
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Normal transparency mode
-        glEnable(GL_BLEND);
 
 		size*=0.5;
 		const float angleBase = StelApp::getInstance().getTotalRunTime() * 10;
@@ -207,12 +207,6 @@ void SolarSystem::drawPointer(const StelCore* core)
 			const double y = screenpos[1] + size * sin(angle / 180 * M_PI);
 			sPainter.drawSprite2dMode(x, y, 10, angle);
 		}
-        QString name = obj->getNameI18n();
-        foreach (PlanetP p, systemPlanets)
-        {
-            if (p->getNameI18n().contains(name))
-                p->setFlagOrbits(true);
-        }
 	}
 }
 
@@ -249,7 +243,6 @@ void SolarSystem::loadPlanets()
 		qWarning() << "ERROR while loading ssystem_minor.ini (unable to find data/ssystem_minor.ini): " << endl;
 		return;
 	}
-
 	foreach (const QString& solarSystemFile, solarSystemFiles)
 	{
 		if (loadPlanets(solarSystemFile))
@@ -290,11 +283,76 @@ void SolarSystem::loadPlanets()
 		}
 	}
 
-	shadowPlanetCount = 0;
+    // Modified: load 1000 comets file (Cheng Xinlun, Jun 23 2020)
+    qDebug() << "Loading Solar System data (3: 1000 comets)";
+    QStringList solarSystemCometFiles = StelFileMgr::findFileInAllPaths("data/ssystem_1000comets.ini");
+    if (solarSystemCometFiles.isEmpty())
+    {
+        qWarning() << "ERROR while loading ssystem_1000comets.ini (unable to find data/ssystem_1000comets.ini):" << Qt::endl;
+        return;
+    }
+    foreach (const QString& solarSystemFile, solarSystemCometFiles)
+    {
+        if (loadPlanets(solarSystemFile))
+        {
+            qDebug() << "File ssystem_1000comets.ini is loaded successfully...";
+            break;
+        }
+        else
+        {
+            qDebug() << "Removing comets";
+            foreach (PlanetP p, systemPlanets)
+            {
+                p->satellites.clear();
+                p.clear();
+            }
+            systemPlanets.clear();
+            if (solarSystemFile.contains(StelFileMgr::getUserDir()))
+            {
+                QString newName = QString("%1/data/ssystem-%2.ini").arg(StelFileMgr::getUserDir()).arg(QDateTime::currentDateTime().toString("yyyyMMddThhmmss"));
+                if (QFile::rename(solarSystemFile, newName))
+                    qWarning() << "Invalid Solar System file" << QDir::toNativeSeparators(solarSystemFile) << "has been renamed to" << QDir::toNativeSeparators(newName);
+                else
+                {
+                    qWarning() << "Invalid Solar System file" << QDir::toNativeSeparators(solarSystemFile) << "cannot be removed!";
+                    qWarning() << "Please either delete it, rename it or move it elsewhere.";
+                }
+            }
+        }
+    }
 
-	foreach (const PlanetP& planet, systemPlanets)
-		if(planet->parent != sun || !planet->satellites.isEmpty())
-			shadowPlanetCount++;
+    // Modified: load user solar system object file (Cheng Xinlun, Jun 23 2020)
+    qDebug() << "Loading Solar System data (4: user-defined solar system objects)";
+    QStringList solarSystemUserFiles = StelFileMgr::findFileInAllPaths("data/ssystem_user.ini", StelFileMgr::Flags(StelFileMgr::Writable|StelFileMgr::File));
+    if (solarSystemUserFiles.isEmpty())
+    {
+        qWarning() << "ERROR while loading ssystem_user.ini (unable to find data/ssystem_user.ini):" << Qt::endl;
+        return;
+    }
+    foreach (const QString& solarSystemFile, solarSystemUserFiles)
+    {
+        if (loadPlanets(solarSystemFile))
+        {
+            qDebug() << "File ssystem_user.ini is loaded successfully...";
+            break;
+        }
+        else
+        {
+            qDebug() << "Removing user-defined bodies";
+            foreach (PlanetP p, systemPlanets)
+            {
+                p->satellites.clear();
+                p.clear();
+            }
+            systemPlanets.clear();
+        }
+    }
+
+    shadowPlanetCount = 0;
+
+    foreach (const PlanetP& planet, systemPlanets)
+        if(planet->parent != sun || !planet->satellites.isEmpty())
+            shadowPlanetCount++;
 }
 
 bool SolarSystem::loadPlanets(const QString& filePath)
@@ -1326,13 +1384,13 @@ QStringList SolarSystem::listMatchingObjectsI18n(const QString& objPrefix, int m
 		{
 			if (sson.contains(objPrefix, Qt::CaseInsensitive))
 				find = true;
-
 		}
 		if (find)
 		{
 			result << sson;
-			if (result.size()==maxNbItem)
-				return result;
+//			if (result.size()==maxNbItem)
+            if(!objPrefix.toUpper().startsWith("C/"))
+                return result;
 		}
 
 	}
@@ -1367,7 +1425,7 @@ QStringList SolarSystem::listMatchingObjects(const QString& objPrefix, int maxNb
 		if (find)
 		{
 			result << sson;
-			if (result.size()==maxNbItem)
+//			if (result.size()==maxNbItem)
 				return result;
 		}
 	}

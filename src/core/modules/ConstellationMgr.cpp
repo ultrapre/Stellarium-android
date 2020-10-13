@@ -1168,7 +1168,7 @@ QStringList ConstellationMgr::listMatchingObjectsI18n(const QString& objPrefix, 
 		if (find)
 		{
 			result << cn;
-			if (result.size()==maxNbItem)
+//			if (result.size()==maxNbItem)
 				return result;
 		}
 	}
@@ -1200,7 +1200,7 @@ QStringList ConstellationMgr::listMatchingObjects(const QString& objPrefix, int 
 		if (find)
 		{
 			result << cn;
-			if (result.size()==maxNbItem)
+//			if (result.size()==maxNbItem)
 				return result;
 		}
 	}

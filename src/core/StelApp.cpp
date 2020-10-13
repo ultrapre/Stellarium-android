@@ -29,11 +29,8 @@
 #include "LandscapeMgr.hpp"
 #include "GridLinesMgr.hpp"
 #include "MilkyWay.hpp"
-#include "SporadicMeteorMgr.hpp"
-#include "MeteorShowersMgr.hpp"
-#include "Exoplanets.hpp"
+#include "MeteorMgr.hpp"
 #include "LabelMgr.hpp"
-#include "Quasars.hpp"
 #include "StarMgr.hpp"
 #include "Satellites.hpp"
 #include "SolarSystem.hpp"
@@ -353,11 +350,10 @@ void StelApp::init(QSettings* conf)
 
 	// Initialize AFTER creation of openGL context
 	textureMgr = new StelTextureMgr();
+	textureMgr->init();
 
 	networkAccessManager = new QNetworkAccessManager(this);
-    //Mutex for network access
-    bool * bIsMutexFree = (bool *)true;
-    // Activate http cache if Qt version >= 4.5
+	// Activate http cache if Qt version >= 4.5
 	QNetworkDiskCache* cache = new QNetworkDiskCache(networkAccessManager);
 	QString cachePath = StelFileMgr::getCacheDir();
 
@@ -388,12 +384,12 @@ void StelApp::init(QSettings* conf)
 	hip_stars->init();
 	getModuleMgr().registerModule(hip_stars);
 
-	core->init();
+    core->init();
 
-	// Init nebulas
-	NebulaMgr* nebulas = new NebulaMgr();
-	nebulas->init();
-	getModuleMgr().registerModule(nebulas);
+    // Init nebulas
+    NebulaMgr* nebulas = new NebulaMgr();
+    nebulas->init();
+    getModuleMgr().registerModule(nebulas);
 
 	// Init milky way
 	MilkyWay* milky_way = new MilkyWay();
@@ -425,40 +421,20 @@ void StelApp::init(QSettings* conf)
 	gridLines->init();
 	getModuleMgr().registerModule(gridLines);
 
-    // User labels
-    LabelMgr* skyLabels = new LabelMgr();
-    skyLabels->init();
-    getModuleMgr().registerModule(skyLabels);
+	// Meteors
+	MeteorMgr* meteors = new MeteorMgr(10, 60);
+	meteors->init();
+	getModuleMgr().registerModule(meteors);
 
-    // Meteors old one
-    // MeteorMgr* meteors = new MeteorMgr(10, 60);
-    // meteors->init();
-    // getModuleMgr().registerModule(meteors);
-
-    //SporadicMeteor
-    SporadicMeteorMgr* sporadicMeteorMgr = new SporadicMeteorMgr(10, 60);
-    sporadicMeteorMgr->init();
-    getModuleMgr().registerModule(sporadicMeteorMgr);
-
-    // MeteorShower
-    MeteorShowersMgr* meteorsShowersMgr = new MeteorShowersMgr();
-    meteorsShowersMgr->init();
-    getModuleMgr().registerModule(meteorsShowersMgr);
+	// User labels
+	LabelMgr* skyLabels = new LabelMgr();
+	skyLabels->init();
+	getModuleMgr().registerModule(skyLabels);
 
 	// Satellites
-    Satellites* satellites = new Satellites();
-    satellites->init();
-    getModuleMgr().registerModule(satellites);
-
-    //Quasars
-    Quasars* quasars = new Quasars();
-    quasars->init();
-    getModuleMgr().registerModule(quasars);
-
-    //Exoplanets
-    Exoplanets* exoplanets = new Exoplanets();
-    exoplanets->init();
-    getModuleMgr().registerModule(exoplanets);
+	Satellites* satellites = new Satellites();
+	satellites->init();
+	getModuleMgr().registerModule(satellites);
 
 	// Sensors
 	SensorsMgr* sensors = new SensorsMgr();
@@ -470,9 +446,16 @@ void StelApp::init(QSettings* conf)
 	gps->init();
 	getModuleMgr().registerModule(gps);
 
+
+//    // Init nebulas: Silas fix
+//    NebulaMgr* nebulas = new NebulaMgr();
+//    nebulas->init();
+//    getModuleMgr().registerModule(nebulas);
+
+
 	skyCultureMgr->init();
 
-    initScriptMgr(conf);
+	initScriptMgr(conf);
 
 	// Initialisation of the color scheme
 	emit colorSchemeChanged("color");
@@ -497,11 +480,8 @@ void StelApp::initPlugIns()
 {
 	// Load dynamically all the modules found in the modules/ directories
 	// which are configured to be loaded at startup
-    qDebug() << "Number of plugins :" << moduleMgr->getPluginsList().length();
-
 	foreach (StelModuleMgr::PluginDescriptor i, moduleMgr->getPluginsList())
 	{
-        qDebug() << "Plugin: " << i.info.displayedName << " should be loaded: " << i.loadAtStartup;
 		if (i.loadAtStartup==false)
 			continue;
 		StelModule* m = moduleMgr->loadPlugin(i.info.id);

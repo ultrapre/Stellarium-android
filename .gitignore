@@ -24,17 +24,10 @@ qrc_*.cpp
 ui_*.h
 Makefile*
 *build-*
-build/
 
 # QtCreator
 
 *.autosave
-
-# Openssl sources
-openssl/
-
-# IDE's
-.vscode
 
 # QtCtreator Qml
 *.qmlproject.user
