@@ -1,2 +1,4 @@
-selected dss pictures (level>7)
+selected dss pictures (level>7) (include the major popular objects)
 	into mobile apk
+
+you can download https://dss.stellarium.org/offline/ and select them out.
