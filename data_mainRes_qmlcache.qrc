@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/mainWindow">
+        <file alias="icon.bmp">data/icon.bmp</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="shaders/xyYToRGB.glsl">data/shaders/xyYToRGB.glsl</file>
+        <file alias="qml/images/button_default.png">data/qml/images/button_default.png</file>
+        <file alias="qml/images/button_pressed.png">data/qml/images/button_pressed.png</file>
+        <file alias="qml/images/navigation_next_item.png">data/qml/images/navigation_next_item.png</file>
+        <file alias="qml/images/navigation_previous_item.png">data/qml/images/navigation_previous_item.png</file>
+        <file alias="qml/images/tab_selected.png">data/qml/images/tab_selected.png</file>
+        <file alias="qml/images/tabs_standard.png">data/qml/images/tabs_standard.png</file>
+        <file alias="qml/images/textinput.png">data/qml/images/textinput.png</file>
+        <file alias="qml/images/toolbar.png">data/qml/images/toolbar.png</file>
+        <file alias="qml/images/about-logo.png">data/qml/images/about-logo.png</file>
+        <file alias="qml/images/atmosphere.png">data/qml/images/atmosphere.png</file>
+        <file alias="qml/images/autoZoomIn.png">data/qml/images/autoZoomIn.png</file>
+        <file alias="qml/images/autoZoomOut.png">data/qml/images/autoZoomOut.png</file>
+        <file alias="qml/images/azimuthalGrid.png">data/qml/images/azimuthalGrid.png</file>
+        <file alias="qml/images/centerOnObject.png">data/qml/images/centerOnObject.png</file>
+        <file alias="qml/images/constellationLabels.png">data/qml/images/constellationLabels.png</file>
+        <file alias="qml/images/constellationLines.png">data/qml/images/constellationLines.png</file>
+        <file alias="qml/images/equatorialGrid.png">data/qml/images/equatorialGrid.png</file>
+        <file alias="qml/images/exoplanets.png">data/qml/images/exoplanets.png</file>
+        <file alias="qml/images/hoverHalo.png">data/qml/images/hoverHalo.png</file>
+        <file alias="qml/images/landscape.png">data/qml/images/landscape.png</file>
+        <file alias="qml/images/location.png">data/qml/images/location.png</file>
+        <file alias="qml/images/map-pointer.png">data/qml/images/map-pointer.png</file>
+        <file alias="qml/images/meteors.png">data/qml/images/meteors.png</file>
+        <file alias="qml/images/nebulas.png">data/qml/images/nebulas.png</file>
+        <file alias="qml/images/nightView.png">data/qml/images/nightView.png</file>
+        <file alias="qml/images/openQuickBar.png">data/qml/images/openQuickBar.png</file>
+        <file alias="qml/images/planets.png">data/qml/images/planets.png</file>
+        <file alias="qml/images/quasars.png">data/qml/images/quasars.png</file>
+        <file alias="qml/images/quit.png">data/qml/images/quit.png</file>
+        <file alias="qml/images/search.png">data/qml/images/search.png</file>
+        <file alias="qml/images/sensors.png">data/qml/images/sensors.png</file>
+        <file alias="qml/images/settings.png">data/qml/images/settings.png</file>
+        <file alias="qml/images/starlore.png">data/qml/images/starlore.png</file>
+        <file alias="qml/images/timeBarFrame.png">data/qml/images/timeBarFrame.png</file>
+        <file alias="qml/images/timeForward.png">data/qml/images/timeForward.png</file>
+        <file alias="qml/images/timeNow.png">data/qml/images/timeNow.png</file>
+        <file alias="qml/images/timeReal.png">data/qml/images/timeReal.png</file>
+        <file alias="qml/images/timeRewind.png">data/qml/images/timeRewind.png</file>
+        <file alias="qml/images/world.png">data/qml/images/world.png</file>
+        <file alias="qml/images/clearInput.png">data/qml/images/clearInput.png</file>
+        <file alias="qml/images/closeInfo.png">data/qml/images/closeInfo.png</file>
+        <file alias="qml/images/downArrow.png">data/qml/images/downArrow.png</file>
+        <file alias="qml/images/upArrow.png">data/qml/images/upArrow.png</file>
+        <file alias="qml/images/downArrowEmpty.png">data/qml/images/downArrowEmpty.png</file>
+        <file alias="qml/images/rounded-border-half.png">data/qml/images/rounded-border-half.png</file>
+        <file alias="qml/images/checked.png">data/qml/images/checked.png</file>
+        <file alias="qml/images/satellites.png">data/qml/images/satellites.png</file>
+        <file alias="qml/images/DSS.png">data/qml/images/DSS.png</file>
+    </qresource>
+</RCC>

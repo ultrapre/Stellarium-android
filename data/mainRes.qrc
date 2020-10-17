@@ -79,5 +79,6 @@
         <file>qml/ValuePicker.qml</file>
         <file>qml/Plugins.qml</file>
         <file>qml/images/DSS.png</file>
+        <file>qml/images/telrad.png</file>
     </qresource>
 </RCC>

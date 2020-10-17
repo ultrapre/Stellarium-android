@@ -100,6 +100,13 @@ Grid {
         setting: "astro/flag_toast_survey"
     }
 
+
+    ImageButton {
+        source: "images/telrad.png"
+        action: "actionShow_Telrad"
+        setting: "Oculars/flag_show_telrad"
+    }
+
 	ImageButton {
 		source: "images/satellites.png"
 		action: "actionShow_Satellite_hints"

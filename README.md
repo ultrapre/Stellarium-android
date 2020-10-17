@@ -23,35 +23,30 @@ Copyright: Original Stellarium dev team
 
 ## Planned features
 
+- Survey
+  - [x] DSS survey
+- Comets
+  - [x] one click update
+
 - Planets
-    - [X] Draw orbit when selected
-
-- Satellite
-    - [X] Support for Starlink.
-    - [X] Reduced hint sizes, show when visible and magnitude low.
-    - [X] Special yellow color for ISS.
-    - [X] Draw orbit when selected.
-
-- Quasars
-    - [X] Add support for quasars
-    - [X] Online updated
-
-- Exoplanets
-    - [X] Add support for exoplanets
-    - [X] Online updated
-
-- Meteor Showers
-    - [X] Add support for meteors
-    - [X] Online updated
+  
+  - [x] Draw orbit when selected
+  
+- Oculars
+  
+    - [x] Telrad
 
 - Telescope Control
+  
     - [ ] Add support for telescope control
     - [ ] Edit UI to support it
-
+    
 - UI
-    - [ ] Improve search dialog
-
+  
+  - [x] Improve search dialog
+  
 - Performance
+  
     - [ ] 30fps stable
 
 ## Prerequisites
@@ -75,6 +70,10 @@ If the building process runs into problems while compiling ```dummy.cpp```, simp
 TODO
 
 ## Change Log
+
+### October 17, 2020
+
+Telrad circle.
 
 ### October 13, 2020
 

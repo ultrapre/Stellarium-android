@@ -518,3 +518,9 @@ QString StelFileMgr::getWin32SpecialDirPath(int csidlId)
 	return QString();
 }
 #endif
+
+
+QString StelFileMgr::getcuserDir()
+{
+    return StelFileMgr::cuserDir;
+}

@@ -28,12 +28,14 @@
 #include <QString>
 #include <QStringList>
 #include <QTime>
-
+#include "../plugins/Telrad/telrad.h"
 class StelToneReproducer;
 class StelSkyDrawer;
 class StelGeodesicGrid;
 class StelMovementMgr;
 class StelObserver;
+
+//class Telrad;
 
 //! @class StelCore
 //! Main class for Stellarium core processing.
@@ -53,6 +55,9 @@ class StelCore : public QObject
 	Q_PROPERTY(bool flipVert READ getFlipVert WRITE setFlipVert)
 
 public:
+//    Telrad *new_tel;
+
+
 	//! @enum FrameType
 	//! Supported reference frame types
 	enum FrameType
@@ -515,6 +520,7 @@ public slots:
     void UpdateCometsCore1();
     void UpdateCometsCore2();
     void UpdateCometsCore3();
+    void Show_Telrad();
 
 signals:
 	//! This signal is emitted when the observer location has changed.

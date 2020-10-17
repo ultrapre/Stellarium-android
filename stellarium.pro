@@ -81,9 +81,15 @@ ios {
 HEADERS += \
     plugins/SolarSystemEditor/src/SolarSystemEditor.hpp \
     plugins/SolarSystemEditor/src/updatecomets.h \
+    plugins/Telrad/telrad.h \
 	src/config.h \
     src/core/StelToast.hpp \
     src/core/StelToastGrid.hpp \
+    src/core/modules/CCD.hpp \
+    src/core/modules/Lens.hpp \
+    src/core/modules/Ocular.hpp \
+    src/core/modules/Oculars.hpp \
+    src/core/modules/Telescope.hpp \
     src/core/modules/ToastMgr.hpp \
 	src/translations.h \
 	src/CLIProcessor.hpp \
@@ -95,9 +101,15 @@ HEADERS += \
 SOURCES += \
     plugins/SolarSystemEditor/src/SolarSystemEditor.cpp \
     plugins/SolarSystemEditor/src/updatecomets.cpp \
+    plugins/Telrad/telrad.cpp \
 	src/CLIProcessor.cpp \
     src/core/StelToast.cpp \
     src/core/StelToastGrid.cpp \
+    src/core/modules/CCD.cpp \
+    src/core/modules/Lens.cpp \
+    src/core/modules/Ocular.cpp \
+    src/core/modules/Oculars.cpp \
+    src/core/modules/Telescope.cpp \
     src/core/modules/ToastMgr.cpp \
 	src/main.cpp \
 	src/StelLogger.cpp \

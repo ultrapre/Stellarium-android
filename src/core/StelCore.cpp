@@ -38,6 +38,7 @@
 #include "StelTranslator.hpp"
 #include "StelActionMgr.hpp"
 
+
 #include "../plugins/SolarSystemEditor/src/SolarSystemEditor.hpp"
 #include "../plugins/SolarSystemEditor/src/updatecomets.h"
 
@@ -83,6 +84,14 @@ StelCore::StelCore() : movementMgr(NULL), geodesicGrid(NULL), currentProjectionT
 	currentProjectorParams.gravityLabels = conf->value("viewing/flag_gravity_labels").toBool();
 	
 	currentProjectorParams.devicePixelsPerPixel = StelApp::getInstance().getDevicePixelsPerPixel();
+
+
+//    new_tel = new Telrad();
+
+
+
+
+
 }
 
 
@@ -215,6 +224,40 @@ void StelCore::init()
     actionsMgr->addAction("action_updatecomets1", "Plugins", N_("Update Comets (GVB)"), this, "UpdateCometsCore1()");
 
     actionsMgr->addAction("action_updatecomets2", "Plugins", N_("Update Comets (MPC)"), this, "UpdateCometsCore2()");
+
+//    actionsMgr->addAction("actionShow_Telrad", "Plugins", N_("Show_Telrad"), this, "Show_Telrad()");
+
+}
+
+void StelCore::Show_Telrad()
+{
+
+    qDebug()<<"Show_Telrad";
+
+
+//    new_tel->TelradShow();
+
+////    Vec3f lineColor=Vec3f(0.77,0.14,0.16);
+
+//    //    StelCore *core = StelApp::getInstance().getCore();
+//        //const StelProjectorP
+//        projector = getProjection(StelCore::FrameEquinoxEqu);
+//        // StelPainter drawing
+//        painter = new StelPainter(projector);
+
+//    painter->setColor(0.77,0.14,0.16,1);
+
+//    Vec2i centerScreen(projector->getViewportPosX()+projector->getViewportWidth()/2,
+//               projector->getViewportPosY()+projector->getViewportHeight()/2);
+
+//    const float pixelsPerRad = projector->getPixelPerRadAtCenter(); // * params.devicePixelsPerPixel;
+
+//    qDebug()<<"centerScreen:"<<centerScreen[0]<< centerScreen[1];
+//    qDebug()<<"Circle:"<<0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (0.5);
+//    painter->drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (0.5));
+//    painter->drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (1));
+//    painter->drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (2));
+//    painter->drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (4));
 
 }
 

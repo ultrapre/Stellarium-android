@@ -39,23 +39,23 @@ StelDialog {
 			width: root.width
 			height: childrenRect.height
 
-            Rectangle {
-                color: "black"
-                opacity: 0
-                anchors {
-                    fill: contentItem
-                    topMargin: root.withMargins ? -rootStyle.margin : 0
-                    bottomMargin: root.withMargins ? -rootStyle.margin : 0
-                }
+//            Rectangle {
+//                color: "black"
+//                opacity: 0
+//                anchors {
+//                    fill: contentItem
+//                    topMargin: root.withMargins ? -rootStyle.margin : 0
+//                    bottomMargin: root.withMargins ? -rootStyle.margin : 0
+//                }
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "Quasars"
-                    color: "white"
-                    font.pixelSize: rootStyle.fontLargeSize
-                }
+//                Text {
+//                    anchors.centerIn: parent
+//                    text: "Quasars"
+//                    color: "white"
+//                    font.pixelSize: rootStyle.fontLargeSize
+//                }
 
-            }
+//            }
 
 //			StelListItem {
 //				checkbox: true
@@ -65,6 +65,11 @@ StelDialog {
 //			}
 
 
+            StelButton {
+//                checkbox: false
+                action: "actionShow_Telrad"
+                text: qsTr("Show_Telrad")
+            }
             StelButton {
                 text: qsTr("Update Comets (GVB)")
                 action: "action_updatecomets1"

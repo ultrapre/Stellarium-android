@@ -161,6 +161,7 @@ public:
 	//! trying to find most data files
 	//! @return the path to the user private data directory
 	static QString getUserDir();
+    static QString getcuserDir();
 
 	//! Returns the path to the installation directory.
 	//! This is the directory where we expect to find scripts, nebulae, stars,
