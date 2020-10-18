@@ -157,6 +157,8 @@ void StelFileMgr::init()
 
 	if (!QStandardPaths::standardLocations(QStandardPaths::PicturesLocation).isEmpty())
 		screenshotDir = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation)[0];
+
+
 }
 
 

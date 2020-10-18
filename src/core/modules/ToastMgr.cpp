@@ -28,8 +28,10 @@
 #include "StelTranslator.hpp"
 #include "StelModuleMgr.hpp"
 #include "StelSkyLayerMgr.hpp"
+#include "StelFileMgr.hpp"
 
 #include <QSettings>
+#include <QResource>
 
 ToastMgr::ToastMgr() :
 	StelModule()
@@ -37,6 +39,8 @@ ToastMgr::ToastMgr() :
 {	
 	setObjectName("ToastMgr");
 	fader = new LinearFader();
+
+    QResource::registerResource(StelFileMgr::getcuserDir()+"/StellariumData.rcc");
 }
 
 ToastMgr::~ToastMgr()

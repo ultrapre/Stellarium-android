@@ -186,7 +186,8 @@ Oculars::Oculars()
 	, flagShowContour(false)
 	, flagShowCardinals(false)
 	, flagAlignCrosshair(false)
-	, telradFOV(0.5f,2.f,4.f)
+//	, telradFOV(0.5f,2.f,4.f)
+    , telradFOV(3.2f,7.5f,20.0f)
 	, flagShowFocuserOverlay(false)
 	, flagUseSmallFocuserOverlay(false)
 	, flagUseMediumFocuserOverlay(true)
@@ -1768,7 +1769,7 @@ void Oculars::paintCrosshairs()
 //	painter.drawLine2d(a.x(), a.y(), b.x(), b.y());
 }
 
-int num_oc = 0;
+//int num_oc = 0;
 
 void Oculars::paintTelrad()
 {
@@ -1779,15 +1780,22 @@ void Oculars::paintTelrad()
 		// StelPainter drawing
 		StelPainter painter(projector);		
 //		painter.setColor(lineColor,1);
-        painter.setColor(0.77,0.14,0.16,1);
 		Vec2i centerScreen(projector->getViewportPosX()+projector->getViewportWidth()/2,
 				   projector->getViewportPosY()+projector->getViewportHeight()/2);
 		const float pixelsPerRad = projector->getPixelPerRadAtCenter(); // * params.devicePixelsPerPixel;
-        qDebug()<<"silas: Now paint telrad:"<<num_oc<<" :"<<telradFOV[2];
-        num_oc++;
+//        qDebug()<<"silas: Now paint telrad:"<<num_oc<<" :"<<telradFOV[2];
+//        num_oc++;
+
+        painter.setColor(0.77,0.45,0.16,1);
 		if (telradFOV[0]>0.f) painter.drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (telradFOV[0]));
+
+        painter.setColor(0.77,0.77,0.16,1);
 		if (telradFOV[1]>0.f) painter.drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (telradFOV[1]));
+
+        painter.setColor(0.14,0.77,0.16,1);
 		if (telradFOV[2]>0.f) painter.drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (telradFOV[2]));
+
+        painter.setColor(0.77,0.14,0.16,1);
 		if (telradFOV[3]>0.f) painter.drawCircle(centerScreen[0], centerScreen[1], 0.5f * pixelsPerRad * static_cast<float>(M_PI/180) * (telradFOV[3]));
 	}
 }
@@ -2558,7 +2566,7 @@ void Oculars::setTelradFOV(Vec4f fov)
 //	settings->setValue("telrad_fov", fov.toStr());
 //	settings->sync();
 //	emit telradFOVChanged(fov);
-    int x;
+//    int x;
 }
 
 Vec4f Oculars::getTelradFOV() const

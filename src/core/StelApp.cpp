@@ -83,6 +83,8 @@
 #include <QCoreApplication>
 #include <QScreen>
 
+#include <QResource>
+
 #ifndef USE_QUICKVIEW
 Q_IMPORT_PLUGIN(StelStandardGuiPluginInterface)
 #endif
@@ -414,6 +416,8 @@ void StelApp::init(QSettings* conf)
         ToastMgr* toasts = new ToastMgr();
         toasts->init();
         getModuleMgr().registerModule(toasts);
+
+
 
 	// Init audio manager
 	audioMgr = new StelAudioMgr();
